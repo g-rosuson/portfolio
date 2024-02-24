@@ -1,0 +1,47 @@
+.fadeIn {
+    opacity: 0;
+    animation: fadeIn;
+}
+
+.fadeOut {
+    opacity: 1;
+    animation: fadeOut;
+}
+
+.fadeInAndLower {
+    opacity: 0;
+    transform: translateY(-40px);
+    animation: fadeInAndLower forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInAndLower {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

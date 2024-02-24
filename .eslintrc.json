@@ -2,7 +2,7 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "no-useless-return": "warn",
-    "max-len": ["warn", {"code": 150, "comments": 105}],
+    "max-len": ["warn", {"code": 135, "comments": 105}],
     "quotes": ["error", "single"],
     "semi": "warn",
     "camelcase": "error",

@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 
+# resource files
+/src/components/intro/resources
+
 # testing
 /coverage
 
