@@ -50,7 +50,7 @@ const Incremental = ({ element }: { element: IElement }) => {
                 const animationClassName = element.animation.type;
                 const className = `${utils.getFontClassName(element.font.name)} ${animationClassName}`;
 
-                const nextElement = (
+                const nextItem = (
                     <div key={nextActiveItemIndex} style={utils.getStyle(element, animationDuration)} className={className}>
                         {content}
                     </div>
@@ -59,7 +59,7 @@ const Incremental = ({ element }: { element: IElement }) => {
                 const isAtEnd = prevState.items.length === element.content.length;
 
                 // Reset the items array on element change
-                const items = isAtEnd ? [nextElement] : [...prevState.items, nextElement];
+                const items = isAtEnd ? [nextItem] : [...prevState.items, nextItem];
 
                 return {
                     ...prevState,
@@ -74,7 +74,29 @@ const Incremental = ({ element }: { element: IElement }) => {
         };
     }, [element]);
 
-    return <div className={styling.container}>{items}</div>;
+    // Creates the total width of the active element, causing its items
+    // to start at either end and eventually fill a centered container.
+    const skeletonStyle = {
+        fontSize: `${element.font.size}rem`,
+        fontWeight: element.font.weight,
+        color: 'transparent',
+    };
+
+    const skeleton = (
+        <div style={skeletonStyle} className={`${utils.getFontClassName(element.font.name)}`}>
+            {element.content}
+        </div>
+    );
+
+    return (
+        <div className={styling.container}>
+            <div className={styling.wrapper}>
+                {skeleton}
+
+                <div className={styling.items}>{items}</div>
+            </div>
+        </div>
+    );
 };
 
 export default Incremental;

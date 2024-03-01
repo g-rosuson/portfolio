@@ -1,4 +1,4 @@
-import RollerDeck from 'src/components/intro/Intro';
+import Intro from 'src/components/intro/Intro';
 
 const Home = () => {
     const configuration = {
@@ -12,11 +12,11 @@ const Home = () => {
                     mode: 'incremental' as const,
                     type: 'fadeInAndLower',
                     easing: 'ease-in-out' as const,
-                    duration: 2500,
+                    duration: 1500,
                 },
                 font: {
                     name: 'Lora',
-                    size: 5, // rem
+                    size: 8, // rem
                     weight: 2000,
                     style: 'normal',
                     color: '#312E2E',
@@ -28,11 +28,11 @@ const Home = () => {
                     mode: 'incremental' as const,
                     type: 'fadeInAndLower',
                     easing: 'ease-in-out' as const,
-                    duration: 2000,
+                    duration: 1500,
                 },
                 font: {
                     name: 'Lora',
-                    size: 5, // rem
+                    size: 8, // rem
                     weight: 300,
                     style: 'italic',
                     color: '#eebb58',
@@ -44,11 +44,11 @@ const Home = () => {
                     mode: 'incremental' as const,
                     type: 'fadeInAndLower',
                     easing: 'ease-in-out' as const,
-                    duration: 3000,
+                    duration: 1500,
                 },
                 font: {
                     name: 'Nunito',
-                    size: 5, // rem
+                    size: 8, // rem
                     weight: 300,
                     style: 'normal',
                     color: '#a064c9',
@@ -59,7 +59,7 @@ const Home = () => {
 
     return (
         <main>
-            <RollerDeck configuration={configuration} />
+            <Intro configuration={configuration} />
         </main>
     );
 };

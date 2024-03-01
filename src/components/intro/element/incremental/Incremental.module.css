@@ -1,5 +1,19 @@
 .container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+}
+
+.wrapper {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+
+.items {
+    position: absolute;
+    display: flex;
+    top: 0;
 }

@@ -13,7 +13,8 @@ const getStyle = (element: IElement, animationDuration?: number) => {
         fontWeight: element.font.weight,
         color: element.font.color,
         animationDuration: `${animationDuration ?? element.animation.duration}ms`,
-        animationTimingFunction: element.animation.easing,
+        // @todo determine easing strategy
+        animationTimingFunction: 'cubic-bezier((0,1.5,1,1.5))', // 'cubic-bezier(0.68, -0.55, 0.27, 1.55)' // 'cubic-bezier((0,1.5,1,1.5))'
     };
 };
 

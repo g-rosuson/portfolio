@@ -54,19 +54,7 @@ const Intro = ({ configuration }: { configuration: IConfiguration }) => {
         }
     }, [activeElement, activeElementIndex]);
 
-    return (
-        <div
-            style={{
-                height: '100vh',
-                width: '100vw',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}
-        >
-            <Element key={activeElementIndex} element={activeElement} />
-        </div>
-    );
+    return <Element key={activeElementIndex} element={activeElement} />;
 };
 
 export default Intro;
