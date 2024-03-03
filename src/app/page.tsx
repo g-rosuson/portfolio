@@ -13,6 +13,7 @@ const Home = () => {
                     type: 'fadeInAndLower',
                     easing: 'ease-in-out' as const,
                     duration: 1500,
+                    timeout: 1000,
                 },
                 font: {
                     name: 'Lora',
@@ -25,10 +26,11 @@ const Home = () => {
             {
                 content: 'Grüezi',
                 animation: {
-                    mode: 'incremental' as const,
+                    mode: 'sequential' as const,
                     type: 'fadeInAndLower',
                     easing: 'ease-in-out' as const,
                     duration: 1500,
+                    timeout: 1000,
                 },
                 font: {
                     name: 'Lora',
@@ -45,6 +47,7 @@ const Home = () => {
                     type: 'fadeInAndLower',
                     easing: 'ease-in-out' as const,
                     duration: 1500,
+                    timeout: 1000,
                 },
                 font: {
                     name: 'Nunito',

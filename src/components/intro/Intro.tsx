@@ -1,12 +1,12 @@
 'use client';
 
-import './stylesheets/animation.css';
-
 import React, { useEffect, useState } from 'react';
 
 import Element from './element/Element';
 
 import { IConfiguration } from './types';
+
+import './stylesheets/animation.css';
 
 const Intro = ({ configuration }: { configuration: IConfiguration }) => {
     // State
@@ -22,15 +22,22 @@ const Intro = ({ configuration }: { configuration: IConfiguration }) => {
     });
 
     useEffect(() => {
-        // Check if a cycle is complete
-        const isAtEnd = activeElementIndex + 1 === configuration.elements.length;
+        const roundComplete = activeElementIndex === configuration.elements.length - 1;
 
-        if (!configuration.loop && isAtEnd) {
+        // Determine whether to loop over the elements
+        if (!configuration.loop && roundComplete) {
             return;
         }
 
         if (configuration?.mode === 'show-one') {
-            const intervalDuration = configuration.elements[activeElementIndex].animation.duration;
+            // Determine how long an element should be shown
+            let intervalDuration = configuration.elements[activeElementIndex].animation.duration;
+
+            // If the active element has a defined timeout,
+            // add it to the interval duration
+            if (!!activeElement.animation.timeout) {
+                intervalDuration = intervalDuration + activeElement.animation.timeout;
+            }
 
             const interval = setInterval(() => {
                 setState((prevState) => {
@@ -52,7 +59,7 @@ const Intro = ({ configuration }: { configuration: IConfiguration }) => {
                 clearInterval(interval);
             };
         }
-    }, [activeElement, activeElementIndex]);
+    }, [activeElement, activeElementIndex, configuration]);
 
     return <Element key={activeElementIndex} element={activeElement} />;
 };

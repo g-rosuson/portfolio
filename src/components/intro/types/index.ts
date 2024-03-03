@@ -13,6 +13,7 @@ export interface IElement {
         easing: 'ease-in' | 'ease-in-out' | 'ease-out' | 'linear';
         duration: number;
         startAt?: number;
+        timeout?: number;
     };
     font: {
         name: string;

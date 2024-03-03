@@ -8,7 +8,7 @@ import styling from './Incremental.module.css';
 
 const Incremental = ({ element }: { element: IElement }) => {
     // State
-    const [{ items }, setState] = useState(() => {
+    const [{ items, activeItemIndex }, setState] = useState(() => {
         // Determine the initial item and its index
         const startAtIndex = element.animation?.startAt ?? 0;
 
@@ -36,10 +36,17 @@ const Incremental = ({ element }: { element: IElement }) => {
      * item and its index to the local state.
      */
     useEffect(() => {
-        // Divide the animation duration of the element
-        // by the length of the element content, to get
-        // the animation length of one item
-        const animationDuration = element.animation.duration / element.content.length;
+        // Check if the active item is the last one in the content string
+        // or array, and adjust the check for zero-based indexing
+        const roundComplete = activeItemIndex === element.content.length - 1;
+
+        if (roundComplete) {
+            return;
+        }
+
+        // Divide the animation duration of the element by the length of
+        // the element content, to get the animation length of one item
+        const intervalDuration = element.animation.duration / element.content.length;
 
         const interval = setInterval(() => {
             setState((prevState) => {
@@ -51,15 +58,15 @@ const Incremental = ({ element }: { element: IElement }) => {
                 const className = `${utils.getFontClassName(element.font.name)} ${animationClassName}`;
 
                 const nextItem = (
-                    <div key={nextActiveItemIndex} style={utils.getStyle(element, animationDuration)} className={className}>
+                    <div key={nextActiveItemIndex} style={utils.getStyle(element, intervalDuration)} className={className}>
                         {content}
                     </div>
                 );
 
-                const isAtEnd = prevState.items.length === element.content.length;
+                const roundComplete = prevState.items.length === element.content.length;
 
                 // Reset the items array on element change
-                const items = isAtEnd ? [nextItem] : [...prevState.items, nextItem];
+                const items = roundComplete ? [nextItem] : [...prevState.items, nextItem];
 
                 return {
                     ...prevState,
@@ -67,15 +74,15 @@ const Incremental = ({ element }: { element: IElement }) => {
                     items,
                 };
             });
-        }, animationDuration);
+        }, intervalDuration);
 
         return () => {
             clearInterval(interval);
         };
-    }, [element]);
+    }, [activeItemIndex, element]);
 
-    // Creates the total width of the active element, causing its items
-    // to start at either end and eventually fill a centered container.
+    // The skeleton creates the total width of the active element, causing its
+    // items to start at either end and eventually fill a centered container.
     const skeletonStyle = {
         fontSize: `${element.font.size}rem`,
         fontWeight: element.font.weight,
