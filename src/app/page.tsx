@@ -7,10 +7,10 @@ const Home = () => {
         startAt: 0,
         elements: [
             {
-                content: 'Halló', // Can be a JSX component/s
+                content: 'Halló þú', // Can be a JSX component/s
                 animation: {
                     mode: 'incremental' as const,
-                    type: 'fadeInAndLower',
+                    type: 'fade-in-lower' as const,
                     easing: 'ease-in-out' as const,
                     duration: 1500,
                     timeout: 1000,
@@ -18,7 +18,7 @@ const Home = () => {
                 font: {
                     name: 'Lora',
                     size: 8, // rem
-                    weight: 2000,
+                    weight: 500,
                     style: 'normal',
                     color: '#312E2E',
                 },
@@ -27,7 +27,7 @@ const Home = () => {
                 content: 'Grüezi',
                 animation: {
                     mode: 'sequential' as const,
-                    type: 'fadeInAndLower',
+                    type: 'fade-in-lower' as const,
                     easing: 'ease-in-out' as const,
                     duration: 1500,
                     timeout: 1000,
@@ -44,7 +44,7 @@ const Home = () => {
                 content: 'Ciao',
                 animation: {
                     mode: 'incremental' as const,
-                    type: 'fadeInAndLower',
+                    type: 'fade-in-lower' as const,
                     easing: 'ease-in-out' as const,
                     duration: 1500,
                     timeout: 1000,

@@ -4,6 +4,8 @@ import Incremental from './incremental/Incremental';
 import Sequential from './sequential/Sequential';
 import Block from './block/Block';
 
+import helpers from './helpers';
+
 const Element = ({ element }: { element: IElement }) => {
     const components = {
         incremental: Incremental,
@@ -11,10 +13,10 @@ const Element = ({ element }: { element: IElement }) => {
         block: Block,
     };
 
-    const mode = (element.animation.mode as keyof typeof components) ?? 'Block';
-    const Component = components[mode];
+    const constructedElement = helpers.getConstructedElement(element);
+    const Component = components[element.animation.mode ?? 'block'];
 
-    return <Component element={element} />;
+    return <Component element={constructedElement} />;
 };
 
 export default Element;

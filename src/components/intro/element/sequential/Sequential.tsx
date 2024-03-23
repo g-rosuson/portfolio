@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import { IElement } from '../../types';
-
-import utils from '../../utils';
+import { IConstructedElement } from '../../types';
 
 import styling from './Sequential.module.css';
 
-const Sequential = ({ element }: { element: IElement }) => {
+const Sequential = ({ element }: { element: IConstructedElement }) => {
     // State
     const [{ activeItemIndex }, setState] = useState({
-        activeItemIndex: element.animation?.startAt ?? 0,
+        activeItemIndex: element.meta.startAt,
     });
 
     useEffect(() => {
@@ -21,10 +19,6 @@ const Sequential = ({ element }: { element: IElement }) => {
             return;
         }
 
-        // Divide the animation duration of the element by the length of
-        // the element content, to get the animation length of one item
-        const intervalDuration = element.animation.duration / element.content.length;
-
         const interval = setInterval(() => {
             setState((prevState) => {
                 // Determine the index of the next active item
@@ -35,7 +29,7 @@ const Sequential = ({ element }: { element: IElement }) => {
                     activeItemIndex: nextActiveItemIndex,
                 };
             });
-        }, intervalDuration);
+        }, element.meta.intervalDuration);
 
         return () => {
             clearInterval(interval);
@@ -44,12 +38,9 @@ const Sequential = ({ element }: { element: IElement }) => {
 
     const activeItem = element.content[activeItemIndex];
 
-    const animationClassName = element.animation.type;
-    const className = `${utils.getFontClassName(element.font.name)} ${animationClassName}`;
-
     return (
         <div className={styling.container}>
-            <div style={utils.getStyle(element)} className={className}>
+            <div style={element.style} className={element.meta.className}>
                 {activeItem}
             </div>
         </div>

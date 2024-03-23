@@ -1,26 +1,19 @@
 import { useEffect, useState } from 'react';
 
-import { IElement } from '../../types';
-
-import utils from '../../utils';
+import { IConstructedElement } from '../../types';
 
 import styling from './Incremental.module.css';
 
-const Incremental = ({ element }: { element: IElement }) => {
+const Incremental = ({ element }: { element: IConstructedElement }) => {
     // State
     const [{ items, activeItemIndex }, setState] = useState(() => {
         // Determine the initial item and its index
-        const startAtIndex = element.animation?.startAt ?? 0;
-
-        const animationDuration = element.animation.duration / element.content.length;
+        const startAtIndex = element.meta.startAt;
 
         const content = element.content[startAtIndex];
 
-        const animationClassName = element.animation.type;
-        const className = `${utils.getFontClassName(element.font.name)} ${animationClassName}`;
-
         const initialItem = (
-            <div key={startAtIndex} style={utils.getStyle(element, animationDuration)} className={className}>
+            <div key={startAtIndex} style={element.style} className={element.meta.className}>
                 {content}
             </div>
         );
@@ -44,21 +37,14 @@ const Incremental = ({ element }: { element: IElement }) => {
             return;
         }
 
-        // Divide the animation duration of the element by the length of
-        // the element content, to get the animation length of one item
-        const intervalDuration = element.animation.duration / element.content.length;
-
         const interval = setInterval(() => {
             setState((prevState) => {
                 const nextActiveItemIndex = (prevState.activeItemIndex + 1) % element.content.length;
 
                 const content = element.content[nextActiveItemIndex];
 
-                const animationClassName = element.animation.type;
-                const className = `${utils.getFontClassName(element.font.name)} ${animationClassName}`;
-
                 const nextItem = (
-                    <div key={nextActiveItemIndex} style={utils.getStyle(element, intervalDuration)} className={className}>
+                    <div key={nextActiveItemIndex} style={element.style} className={element.meta.className}>
                         {content}
                     </div>
                 );
@@ -74,7 +60,7 @@ const Incremental = ({ element }: { element: IElement }) => {
                     items,
                 };
             });
-        }, intervalDuration);
+        }, element.meta.intervalDuration);
 
         return () => {
             clearInterval(interval);
@@ -83,14 +69,8 @@ const Incremental = ({ element }: { element: IElement }) => {
 
     // The skeleton creates the total width of the active element, causing its
     // items to start at either end and eventually fill a centered container.
-    const skeletonStyle = {
-        fontSize: `${element.font.size}rem`,
-        fontWeight: element.font.weight,
-        color: 'transparent',
-    };
-
     const skeleton = (
-        <div style={skeletonStyle} className={`${utils.getFontClassName(element.font.name)}`}>
+        <div style={{ ...element.style, color: 'transparent' }} className={element.meta.className}>
             {element.content}
         </div>
     );

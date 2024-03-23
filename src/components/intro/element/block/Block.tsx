@@ -1,13 +1,8 @@
-import { IElement } from '../../types';
+import { IConstructedElement } from '../../types';
 
-import utils from '../../utils';
-
-const Block = ({ element }: { element: IElement }) => {
-    const animationClassName = element.animation.type;
-    const className = `${utils.getFontClassName(element.font.name)} ${animationClassName}`;
-
+const Block = ({ element }: { element: IConstructedElement }) => {
     return (
-        <div style={utils.getStyle(element)} className={className}>
+        <div style={element.style} className={element.meta.className}>
             {element.content}
         </div>
     );

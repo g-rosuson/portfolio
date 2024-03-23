@@ -8,7 +8,7 @@
     animation: fadeOut;
 }
 
-.fadeInAndLower {
+.fadeInLower {
     opacity: 0;
     transform: translateY(-40px);
     animation: fadeInAndLower forwards;

@@ -16,4 +16,5 @@
     position: absolute;
     display: flex;
     top: 0;
+    white-space: break-spaces;
 }
