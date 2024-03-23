@@ -35,7 +35,7 @@ const Intro = ({ configuration }: { configuration: IConfiguration }) => {
 
             // If the active element has a defined timeout,
             // add it to the interval duration
-            if (!!activeElement.animation.timeout) {
+            if (!!activeElement.animation?.timeout) {
                 intervalDuration = intervalDuration + activeElement.animation.timeout;
             }
 

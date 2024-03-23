@@ -17,8 +17,8 @@ const Home = () => {
                 },
                 font: {
                     name: 'Lora',
-                    size: 8, // rem
-                    weight: 500,
+                    size: '8rem',
+                    weight: '500',
                     style: 'normal',
                     color: '#312E2E',
                 },
@@ -34,8 +34,8 @@ const Home = () => {
                 },
                 font: {
                     name: 'Lora',
-                    size: 8, // rem
-                    weight: 300,
+                    size: '8rem',
+                    weight: '300',
                     style: 'italic',
                     color: '#eebb58',
                 },
@@ -45,14 +45,14 @@ const Home = () => {
                 animation: {
                     mode: 'incremental' as const,
                     type: 'fade-in-lower' as const,
-                    easing: 'ease-in-out' as const,
-                    duration: 1500,
+                    easing: 'ease-out' as const,
+                    duration: 3000,
                     timeout: 1000,
                 },
                 font: {
                     name: 'Nunito',
-                    size: 8, // rem
-                    weight: 300,
+                    size: '8rem',
+                    weight: '700',
                     style: 'normal',
                     color: '#a064c9',
                 },

@@ -7,6 +7,7 @@ import Block from './block/Block';
 import helpers from './helpers';
 
 const Element = ({ element }: { element: IElement }) => {
+    // @Todo Determine animation easing strategy
     const components = {
         incremental: Incremental,
         sequential: Sequential,

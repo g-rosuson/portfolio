@@ -7,7 +7,7 @@ import styling from './Sequential.module.css';
 const Sequential = ({ element }: { element: IConstructedElement }) => {
     // State
     const [{ activeItemIndex }, setState] = useState({
-        activeItemIndex: element.meta.startAt,
+        activeItemIndex: element.animation.startAt,
     });
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const Sequential = ({ element }: { element: IConstructedElement }) => {
                     activeItemIndex: nextActiveItemIndex,
                 };
             });
-        }, element.meta.intervalDuration);
+        }, element.animation.intervalDuration);
 
         return () => {
             clearInterval(interval);
@@ -40,7 +40,7 @@ const Sequential = ({ element }: { element: IConstructedElement }) => {
 
     return (
         <div className={styling.container}>
-            <div style={element.style} className={element.meta.className}>
+            <div key={activeItemIndex} style={element.style} className={element.className}>
                 {activeItem}
             </div>
         </div>

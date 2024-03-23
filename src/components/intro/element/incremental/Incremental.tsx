@@ -8,12 +8,12 @@ const Incremental = ({ element }: { element: IConstructedElement }) => {
     // State
     const [{ items, activeItemIndex }, setState] = useState(() => {
         // Determine the initial item and its index
-        const startAtIndex = element.meta.startAt;
+        const startAtIndex = element.animation.startAt;
 
         const content = element.content[startAtIndex];
 
         const initialItem = (
-            <div key={startAtIndex} style={element.style} className={element.meta.className}>
+            <div key={startAtIndex} style={element.style} className={element.className}>
                 {content}
             </div>
         );
@@ -44,7 +44,7 @@ const Incremental = ({ element }: { element: IConstructedElement }) => {
                 const content = element.content[nextActiveItemIndex];
 
                 const nextItem = (
-                    <div key={nextActiveItemIndex} style={element.style} className={element.meta.className}>
+                    <div key={nextActiveItemIndex} style={element.style} className={element.className}>
                         {content}
                     </div>
                 );
@@ -60,7 +60,7 @@ const Incremental = ({ element }: { element: IConstructedElement }) => {
                     items,
                 };
             });
-        }, element.meta.intervalDuration);
+        }, element.animation.intervalDuration);
 
         return () => {
             clearInterval(interval);
@@ -70,7 +70,7 @@ const Incremental = ({ element }: { element: IConstructedElement }) => {
     // The skeleton creates the total width of the active element, causing its
     // items to start at either end and eventually fill a centered container.
     const skeleton = (
-        <div style={{ ...element.style, color: 'transparent' }} className={element.meta.className}>
+        <div style={{ ...element.style, color: 'transparent' }} className={element.className}>
             {element.content}
         </div>
     );

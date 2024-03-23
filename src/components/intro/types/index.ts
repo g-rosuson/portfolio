@@ -17,8 +17,8 @@ export interface IElement {
     };
     font: {
         name: string;
-        size: number;
-        weight: number;
+        size: string;
+        weight: string;
         style: string;
         color: string;
     };
@@ -26,16 +26,16 @@ export interface IElement {
 
 export interface IConstructedElement {
     content: string;
+    className: string;
     style: {
-        fontWeight: number;
+        fontWeight: string;
         fontSize: string;
         color: string;
         animationTimingFunction: string;
         animationDuration: string;
     };
-    meta: {
+    animation: {
         intervalDuration: number;
-        className: string;
         startAt: number;
         timeout: number;
     };
