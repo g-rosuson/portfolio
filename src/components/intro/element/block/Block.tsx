@@ -1,8 +1,8 @@
-import { IConstructedElement } from '../../types';
+import { IFormattedElement } from '../../types';
 
-const Block = ({ element }: { element: IConstructedElement }) => {
+const Block = ({ element }: { element: IFormattedElement }) => {
     return (
-        <div style={element.style} className={element.meta.className}>
+        <div style={element.style} className={element.className}>
             {element.content}
         </div>
     );

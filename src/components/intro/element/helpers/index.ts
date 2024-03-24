@@ -2,9 +2,9 @@ import resources from '../../resources';
 
 import { IElement } from '../../types';
 
-const getConstructedElement = (element: IElement) => {
+const formatElement = (element: IElement) => {
     // Find the chosen font
-    const chosenFont = resources.fonts.find(({ name }) => name === element.font.name);
+    const chosenFont = resources.fonts.find(({ name }) => name === element.font.name) ?? resources.fonts[0];
 
     // Map the animation type to a CSS class
     const animationClassMap = {
@@ -22,7 +22,7 @@ const getConstructedElement = (element: IElement) => {
 
     return {
         content: element.content,
-        className: `${chosenFont?.file?.className ?? ''} ${animationClassMap[element.animation.type]}`,
+        className: `${chosenFont.file.className} ${animationClassMap[element.animation.type]}`,
         style: {
             fontWeight: element.font.weight,
             fontSize: element.font.size,
@@ -39,7 +39,7 @@ const getConstructedElement = (element: IElement) => {
 };
 
 const helpers = {
-    getConstructedElement,
+    formatElement,
 };
 
 export default helpers;

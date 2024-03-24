@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { IConstructedElement } from '../../types';
+import { IFormattedElement } from '../../types';
 
 import styling from './Incremental.module.css';
 
-const Incremental = ({ element }: { element: IConstructedElement }) => {
+const Incremental = ({ element }: { element: IFormattedElement }) => {
     // State
     const [{ items, activeItemIndex }, setState] = useState(() => {
         // Determine the initial item and its index

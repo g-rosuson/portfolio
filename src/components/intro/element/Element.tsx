@@ -14,10 +14,10 @@ const Element = ({ element }: { element: IElement }) => {
         block: Block,
     };
 
-    const constructedElement = helpers.getConstructedElement(element);
+    const formattedElement = helpers.formatElement(element);
     const Component = components[element.animation.mode ?? 'block'];
 
-    return <Component element={constructedElement} />;
+    return <Component element={formattedElement} />;
 };
 
 export default Element;

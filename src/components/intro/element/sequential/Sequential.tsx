@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { IConstructedElement } from '../../types';
+import { IFormattedElement } from '../../types';
 
 import styling from './Sequential.module.css';
 
-const Sequential = ({ element }: { element: IConstructedElement }) => {
+const Sequential = ({ element }: { element: IFormattedElement }) => {
     // State
     const [{ activeItemIndex }, setState] = useState({
         activeItemIndex: element.animation.startAt,

@@ -24,7 +24,7 @@ export interface IElement {
     };
 }
 
-export interface IConstructedElement {
+export interface IFormattedElement {
     content: string;
     className: string;
     style: {
