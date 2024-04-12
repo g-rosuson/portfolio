@@ -1,87 +1,68 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 
 import { IFormattedElement } from '../../types';
 
 import styling from './Incremental.module.css';
 
 const Incremental = ({ element }: { element: IFormattedElement }) => {
-    // State
-    const [{ items, activeItemIndex }, setState] = useState(() => {
-        // Determine the initial item and its index
-        const startAtIndex = element.animation.startAt;
+    // The delay factor is incremented by one when an item is not
+    // a white space. Which subsequently creates a progressively
+    // longer delay for each visible character
+    let delayFactor = 0;
 
-        const content = element.content[startAtIndex];
+    // Grouped words, where every word group is made
+    // of styled JSX characters
+    const characterGroups = [];
 
-        const initialItem = (
-            <div key={startAtIndex} style={element.style} className={element.className}>
-                {content}
-            </div>
+    // Contains the styled JSX characters within a word
+    let characterGroup = [];
+
+    // Groups and creates styled JSX characters according
+    // to word structure of the given string
+    for (let index = 0; index < element.content.length; index++) {
+        const char = element.content[index];
+
+        // Determine the style object for each character
+        const style = {
+            ...element.style,
+            animationDelay: `${delayFactor * element.animation.intervalDuration}ms`,
+        };
+
+        // Apply styles and font-family with the classname
+        const dressedChar = (
+            <span key={`${char}_${Math.random()}`} style={style} className={element.className}>
+                {char}
+            </span>
         );
 
-        return {
-            activeItemIndex: startAtIndex,
-            items: [initialItem],
-        };
-    });
+        characterGroup.push(dressedChar);
 
-    /**
-     * Creates an interval which adds the next active
-     * item and its index to the local state.
-     */
-    useEffect(() => {
-        // Check if the active item is the last one in the content string
-        // or array, and adjust the check for zero-based indexing
-        const roundComplete = activeItemIndex === element.content.length - 1;
+        // If the character is a whitespace or this is the last iteration.
+        // Create a word group of JSX characters
+        const isWhiteSpace = /\s/.test(char);
+        const isAtEnd = element.content.length - 1 === index;
 
-        if (roundComplete) {
-            return;
+        if (isWhiteSpace || isAtEnd) {
+            const newGroup = (
+                <div key={index} className={styling.group}>
+                    {characterGroup}
+                </div>
+            );
+
+            characterGroups.push(newGroup);
+            characterGroup = [];
+
+            continue;
         }
 
-        const interval = setInterval(() => {
-            setState((prevState) => {
-                const nextActiveItemIndex = (prevState.activeItemIndex + 1) % element.content.length;
-
-                const content = element.content[nextActiveItemIndex];
-
-                const nextItem = (
-                    <div key={nextActiveItemIndex} style={element.style} className={element.className}>
-                        {content}
-                    </div>
-                );
-
-                const roundComplete = prevState.items.length === element.content.length;
-
-                // Reset the items array on element change
-                const items = roundComplete ? [nextItem] : [...prevState.items, nextItem];
-
-                return {
-                    ...prevState,
-                    activeItemIndex: nextActiveItemIndex,
-                    items,
-                };
-            });
-        }, element.animation.intervalDuration);
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, [activeItemIndex, element]);
-
-    // The skeleton creates the total width of the active element, causing its
-    // items to start at either end and eventually fill a centered container.
-    const skeleton = (
-        <div style={{ ...element.style, color: 'transparent' }} className={element.className}>
-            {element.content}
-        </div>
-    );
+        // Only increment the delay factor when
+        // the character is not a white space
+        delayFactor++;
+    }
 
     return (
         <div className={styling.container}>
-            <div className={styling.wrapper}>
-                {skeleton}
-
-                <div className={styling.items}>{items}</div>
-            </div>
+            <div className={styling.groups}>{characterGroups}</div>
         </div>
     );
 };

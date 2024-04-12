@@ -31,7 +31,7 @@ const Intro = ({ configuration }: { configuration: IConfiguration }) => {
 
         if (configuration?.mode === 'show-one') {
             // Determine how long an element should be shown
-            let intervalDuration = configuration.elements[activeElementIndex].animation.duration;
+            let intervalDuration = configuration.elements[activeElementIndex].animation?.duration;
 
             // If the active element has a defined timeout,
             // add it to the interval duration

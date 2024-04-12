@@ -7,12 +7,12 @@ const Home = () => {
         startAt: 0,
         elements: [
             {
-                content: 'Halló þú', // Can be a JSX component/s
+                content: 'Hi there!', // Can be JSX component/s
                 animation: {
                     mode: 'incremental' as const,
                     type: 'fade-in-lower' as const,
                     easing: 'ease-in-out' as const,
-                    duration: 1500,
+                    duration: 4000,
                     timeout: 1000,
                 },
                 font: {

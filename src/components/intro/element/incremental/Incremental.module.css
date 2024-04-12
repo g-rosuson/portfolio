@@ -1,20 +1,17 @@
 .container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.wrapper {
-    position: relative;
-    width: fit-content;
-    height: fit-content;
+.groups {
+  max-width: 40rem;
 }
 
-.items {
-    position: absolute;
-    display: flex;
-    top: 0;
-    white-space: break-spaces;
+.group > span {
+  display: inline-block;
+  white-space: pre-wrap;
 }
+
