@@ -1,39 +1,32 @@
-import Intro from 'src/components/intro/Intro';
+import Carousel from 'src/components/Carousel/Carousel';
 
 const Home = () => {
     const configuration = {
         mode: 'show-one',
-        loop: true,
+        loop: false,
         startAt: 0,
-        elements: [
+        blocks: [
             {
-                content: 'Hi there!', // Can be JSX component/s
+                elements: [
+                    {
+                        content: 'Hi there!',
+                        font: {
+                            color: '#994de3'
+                        }
+                    }
+                ],
                 animation: {
                     mode: 'incremental' as const,
                     type: 'fade-in-lower' as const,
                     easing: 'ease-in-out' as const,
-                    duration: 4000,
+                    duration: {
+                        mode: 'per-character' as const,
+                        amount: 300
+                    },
                     timeout: 1000,
                 },
                 font: {
-                    name: 'Lora',
-                    size: '8rem',
-                    weight: '500',
-                    style: 'normal',
-                    color: '#312E2E',
-                },
-            },
-            {
-                content: 'Grüezi',
-                animation: {
-                    mode: 'sequential' as const,
-                    type: 'fade-in-lower' as const,
-                    easing: 'ease-in-out' as const,
-                    duration: 1500,
-                    timeout: 1000,
-                },
-                font: {
-                    name: 'Lora',
+                    name: 'Nabla',
                     size: '8rem',
                     weight: '300',
                     style: 'italic',
@@ -41,20 +34,48 @@ const Home = () => {
                 },
             },
             {
-                content: 'Ciao',
+                elements: [
+                    {
+                        content: 'I\'m Gummi',
+                        font: {
+                            color: '#eebb58',
+                        },
+                        animation: {
+                            timeout: 700
+                        }
+                    },
+                    {
+                        content: 'and I do',
+                        font: {
+                            color: '#cb5f24',
+                        },
+                        animation: {
+                            timeout: 400
+                        }
+                    },
+                    {
+                        content: 'web',
+                        font: {
+                            color: '#82c93d',
+                        },
+                    },
+                ],
                 animation: {
                     mode: 'incremental' as const,
                     type: 'fade-in-lower' as const,
-                    easing: 'ease-out' as const,
-                    duration: 3000,
+                    easing: 'ease-in-out' as const,
+                    duration: {
+                        mode: 'per-character' as const,
+                        amount: 300
+                    },
                     timeout: 1000,
                 },
                 font: {
-                    name: 'Nunito',
+                    name: 'Nabla',
                     size: '8rem',
-                    weight: '700',
-                    style: 'normal',
-                    color: '#a064c9',
+                    weight: '300',
+                    style: 'italic',
+                    color: '#eebb58',
                 },
             },
         ],
@@ -62,7 +83,7 @@ const Home = () => {
 
     return (
         <main>
-            <Intro configuration={configuration} />
+            <Carousel configuration={configuration} />
         </main>
     );
 };
