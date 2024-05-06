@@ -1,4 +1,4 @@
-import Carousel from 'src/components/Carousel/Carousel';
+import Carousel from 'src/components/carousel/Carousel';
 
 const Home = () => {
     const configuration = {
@@ -26,12 +26,12 @@ const Home = () => {
                     timeout: 1000,
                 },
                 font: {
-                    name: 'Nabla',
-                    size: '8rem',
+                    name: 'bungee',
+                    size: '5rem',
                     weight: '300',
                     style: 'italic',
-                    color: '#eebb58',
-                },
+                    color: '#eebb58'
+                }
             },
             {
                 elements: [
@@ -39,6 +39,7 @@ const Home = () => {
                         content: 'I\'m Gummi',
                         font: {
                             color: '#eebb58',
+                            theme: 'purple'
                         },
                         animation: {
                             timeout: 700
@@ -48,6 +49,7 @@ const Home = () => {
                         content: 'and I do',
                         font: {
                             color: '#cb5f24',
+                            theme: 'purple'
                         },
                         animation: {
                             timeout: 400
@@ -56,9 +58,9 @@ const Home = () => {
                     {
                         content: 'web',
                         font: {
-                            color: '#82c93d',
-                        },
-                    },
+                            color: '#82c93d'
+                        }
+                    }
                 ],
                 animation: {
                     mode: 'incremental' as const,
@@ -68,17 +70,17 @@ const Home = () => {
                         mode: 'per-character' as const,
                         amount: 300
                     },
-                    timeout: 1000,
+                    timeout: 1000
                 },
                 font: {
-                    name: 'Nabla',
-                    size: '8rem',
+                    name: 'bungee',
+                    size: '5rem',
                     weight: '300',
                     style: 'italic',
-                    color: '#eebb58',
-                },
-            },
-        ],
+                    color: '#eebb58'
+                }
+            }
+        ]
     };
 
     return (

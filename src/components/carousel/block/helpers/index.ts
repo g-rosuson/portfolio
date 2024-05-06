@@ -1,7 +1,6 @@
-import resources from '../../resources';
+import { bungee } from 'src/resources/fonts';
 
 import { IBLock, IBlockElement, IFormattedBlock } from '../../types';
-
 
 /**
  * Formats a style and animation objects for a block element.
@@ -36,13 +35,17 @@ const _getFormattedElements = (elements: IBlockElement[]) => {
  * easily applied to HTML elements.
  */
 const formatBlock = (block: IBLock):IFormattedBlock => {
-    // Find the chosen font
-    const chosenFont = resources.fonts.find(({ name }) => name === block.font.name) ?? resources.fonts[0];
-
     // Map the animation type to a CSS class
     const animationClassMap = {
         'fade-in-lower': 'fadeInLower'
     };
+
+    // Determine the chosen font family
+    const fontFamilyMap: { [key: string]: string } = {
+        bungee: bungee.style.fontFamily
+    };
+
+    const fontFamily = fontFamilyMap[block.font.name];
 
     // Add either the formatted elements or the content
     // string to the formatted block
@@ -57,12 +60,13 @@ const formatBlock = (block: IBLock):IFormattedBlock => {
 
     return {
         ...blockAddition,
-        className: `${chosenFont.file.className} ${animationClassMap[block.animation.type]}`,
+        className: animationClassMap[block.animation.type],
         style: {
+            fontFamily,
             fontWeight: block.font.weight,
             fontSize: block.font.size,
             color: block.font.color,
-            animationDuration: `${block.animation.duration.amount}ms`,
+            animationDuration: `${block.animation.duration.amount}ms`
         },
         animation: {
             duration: block.animation.duration.amount,

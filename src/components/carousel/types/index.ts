@@ -65,6 +65,7 @@ export interface IFormattedBlock {
     elements?: IFormattedBlockElement[];
     className: string;
     style: {
+        fontFamily: string;
         fontWeight: string;
         fontSize: string;
         color: string;
