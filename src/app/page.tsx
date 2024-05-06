@@ -11,7 +11,7 @@ const Home = () => {
                     {
                         content: 'Hi there!',
                         font: {
-                            color: '#994de3'
+                            color: '#dfe70d'
                         }
                     }
                 ],
@@ -21,16 +21,16 @@ const Home = () => {
                     easing: 'ease-in-out' as const,
                     duration: {
                         mode: 'per-character' as const,
-                        amount: 300
+                        amount: 200
                     },
-                    timeout: 1000,
+                    timeout: 700,
                 },
                 font: {
                     name: 'bungee',
-                    size: '5rem',
+                    size: '4rem',
                     weight: '300',
                     style: 'italic',
-                    color: '#eebb58'
+                    color: '#dfe70d'
                 }
             },
             {
@@ -38,17 +38,7 @@ const Home = () => {
                     {
                         content: 'I\'m Gummi',
                         font: {
-                            color: '#eebb58',
-                            theme: 'purple'
-                        },
-                        animation: {
-                            timeout: 700
-                        }
-                    },
-                    {
-                        content: 'and I do',
-                        font: {
-                            color: '#cb5f24',
+                            color: '#dfe70d',
                             theme: 'purple'
                         },
                         animation: {
@@ -56,9 +46,19 @@ const Home = () => {
                         }
                     },
                     {
+                        content: 'and I do',
+                        font: {
+                            color: '#11e0c8',
+                            theme: 'purple'
+                        },
+                        animation: {
+                            timeout: 300
+                        }
+                    },
+                    {
                         content: 'web',
                         font: {
-                            color: '#82c93d'
+                            color: '#dd6aff'
                         }
                     }
                 ],
@@ -68,13 +68,13 @@ const Home = () => {
                     easing: 'ease-in-out' as const,
                     duration: {
                         mode: 'per-character' as const,
-                        amount: 300
+                        amount: 200
                     },
                     timeout: 1000
                 },
                 font: {
                     name: 'bungee',
-                    size: '5rem',
+                    size: '4rem',
                     weight: '300',
                     style: 'italic',
                     color: '#eebb58'
