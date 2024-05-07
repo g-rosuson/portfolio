@@ -4,7 +4,7 @@ import { IFormattedBlock } from '../../types';
 
 import helpers from './helpers';
 
-import styling from './Incremental.module.css';
+import styling from './Incremental.module.scss';
 
 const Incremental = ({ block }: { block: IFormattedBlock }) => {
     // Creates a progressively longer animation delay for each letter

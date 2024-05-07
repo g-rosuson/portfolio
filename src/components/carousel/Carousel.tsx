@@ -8,7 +8,7 @@ import Block from './block/Block';
 
 import helpers from './helpers';
 
-import './stylesheets/animation.css';
+import './stylesheets/animation.scss';
 
 const Carousel = ({ configuration }: { configuration: IConfiguration }) => {
     const [{ activeBlockIndex, activeBlock }, setState] = useState(() => {
