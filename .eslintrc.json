@@ -1,6 +1,41 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@next/next/recommended",
+    "plugin:css-modules/recommended"
+  ],
+  "plugins": [
+    "css-modules",
+    "simple-import-sort"
+  ],
   "rules": {
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          // External packages with "react" related imports coming first
+          ["^react", "^@?\\w"],
+          // Components
+          ["(?:\\.\\./|\\.\\/|components\\/)?(?:\\w+\\/)?([a-z]\\w+)/([A-Z]\\w+)|^./illustrations/"],
+          // Private functions starting with an underscore
+          ["^\\.[^_]*_.*"],
+          // Services, store, config, api, utils and component-scoped helpers as well as the import of index files
+          ["^(services/.*|store|mappers|config|api|styles|themes|options|utils|.+\\/helpers|.+\\/mappers)(\\/.*|$)|.+/context|^\\\\..*\\\\/$\n"],
+          // Types
+          ["^.*\\btypes\\b.*$"],
+          // Media folder
+          ["^(media)(/.*|$)"],
+          // Side effect imports e.g. import statements without "from"
+          ["^\\u0000"],
+          // Stylesheets
+          ["^.+\\.s?css$"],
+          // JSON files
+          ["^.+\\.json$"]
+        ]
+      }
+    ],
+    "css-modules/no-unused-class": [2, { "camelCase": true }],
+    "css-modules/no-undef-class": [2, { "camelCase": true }],
     "no-useless-return": "warn",
     "max-len": ["warn", {"code": 135, "comments": 105}],
     "quotes": ["error", "single"],

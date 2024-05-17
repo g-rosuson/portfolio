@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { IFormattedBlock } from '../../types';
-
 import helpers from './helpers';
+
+import { IFormattedBlock } from '../../types';
 
 import styling from './Incremental.module.scss';
 
@@ -28,7 +28,7 @@ const Incremental = ({ block }: { block: IFormattedBlock }) => {
 
         for (const [key, value] of Object.entries(mappedTimeout)) {
             if (index > Number(key)) {
-                timeout += value
+                timeout += value;
             }
         }
 
@@ -40,13 +40,13 @@ const Incremental = ({ block }: { block: IFormattedBlock }) => {
 
             const animationDuration = (element.animation?.duration ?? block.animation.duration);
 
-            const animationDelay = `${(delayFactor * animationDuration) + timeout}ms`
+            const animationDelay = `${(delayFactor * animationDuration) + timeout}ms`;
 
             // Determine the style object for each character
             const style = {
                 ...block.style,
                 ...element.style,
-                animationDelay,
+                animationDelay
             };
 
             // Apply styles and font-family with the classname

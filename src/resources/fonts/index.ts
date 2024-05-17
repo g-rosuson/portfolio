@@ -5,6 +5,6 @@ export const bungee = localFont({
         {
             path: './bungee/BungeeShade-Regular.ttf'
         }
-    ],
+    ]
 });
 

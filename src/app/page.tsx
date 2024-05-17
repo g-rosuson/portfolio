@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Carousel from 'src/components/carousel/Carousel';
 
 const Home = () => {
@@ -23,7 +25,7 @@ const Home = () => {
                         mode: 'per-character' as const,
                         amount: 200
                     },
-                    timeout: 700,
+                    timeout: 700
                 },
                 font: {
                     name: 'bungee',
@@ -85,7 +87,7 @@ const Home = () => {
 
     return (
         <main>
-            <Carousel configuration={configuration} />
+            <Carousel configuration={configuration}/>
         </main>
     );
 };

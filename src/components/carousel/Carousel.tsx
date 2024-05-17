@@ -2,11 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { IConfiguration } from './types';
-
 import Block from './block/Block';
 
 import helpers from './helpers';
+
+import { IConfiguration } from './types';
 
 import './stylesheets/animation.scss';
 

@@ -10,7 +10,7 @@ const _getFormattedElements = (elements: IBlockElement[]) => {
         const fontProps = font ? {
             ...(font.weight && { fontWeight: font.weight }),
             ...(font.size && { fontSize: font.size }),
-            ...(font.color && { color: font.color }),
+            ...(font.color && { color: font.color })
         } : {};
 
         const animationProps = animation ? {
@@ -21,7 +21,7 @@ const _getFormattedElements = (elements: IBlockElement[]) => {
         return {
             content,
             style: {
-                ...fontProps,
+                ...fontProps
             },
             animation: {
                 ...animationProps
