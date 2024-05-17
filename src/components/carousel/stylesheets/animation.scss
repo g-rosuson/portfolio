@@ -9,8 +9,8 @@
 }
 
 .fadeInLower {
-    opacity: 0;
     transform: translateY(-40px);
+    opacity: 0;
     animation: fadeInAndLower forwards;
 }
 
@@ -36,12 +36,12 @@
 
 @keyframes fadeInAndLower {
     0% {
-        opacity: 0;
         transform: translateY(-40px);
+        opacity: 0;
     }
 
     100% {
-        opacity: 1;
         transform: translateY(0);
+        opacity: 1;
     }
 }
