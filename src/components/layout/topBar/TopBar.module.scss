@@ -1,0 +1,38 @@
+.header {
+	width: 100%;
+	padding: 1rem;
+}
+
+.nav {
+	display: flex;
+	justify-content: center;
+	gap: 1.5rem;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	padding: 0.2rem 0.7rem;
+	border-radius: var(--border-radius);
+	transition: color 0.2s ease-in-out;
+
+	&:hover {
+		color: var(--text-color-primary);
+	}
+}
+
+.link {
+	font-size: 0.8rem;
+	font-weight: 500;
+}
+
+.active {
+	@extend .link;
+	font-weight: 600;
+	color: var(--text-color-primary);
+}
+
+.idle {
+	@extend .link;
+	color: var(--text-color-secondary);
+}

@@ -8,3 +8,11 @@ export const bungee = localFont({
     ]
 });
 
+export const inter = localFont({
+    src: [
+        {
+            path: './inter/Inter-VariableFont_slnt,wght.ttf'
+        }
+    ]
+});
+
