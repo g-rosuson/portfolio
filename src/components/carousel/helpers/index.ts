@@ -2,7 +2,9 @@ import { IBLock } from '../types';
 
 const getIntervalDuration = (block: IBLock) => {
     if (block.animation.duration.mode === 'per-character' && !!block.elements?.length) {
-        return block.elements.reduce((acc, element) => {
+        let elementsIntervalDuration = block.elements.reduce((acc, element) => {
+            // Use the block animation duration if it's not
+            // defined on an element level
             const durationAmount = element.animation?.duration?.amount ?? block.animation.duration.amount;
 
             const stringWithoutWhitespace = element.content.replace(/\s/g, '');
@@ -15,6 +17,14 @@ const getIntervalDuration = (block: IBLock) => {
 
             return acc;
         }, 0);
+
+        // If the block has a defined timeout,
+        // add it to the interval duration
+        if (block.animation.timeout) {
+            elementsIntervalDuration += block.animation.timeout;
+        }
+
+        return elementsIntervalDuration;
     }
 
     if (block.animation.duration.mode === 'per-character' && !!block.content) {

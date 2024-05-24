@@ -31,13 +31,7 @@ const Carousel = ({ configuration }: { configuration: IConfiguration }) => {
         }
 
         if (configuration?.mode === 'show-one') {
-            let intervalDuration = helpers.getIntervalDuration(activeBlock);
-
-            // If the active block has a defined timeout,
-            // add it to the interval duration
-            if (!!activeBlock.animation?.timeout) {
-                intervalDuration = intervalDuration + activeBlock.animation.timeout;
-            }
+            const intervalDuration = helpers.getIntervalDuration(activeBlock);
 
             const interval = setInterval(() => {
                 setState((prevState) => {
@@ -58,6 +52,7 @@ const Carousel = ({ configuration }: { configuration: IConfiguration }) => {
             };
         }
     }, [activeBlock, activeBlockIndex, configuration]);
+
 
     return <Block key={activeBlockIndex} block={activeBlock}/>;
 };

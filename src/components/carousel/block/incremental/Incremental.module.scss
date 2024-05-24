@@ -1,9 +1,13 @@
 .container {
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - var(--top-bar-height));
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.wrapper {
+    min-height: 20rem;
 }
 
 .groups {
