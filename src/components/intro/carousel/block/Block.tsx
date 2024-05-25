@@ -4,7 +4,7 @@ import Incremental from './incremental/Incremental';
 
 import helpers from './helpers';
 
-import { IBLock } from '../types';
+import { IBLock } from '../../types';
 
 const Block = ({ block }: { block: IBLock }) => {
     const components = {

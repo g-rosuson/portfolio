@@ -2,7 +2,7 @@ import React from 'react';
 
 import helpers from './helpers';
 
-import { IFormattedBlock } from '../../types';
+import { IFormattedBlock } from 'src/components/intro/types';
 
 import styling from './Incremental.module.scss';
 

@@ -1,6 +1,6 @@
 import { bungee } from 'src/resources/fonts';
 
-import { IBLock, IBlockElement, IFormattedBlock } from '../../types';
+import { IBLock, IBlockElement, IFormattedBlock } from 'src/components/intro/types';
 
 /**
  * Formats a style and animation objects for a block element.

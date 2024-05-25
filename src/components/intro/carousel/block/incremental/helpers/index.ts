@@ -1,4 +1,4 @@
-import { IFormattedBlock } from '../../../types';
+import { IFormattedBlock } from 'src/components/intro/types';
 
 /**
  * Maps the index of each element to its corresponding timeout within the provided block.

@@ -4,11 +4,11 @@ import React, { useEffect, useState } from 'react';
 
 import Block from './block/Block';
 
-import helpers from './helpers';
+import helpers from '../helpers';
 
-import { IConfiguration } from './types';
+import { IConfiguration } from '../types';
 
-import './stylesheets/animation.scss';
+import 'src/stylesheets/animation.scss';
 
 const Carousel = ({ configuration }: { configuration: IConfiguration }) => {
     const [{ activeBlockIndex, activeBlock }, setState] = useState(() => {

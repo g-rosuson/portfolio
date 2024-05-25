@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Carousel from 'src/components/carousel/Carousel';
+import Carousel from 'src/components/intro/carousel/Carousel';
 
 const Home = () => {
     const configuration = {

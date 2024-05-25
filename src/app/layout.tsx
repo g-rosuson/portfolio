@@ -3,7 +3,7 @@ import { inter } from 'src/resources/fonts';
 
 import TopBar from 'src/components/layout/topBar/TopBar';
 
-import './globals.scss';
+import '../stylesheets/global.scss';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
