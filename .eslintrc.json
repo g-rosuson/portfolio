@@ -19,7 +19,7 @@
           ["(?:\\.\\./|\\.\\/|components\\/)?(?:\\w+\\/)?([a-z]\\w+)/([A-Z]\\w+)|^./illustrations/"],
           // Private functions starting with an underscore
           ["^\\.[^_]*_.*"],
-          // Services, store, config, api, utils and component-scoped helpers as well as the import of index files
+          // Services, store, configuration, api, utils and component-scoped helpers as well as the import of index files
           ["^(services/.*|store|mappers|config|api|styles|themes|options|utils|.+\\/helpers|.+\\/mappers)(\\/.*|$)|.+/context|^\\\\..*\\\\/$\n"],
           // Types
           ["^.*\\btypes\\b.*$"],

@@ -1,5 +1,8 @@
-import { IBLock } from '../types';
+import { IBLock, IConfiguration } from '../types';
 
+/**
+ * Sums up interval duration for a block.
+ */
 const getIntervalDuration = (block: IBLock) => {
     if (block.animation.duration.mode === 'per-character' && !!block.elements?.length) {
         let elementsIntervalDuration = block.elements.reduce((acc, element) => {
@@ -38,8 +41,18 @@ const getIntervalDuration = (block: IBLock) => {
     return block.animation.duration.amount;
 };
 
+/**
+ * Sums up the duration of all blocks.
+ */
+const getTotalDuration = (configuration: IConfiguration) => configuration.blocks.reduce((acc, block) => {
+    acc += helpers.getIntervalDuration(block);
+
+    return acc;
+}, 0);
+
 const helpers = {
-    getIntervalDuration
+    getIntervalDuration,
+    getTotalDuration
 };
 
 export default helpers;
