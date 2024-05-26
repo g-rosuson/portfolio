@@ -29,9 +29,9 @@ const Carousel = ({ configuration }: { configuration: IConfiguration }) => {
         }
 
         if (configuration?.mode === 'show-one') {
-            const intervalDuration = helpers.getIntervalDuration(activeBlock);
+            const timeoutDuration = helpers.getTimeoutDuration(activeBlock);
 
-            const interval = setInterval(() => {
+            const timeout = setTimeout(() => {
                 setState((prevState) => {
                     const nextActiveBlockIndex = (prevState.activeBlockIndex + 1) % configuration.blocks.length;
 
@@ -43,10 +43,10 @@ const Carousel = ({ configuration }: { configuration: IConfiguration }) => {
                         activeBlock: nextActiveBlock
                     };
                 });
-            }, intervalDuration);
+            }, timeoutDuration);
 
             return () => {
-                clearInterval(interval);
+                clearTimeout(timeout);
             };
         }
     }, [activeBlock, activeBlockIndex, configuration]);

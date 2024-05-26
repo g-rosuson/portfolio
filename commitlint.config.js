@@ -27,7 +27,7 @@ module.exports = {
             [
                 'general',
                 'housekeeping',
-                'home-page',
+                'homepage',
                 'project',
                 'blog'
             ]
