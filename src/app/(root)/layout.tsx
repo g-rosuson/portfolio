@@ -3,7 +3,8 @@ import { inter } from 'src/resources/fonts';
 
 import TopBar from 'src/components/layout/topBar/TopBar';
 
-import '../stylesheets/global.scss';
+import '../../stylesheets/global.scss';
+import styling from './Layout.module.scss';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -11,7 +12,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={inter.className}>
                 <TopBar/>
 
-                {children}
+                <div className={styling.wrapper}>
+                    {children}
+                </div>
             </body>
         </html>
     );
