@@ -1,16 +1,15 @@
 .header {
-	height: var(--top-bar-height);
 	display: flex;
 	align-items: center;
+	padding: 2rem 4rem;
 }
 
 .nav {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-start;
 	gap: 1rem;
-	padding-inline: 4rem;
 }
 
 .logo {

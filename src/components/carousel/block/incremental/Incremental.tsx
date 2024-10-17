@@ -100,7 +100,7 @@ const Incremental = ({ block }: { block: IFormattedBlock }) => {
 
     return (
         <div className={styling.container}>
-            <div className={styling.wrapper}>
+            <div>
                 {elements}
             </div>
         </div>
