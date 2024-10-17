@@ -1,24 +1,28 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import styling from './TopBar.module.scss';
 
 const TopBar = () => {
+    // Hooks
     const currentPath = usePathname();
+
 
     return (
         <header className={styling.header}>
             <nav className={styling.nav}>
-                <Link
-                    href="/"
-                    className={currentPath === '/' ? styling.active : styling.idle}
-                >
-                    <span className={styling.wrapper}>
-                        Home
-                    </span>
+                <Link href="/">
+                    <div className={styling.logo}>
+                        <Image
+                            src="/logo.svg"
+                            alt="website logo"
+                            fill
+                        />
+                    </div>
                 </Link>
 
                 <Link
@@ -27,15 +31,6 @@ const TopBar = () => {
                 >
                     <span className={styling.wrapper}>
                         Projects
-                    </span>
-                </Link>
-
-                <Link
-                    href="/blog"
-                    className={currentPath === '/blog' ? styling.active : styling.idle}
-                >
-                    <span className={styling.wrapper}>
-                        Blog
                     </span>
                 </Link>
             </nav>

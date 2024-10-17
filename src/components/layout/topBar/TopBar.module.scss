@@ -1,20 +1,25 @@
 .header {
-	width: 100%;
 	height: var(--top-bar-height);
 	display: flex;
-	justify-content: center;
+	align-items: center;
 }
 
 .nav {
+	width: 100%;
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
-	gap: 1.5rem;
+	gap: 1rem;
+	padding-inline: 4rem;
+}
+
+.logo {
+	position: relative;
+	width: 4rem;
+	height: 2rem;
 }
 
 .wrapper {
-	display: flex;
-	justify-content: center;
-	padding: 0.2rem 0.7rem;
 	transition: color 0.2s ease-in-out;
 
 	&:hover {
@@ -23,7 +28,7 @@
 }
 
 .link {
-	font-size: 0.8rem;
+	font-size: 1rem;
 	font-weight: 500;
 }
 
