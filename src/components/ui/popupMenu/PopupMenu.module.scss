@@ -1,0 +1,24 @@
+.menu {
+	padding: var(--gap-small);
+	border-radius: var(--border-radius);
+	border: 1px solid transparent;
+	background-color: var(--background-color);
+	box-shadow: var(--shadow);
+	cursor: pointer;
+}
+
+.menu:focus {
+	border: 1px solid var(--border-light);
+}
+
+.menu:active {
+	border: 1px solid var(--border-light);
+}
+
+.icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2rem;
+	color: var(--text-color-primary);
+}

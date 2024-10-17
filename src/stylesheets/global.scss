@@ -4,10 +4,24 @@
 :root {
     --top-bar-height: 3.5rem;
     --background-color: #1c1b1d;
-    --text-color-primary: #c4c4c4;
+    --border-light: #fcfcfc;
+    --text-color-primary: #e5e3e3;
+    --text-color-primary-dark: #131113;
     --text-color-secondary: #939393;
+    --color-blue-dark: #086283;
+    --color-blue-light: #82c6d7;
+    --color-brown-dark: #835808;
+    --color-brown-light: #d0b78c;
+    --shadow-light: 0 2px 6px 0 rgb(0 0 0 / 7%);
+    --shadow: 0 8px 16px rgb(2 8 20 / 10%), 0 4px 8px rgb(2 8 20 / 8%);
     --border-radius-large: 1.75rem;
     --border-radius: 0.5rem;
+    --gap-small: 0.5rem;
+    --gap-medium: 1rem;
+    --gap-large: 1.5rem;
+    --gap-xl: 2rem;
+    --transition-duration: 0.2s;
+    --transition-duration-medium: 0.4s;
 }
 
 /* Use a more-intuitive box-sizing model */
@@ -47,4 +61,9 @@ p, h1, h2, h3, h4, h5, h6 {
 /* Remove underline from anchor tags */
 a {
     text-decoration: none;
+}
+
+/* Remove default list item bullet styling */
+li {
+    list-style: none;
 }

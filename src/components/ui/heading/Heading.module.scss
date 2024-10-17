@@ -1,15 +1,29 @@
 .heading {
-	font-size: 2.2rem;
+	line-height: 1;
+	font-size: 3.2rem;
 	font-weight: 700;
-	color: var(--text-color-primary)
-}
-
-.medium {
-	@extend .heading;
-	font-size: 2rem;
+	color: var(--text-color-primary);
 }
 
 .small {
 	@extend .heading;
+	font-size: 1.4rem;
+}
+
+.medium {
+	@extend .heading;
 	font-size: 1.8rem;
+}
+
+.large {
+	@extend .heading;
+	font-size: 2rem;
+}
+
+.blue {
+	color: var(--color-blue-dark);
+}
+
+.brown {
+	color: var(--color-brown-dark);
 }

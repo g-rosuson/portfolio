@@ -16,13 +16,6 @@ const Intro = () => {
     const [activeComponent, setActiveComponent] = useState('carousel');
 
 
-    // Map "activeComponent" state values to their corresponding components
-    const components: { [key: string]: React.ComponentType<{ configuration: IConfiguration }> } = {
-        featuredContent: FeaturedContent,
-        carousel: Carousel
-    };
-
-
     /**
      * Creates a timeout that sets the name of the next active component in
      * the state after the total duration of the carousel has passed.
@@ -40,8 +33,14 @@ const Intro = () => {
     }, []);
 
 
+    // Map "activeComponent" state values to their corresponding components
+    const components: { [key: string]: React.ComponentType<{ configuration: IConfiguration }> } = {
+        featuredContent: FeaturedContent,
+        carousel: Carousel
+    };
+
     // Determine active component
-    const Component = components[activeComponent] ?? (() => null);
+    const Component = components[activeComponent];
 
 
     return <Component configuration={configuration}/>;
