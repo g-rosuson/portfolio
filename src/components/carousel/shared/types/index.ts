@@ -1,13 +1,6 @@
-export interface IConfiguration {
-    mode: string;
-    loop: boolean;
-    startAt: number;
-    blocks: IBLock[];
-}
-
-export interface IBLock {
+export type CarouselBlock = {
     content?: string;
-    elements?: IBlockElement[];
+    elements: BlockElement[];
     animation: {
         mode: 'incremental';
         type: 'fade-in-lower';
@@ -26,9 +19,10 @@ export interface IBLock {
         style: string;
         color: string;
     };
+    showOnRevisit?: boolean;
 }
 
-export interface IBlockElement {
+export type BlockElement = {
     content: string;
     font?: Partial<{
         name: string;
@@ -46,7 +40,7 @@ export interface IBlockElement {
     }>;
 }
 
-export interface IFormattedBlockElement {
+export type FormattedBlockElement = {
     content: string;
     style?: Partial<{
         fontWeight?: string;
@@ -60,9 +54,9 @@ export interface IFormattedBlockElement {
     }>;
 }
 
-export interface IFormattedBlock {
+export type FormattedBlock = {
     content?: string;
-    elements?: IFormattedBlockElement[];
+    elements?: FormattedBlockElement[];
     className: string;
     style: {
         fontFamily: string;

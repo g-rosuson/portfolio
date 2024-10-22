@@ -1,7 +1,7 @@
-import { IBLock } from '../types';
+import { CarouselBlock } from '../shared/types';
 
-const getIntervalDuration = (block: IBLock) => {
-    if (block.animation.duration.mode === 'per-character' && !!block.elements?.length) {
+const getIntervalDuration = (block: CarouselBlock) => {
+    if (block.animation.duration.mode === 'per-character' && block.elements?.length) {
         let elementsIntervalDuration = block.elements.reduce((acc, element) => {
             // Use the block animation duration if it's not
             // defined on an element level

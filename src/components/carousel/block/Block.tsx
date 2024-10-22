@@ -1,20 +1,28 @@
 import React from 'react';
 
+import Idle from './idle/Idle';
 import Incremental from './incremental/Incremental';
 
-import helpers from './helpers';
+import mappers from './mappers';
 
-import { IBLock } from '../types';
+import { CarouselBlock } from '../shared/types';
 
-const Block = ({ block }: { block: IBLock }) => {
+import styling from './Block.module.scss';
+
+const Block = ({ block, animateBlock }: { block: CarouselBlock; animateBlock?: boolean }) => {
     const components = {
-        incremental: Incremental
+        incremental: Incremental,
+        idle: Idle
     };
 
-    const formattedBlock = helpers.formatBlock(block);
-    const Component = components[block.animation.mode];
+    const formattedBlock = mappers.mapToBlock(block);
+    const Component = animateBlock ? components[block.animation.mode] || (() => null) : Idle;
 
-    return <Component block={formattedBlock}/>;
+    return (
+        <div className={styling.container}>
+            <Component block={formattedBlock}/>
+        </div>
+    );
 };
 
 export default Block;

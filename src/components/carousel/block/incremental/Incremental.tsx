@@ -1,20 +1,20 @@
 import React from 'react';
 
-import helpers from './helpers';
+import mappers from './mappers';
 
-import { IFormattedBlock } from '../../types';
+import { FormattedBlock } from '../../shared/types';
 
 import styling from './Incremental.module.scss';
 
-const Incremental = ({ block }: { block: IFormattedBlock }) => {
+const Incremental = ({ block }: { block: FormattedBlock }) => {
     // Creates a progressively longer animation delay for each letter
     let delayFactor = 0;
 
     // Map the timeout of an element to its index
-    const mappedTimeout = helpers.getElementTimeoutMap(block);
+    const mappedTimeout = mappers.mapToElementTimeoutMap(block);
 
     // Create element containers that contain the styled words/letters from every element
-    const elements = (block.elements ?? []).map((element, index) => {
+    return (block.elements ?? []).map((element, index) => {
         // Contains the words in an element
         const groupedWords: React.ReactNode[] = [];
 
@@ -96,15 +96,6 @@ const Incremental = ({ block }: { block: IFormattedBlock }) => {
             </div>
         );
     });
-
-
-    return (
-        <div className={styling.container}>
-            <div>
-                {elements}
-            </div>
-        </div>
-    );
 };
 
 export default Incremental;

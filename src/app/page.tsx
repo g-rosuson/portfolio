@@ -7,6 +7,8 @@ const Home = () => {
         mode: 'show-one',
         loop: false,
         startAt: 0,
+        replayOnRevisit: false,
+        id: 'intro-carousel',
         blocks: [
             {
                 elements: [
@@ -41,6 +43,7 @@ const Home = () => {
                         content: 'I\'m Gummi',
                         font: {
                             color: '#dfe70d',
+                            // TODO: theme?
                             theme: 'purple'
                         },
                         animation: {
@@ -80,16 +83,15 @@ const Home = () => {
                     weight: '300',
                     style: 'italic',
                     color: '#eebb58'
-                }
+                },
+                // Determines which block to show when the carousel config is set
+                // to "replayOnRevisit: false", and a carousel is revisited
+                showOnRevisit: true
             }
         ]
     };
 
-    return (
-        <main>
-            <Carousel configuration={configuration}/>
-        </main>
-    );
+    return <Carousel configuration={configuration}/>;
 };
 
 export default Home;

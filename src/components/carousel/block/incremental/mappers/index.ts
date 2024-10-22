@@ -1,9 +1,9 @@
-import { IFormattedBlock } from '../../../types';
+import { FormattedBlock } from 'src/components/carousel/shared/types';
 
 /**
  * Maps the index of each element to its corresponding timeout within the provided block.
  */
-const getElementTimeoutMap = (block: IFormattedBlock) => {
+const mapToElementTimeoutMap = (block: FormattedBlock) => {
     return (block.elements ?? []).reduce((acc, element, index) => {
         if (element.animation?.timeout) {
             acc[index] = element.animation.timeout;
@@ -14,8 +14,8 @@ const getElementTimeoutMap = (block: IFormattedBlock) => {
     }, {} as { [key: number]: number; });
 };
 
-const helpers = {
-    getElementTimeoutMap
+const mappers = {
+    mapToElementTimeoutMap
 };
 
-export default helpers;
+export default mappers;

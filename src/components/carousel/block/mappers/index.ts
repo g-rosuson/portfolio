@@ -1,11 +1,11 @@
 import { bungee } from 'src/resources/fonts';
 
-import { IBLock, IBlockElement, IFormattedBlock } from '../../types';
+import { BlockElement, CarouselBlock, FormattedBlock } from '../../shared/types';
 
 /**
  * Formats a style and animation objects for a block element.
  */
-const _getFormattedElements = (elements: IBlockElement[]) => {
+const _getMappedElements = (elements: BlockElement[]) => {
     return elements.map(({ content, font, animation }) => {
         const fontProps = font ? {
             ...(font.weight && { fontWeight: font.weight }),
@@ -34,7 +34,7 @@ const _getFormattedElements = (elements: IBlockElement[]) => {
  * Formats the given block so its properties can be
  * easily applied to HTML elements.
  */
-const formatBlock = (block: IBLock):IFormattedBlock => {
+const mapToBlock = (block: CarouselBlock):FormattedBlock => {
     // Map the animation type to a CSS class
     const animationClassMap = {
         'fade-in-lower': 'fadeInLower'
@@ -51,7 +51,7 @@ const formatBlock = (block: IBLock):IFormattedBlock => {
     // string to the formatted block
     const blockAddition = {
         ...(block.elements && {
-            elements: _getFormattedElements(block.elements)
+            elements: _getMappedElements(block.elements)
         }),
         ...(block.content && {
             content: block.content
@@ -76,8 +76,8 @@ const formatBlock = (block: IBLock):IFormattedBlock => {
     };
 };
 
-const helpers = {
-    formatBlock
+const mappers = {
+    mapToBlock
 };
 
-export default helpers;
+export default mappers;
