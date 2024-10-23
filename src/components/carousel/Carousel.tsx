@@ -9,7 +9,7 @@ import helpers from './helpers';
 
 import { CarouselConfig, State } from './Carousel.types';
 
-import './stylesheets/animation.scss';
+import 'src/stylesheets/animation.scss';
 
 const Carousel = ({ configuration }: { configuration: CarouselConfig }) => {
     // State
