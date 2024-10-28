@@ -1,97 +1,56 @@
 import React from 'react';
+import { Metadata } from 'next';
 
-import Carousel from 'src/components/carousel/Carousel';
+import Carousel from 'src/components/ui/carousel/Carousel';
+import Heading from 'src/components/ui/heading/Heading';
 
-const Home = () => {
-    const configuration = {
-        mode: 'show-one',
-        loop: false,
-        startAt: 0,
-        replayOnRevisit: false,
-        id: 'intro-carousel',
-        blocks: [
+import styling from './Home.module.scss';
+
+import { configuration } from './carouselConfig';
+
+export const metadata: Metadata = {
+    metadataBase: new URL('https://www.rosuson.com'),
+    title: 'Home – G.Rósuson',
+    description: `Guðmundur Rósuson is a skilled front-end developer from Reykjavík, Iceland,
+         specializing in creating responsive, user-friendly, and dynamic web applications.`,
+    openGraph: {
+        title: 'Rósuson – Portfolio',
+        description: `Guðmundur Rósuson is a skilled front-end developer from Reykjavík, Iceland,
+         specializing in creating responsive, user-friendly, and dynamic web applications.`,
+        url: 'https://www.rosuson.com',
+        type: 'website',
+        images: [
             {
-                elements: [
-                    {
-                        content: 'Hi there!',
-                        font: {
-                            color: '#dfe70d'
-                        }
-                    }
-                ],
-                animation: {
-                    mode: 'incremental' as const,
-                    type: 'fade-in-lower' as const,
-                    easing: 'ease-in-out' as const,
-                    duration: {
-                        mode: 'per-character' as const,
-                        amount: 200
-                    },
-                    timeout: 700
-                },
-                font: {
-                    name: 'bungee',
-                    size: '4rem',
-                    weight: '300',
-                    style: 'italic',
-                    color: '#dfe70d'
-                }
-            },
-            {
-                elements: [
-                    {
-                        content: 'I\'m Gummi',
-                        font: {
-                            color: '#dfe70d',
-                            // TODO: theme?
-                            theme: 'purple'
-                        },
-                        animation: {
-                            timeout: 400
-                        }
-                    },
-                    {
-                        content: 'and I do',
-                        font: {
-                            color: '#11e0c8',
-                            theme: 'purple'
-                        },
-                        animation: {
-                            timeout: 300
-                        }
-                    },
-                    {
-                        content: 'web',
-                        font: {
-                            color: '#dd6aff'
-                        }
-                    }
-                ],
-                animation: {
-                    mode: 'incremental' as const,
-                    type: 'fade-in-lower' as const,
-                    easing: 'ease-in-out' as const,
-                    duration: {
-                        mode: 'per-character' as const,
-                        amount: 200
-                    },
-                    timeout: 1000
-                },
-                font: {
-                    name: 'bungee',
-                    size: '4rem',
-                    weight: '300',
-                    style: 'italic',
-                    color: '#eebb58'
-                },
-                // Determines which block to show when the carousel config is set
-                // to "replayOnRevisit: false", and a carousel is revisited
-                showOnRevisit: true
+                url: 'https://www.rosuson.com/images/og_img_rosuson.png',
+                width: 1200,
+                height: 630,
+                alt: 'Rósuson website logo'
             }
         ]
-    };
+    },
+    twitter: {
+        title: 'Rósuson - Portfolio',
+        description: `Guðmundur Rósuson is a skilled front-end developer from Reykjavík, Iceland,
+         specializing in creating responsive, user-friendly, and dynamic web applications.`
+    },
+    alternates: {
+        canonical: 'https://www.rosuson.com'
+    }
+};
 
-    return <Carousel configuration={configuration}/>;
+const Home = () => {
+    return (
+        <>
+            {/* Hidden h1 for SEO */}
+            <div className={styling.hidden}>
+                <Heading level={1} size="s">
+                    Guðmundur Rósuson – Web developer portfolio
+                </Heading>
+            </div>
+
+            <Carousel configuration={configuration}/>
+        </>
+    );
 };
 
 export default Home;

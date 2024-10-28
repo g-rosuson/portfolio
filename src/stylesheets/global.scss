@@ -8,7 +8,10 @@
 	// Layout
 	--top-bar-height: 3.5rem;
 	--border-radius: 6px;
-	--gap-small: 1.5rem;
+	--gap-large: 3rem;
+	--gap: 1.5rem;
+	--gap-small: 1rem;
+	--gap-extra-small: 0.5rem;
 
 	// Shadows
 	--shadow: 0 8px 16px rgb(2 8 20 / 10%), 0 4px 8px rgb(2 8 20 / 8%);
@@ -59,10 +62,12 @@ p, h1, h2, h3, h4, h5, h6 {
 	overflow-wrap: break-word;
 }
 
-/* Increase line-height for paragraphs */
-p {
+/* Increase line-height for paragraphs and span's */
+p, span {
+	max-width: 30rem;
 	line-height: 1.5;
 	font-size: 0.9rem;
+	color: var(--color-text-primary);
 }
 
 /* Remove underline from anchor tags */

@@ -1,4 +1,4 @@
-import { FormattedBlock } from 'src/components/carousel/shared/types';
+import { FormattedBlock } from 'src/components/ui/carousel/shared/types';
 
 /**
  * Maps the index of each element to its corresponding timeout within the provided block.

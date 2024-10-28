@@ -1,35 +1,62 @@
 import React from 'react';
+import { Metadata } from 'next';
+import api from 'src/api';
 
-import ProjectCard from './projectCard/ProjectCard';
+import Heading from 'src/components/ui/heading/Heading';
+import ProjectCard from 'src/components/ui/projectCard/ProjectCard';
 
 import styling from './Projects.module.scss';
 
-const Page = () => {
-    // TODO: Get from endpoint when dashboard is integrated
-    // Determine projects
-    const projects = [
-        {
-            title: 'Fernweh Schweiz',
-            // eslint-disable-next-line max-len
-            description: `Fernweh Schweiz is an association that focuses on showing the negative environmental impact
-             flying has and at the same time illustrating the great sustainable travel options Switzerland has to offer.`,
-            theme: 'blue',
-            videoSrc: '/videos/fernweh_schweiz_video.mp4'
-        },
-        {
-            title: 'Rósa Ólöf',
-            // eslint-disable-next-line max-len
-            description: `Rósa Ólöf is an author from Reykjavík, Iceland. Among her notable publications is the children's
-             book Bláeyg. And the autobiography Kæra nafna, offering a deeply personal glimpse into her life and experiences.`,
-            theme: 'brown',
-            videoSrc: '/videos/rosa_olof_video.mp4'
-        }
-    ];
+export const metadata: Metadata = {
+    metadataBase: new URL('https://www.rosuson.com/projects'),
+    title: 'Projects – G.Rósuson',
+    description: 'An overview of projects Guðmundur Rósuson\'s has created',
+    openGraph: {
+        title: 'Projects – G.Rósuson',
+        description: 'An overview of projects Guðmundur Rósuson\'s has created',
+        url: 'https://www.rosuson.com/projects',
+        type: 'website',
+        images: [
+            {
+                url: 'https://www.rosuson.com/images/og_img_rosuson.png',
+                width: 1200,
+                height: 630,
+                alt: 'Rósuson website logo'
+            }
+        ]
+    },
+    twitter: {
+        title: 'Projects – G.Rósuson',
+        description: 'An overview of projects Guðmundur Rósuson\'s has created'
+    },
+    alternates: {
+        canonical: 'https://www.rosuson.com/projects'
+    }
+};
+
+const Page = async () => {
+    // Determine project
+    const projects = await api.firebase.queries.projects.getAll();
 
 
     return (
-        <section className={styling.container}>
-            {projects.map((project, index) => <ProjectCard key={index} project={project}/>)}
+        <section>
+            <Heading level={1} size="xl">
+                Projects
+            </Heading>
+
+            <div className={styling.cards}>
+                {projects.map((project) => (
+                    <ProjectCard
+                        key={project.id}
+                        uniqueName={project.uniqueName}
+                        theme={project.details.theme}
+                        title={project.title}
+                        about={project.about}
+                        id={project.id}
+                    />
+                ))}
+            </div>
         </section>
     );
 };

@@ -1,5 +1,6 @@
-.container {
+.cards {
 	>:not(:last-child) {
-		margin-bottom: var(--gap-small);
+		display: block;
+		margin-bottom: var(--gap);
 	}
 }

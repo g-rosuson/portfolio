@@ -16,18 +16,19 @@ const TopBar = () => {
         <header className={styling.header}>
             <nav className={styling.nav}>
                 <Link href="/">
-                    <div className={styling.logo}>
-                        <Image
-                            src="/logo.svg"
-                            alt="website logo"
-                            fill
-                        />
-                    </div>
+                    <Image
+                        className={styling.logo}
+                        src="/images/logo.svg"
+                        alt="G.Rósuson's website logo"
+                        title="G.Rósuson's signiture logo"
+                        width={64}
+                        height={32}
+                    />
                 </Link>
 
                 <Link
                     href="/projects"
-                    className={currentPath === '/projects' ? styling.active : styling.idle}
+                    className={currentPath === '/project' ? styling.active : styling.idle}
                 >
                     <span className={styling.wrapper}>
                         Projects

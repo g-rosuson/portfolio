@@ -8,9 +8,10 @@ type Props = {
     level: 1 | 2 | 3;
     color?: 'blue' | 'brown';
     children: ReactNode;
+    removeMargin?: boolean;
 }
 
-const Heading = ({ size, level, color, children }: Props) => {
+const Heading = ({ size, level, color, children, removeMargin }: Props) => {
     // Determine the heading classname based on the provided size
     let className = styling.heading;
 
@@ -36,7 +37,7 @@ const Heading = ({ size, level, color, children }: Props) => {
 
 
     return (
-        <Tag className={className}>
+        <Tag className={className} data-remove-margin={!!removeMargin}>
             {children}
         </Tag>
     );
