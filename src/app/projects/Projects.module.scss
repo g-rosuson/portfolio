@@ -1,0 +1,6 @@
+.cards {
+	>:not(:last-child) {
+		display: block;
+		margin-bottom: var(--gap);
+	}
+}

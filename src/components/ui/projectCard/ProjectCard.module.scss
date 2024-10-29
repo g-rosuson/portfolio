@@ -1,0 +1,55 @@
+@import "src/stylesheets/placeholders";
+@import "src/stylesheets/animation";
+
+.card {
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--border-radius);
+	border: 0.5px var(--color-border) solid;
+	background-color: var(--color-background-secondary);
+	animation: fadeIn 0.4s;
+	cursor: pointer;
+
+	> div {
+		flex: 1; // Allow children to grow equally
+	}
+}
+
+.text {
+	padding: var(--gap);
+}
+
+.description {
+	color: var(--color-text-secondary);
+}
+
+.image {
+	@extend %flex-center-center;
+	padding: 1rem;
+	border-radius: var(--border-radius) var(--border-radius) 0 0;
+
+	&[data-theme="brown"] {
+		background: linear-gradient(89.65deg, var(--color-light-brown) .26%, var(--color-brown) 99.67%);
+	}
+
+	&[data-theme="blue"] {
+		background: linear-gradient(89.65deg, var(--color-light-blue) .26%, var(--color-blue) 99.67%);
+	}
+}
+
+.video {
+	width: 100%;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow);
+	animation: fadeIn 1s;
+}
+
+@media screen and (min-width: 768px) {
+	.card {
+		flex-direction: row-reverse;
+	}
+
+	.image {
+		border-radius: 0 var(--border-radius) var(--border-radius) 0;
+	}
+}

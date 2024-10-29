@@ -1,9 +1,10 @@
 import React from 'react';
 import { inter } from 'src/resources/fonts';
 
-import TopBar from 'src/components/layout/topBar/TopBar';
+import Layout from 'src/components/shared/layout/Layout';
+import TopBar from 'src/components/shared/topBar/TopBar';
 
-import './globals.scss';
+import 'src/stylesheets/global.scss';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -11,7 +12,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={inter.className}>
                 <TopBar/>
 
-                {children}
+                <main>
+                    <Layout>
+                        {children}
+                    </Layout>
+                </main>
             </body>
         </html>
     );
