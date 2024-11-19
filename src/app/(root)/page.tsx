@@ -1,12 +1,10 @@
 import React from 'react';
 import { Metadata } from 'next';
 
-import Carousel from 'src/components/ui/carousel/Carousel';
+import Home from 'src/components/pages/home/Home';
 import Heading from 'src/components/ui/heading/Heading';
 
 import styling from './Home.module.scss';
-
-import { configuration } from './carouselConfig';
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://www.rosuson.com'),
@@ -38,19 +36,18 @@ export const metadata: Metadata = {
     }
 };
 
-const Home = () => {
-    return (
-        <>
-            {/* Hidden h1 for SEO */}
-            <div className={styling.hidden}>
-                <Heading level={1} size="s">
-                    Guðmundur Rósuson – Web developer portfolio
-                </Heading>
-            </div>
+// TODO: We are downloading two fonts atm
+// TODO: Fix last frame in projector
+const Root = () => (
+    <>
+        <div className={styling.hidden}>
+            <Heading level={1} size="s">
+                Guðmundur Rósuson – Web developer portfolio
+            </Heading>
+        </div>
 
-            <Carousel configuration={configuration}/>
-        </>
-    );
-};
+        <Home/>
+    </>
+);
 
-export default Home;
+export default Root;

@@ -6,7 +6,7 @@ import styling from './Heading.module.scss';
 type Props = {
     size?: 'xl' | 'l' | 'm' | 's';
     level: 1 | 2 | 3;
-    color?: 'blue' | 'brown';
+    color?: 'blue' | 'brown' | 'yellow';
     children: ReactNode;
     removeMargin?: boolean;
 }

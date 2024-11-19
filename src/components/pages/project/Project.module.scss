@@ -1,8 +1,8 @@
 @import "src/stylesheets/placeholders";
-@import "src/stylesheets/animation";
+@import "src/stylesheets/keyframes";
 
 .wrapper {
-	animation: fadeIn 0.2s;
+	animation: fade-in 0.2s;
 
 	>:not(:last-child) {
 		margin-bottom: var(--gap);
@@ -66,7 +66,7 @@
 	left: 0;
 	margin-top: var(--gap-large);
 	padding: var(--gap);
-	animation: fadeIn 1s;
+	animation: fade-in 1s;
 
 	&[data-theme="brown"] {
 		background: linear-gradient(89.65deg, var(--color-light-brown) .26%, var(--color-brown) 99.67%);

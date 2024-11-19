@@ -1,20 +1,4 @@
-.fadeIn {
-    opacity: 0;
-    animation: fadeIn;
-}
-
-.fadeOut {
-    opacity: 1;
-    animation: fadeOut;
-}
-
-.fadeInLower {
-    transform: translateY(-40px);
-    opacity: 0;
-    animation: fadeInAndLower forwards;
-}
-
-@keyframes fadeIn {
+@keyframes fade-in {
     0% {
         opacity: 0;
     }
@@ -24,7 +8,7 @@
     }
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
     0% {
         opacity: 1;
     }
@@ -34,7 +18,7 @@
     }
 }
 
-@keyframes fadeInAndLower {
+@keyframes fade-in-lower {
     0% {
         transform: translateY(-40px);
         opacity: 0;

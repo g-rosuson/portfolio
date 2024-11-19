@@ -18,22 +18,18 @@
 	height: 2rem;
 }
 
-.wrapper {
-	transition: color 0.2s ease-in-out;
+.link {
+	transition: color ease-in-out 0.2s;
+	font-size: 1rem;
+	font-weight: 500;
 
 	&:hover {
 		color: var(--color-text-primary);
 	}
 }
 
-.link {
-	font-size: 1rem;
-	font-weight: 500;
-}
-
 .active {
 	@extend .link;
-	font-weight: 600;
 	color: var(--color-text-primary);
 }
 

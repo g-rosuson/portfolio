@@ -3,14 +3,14 @@ export const configuration = {
     loop: false,
     startAt: 0,
     replayOnRevisit: false,
-    id: 'intro-carousel',
+    id: 'home-carousel',
     blocks: [
         {
             elements: [
                 {
                     content: 'Hi there!',
                     font: {
-                        color: '#dfe70d'
+                        color: 'var(--color-yellow)'
                     }
                 }
             ],
@@ -37,8 +37,7 @@ export const configuration = {
                 {
                     content: 'I\'m Gummi',
                     font: {
-                        color: '#dfe70d',
-                        theme: 'purple'
+                        color: 'var(--color-yellow)'
                     },
                     animation: {
                         timeout: 400
@@ -47,8 +46,7 @@ export const configuration = {
                 {
                     content: 'and I do',
                     font: {
-                        color: '#11e0c8',
-                        theme: 'purple'
+                        color: 'var(--color-green)'
                     },
                     animation: {
                         timeout: 300
@@ -57,7 +55,7 @@ export const configuration = {
                 {
                     content: 'web',
                     font: {
-                        color: '#dd6aff'
+                        color: 'var(--color-purple)'
                     }
                 }
             ],
