@@ -1,6 +1,6 @@
 export type State = {
     images: HTMLImageElement[] | null,
-    showFallback: boolean;
-    showAbout: boolean;
+    isDesktopModeActive: boolean;
+    showAboutSection: boolean;
     isLoading: boolean;
 }

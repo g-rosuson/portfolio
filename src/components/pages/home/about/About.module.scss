@@ -1,19 +1,15 @@
 @import 'src/stylesheets/mixins';
 @import "src/stylesheets/placeholders";
 
-.container {
-	width: 0;
-	opacity: 0;
-	overflow: hidden;
-}
-
+.container,
 .heading,
 .paragraph,
+.contact,
 .wrapper {
 	opacity: 0;
 }
 
-[data-animate="true"].container {
+[data-is-visible="true"].container {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -40,12 +36,23 @@
 		animation-delay: 0.4s;
 	}
 
-	> .wrapper {
+	.contact {
+		@include fade-in-lower(-10px, 1.2s);
+		margin-block: 0.5rem;
+		font-size: 1.2rem;
+		font-weight: 600;
+		color: var(--color-yellow);
+
+		// The Projector width animation duration
+		animation-delay: 0.4s;
+	}
+
+	.wrapper {
 		display: flex;
 		flex-direction: column;
 		gap: var(--gap-extra-small);
 
-		@include fade-in-lower(-10px, 1.4s);
+		@include fade-in-lower(-10px, 1.8s);
 
 		// The Projector width animation duration
 		animation-delay: 0.4s;
@@ -106,3 +113,4 @@
 	right: 0;
 	opacity: 0;
 }
+

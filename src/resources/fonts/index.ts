@@ -1,17 +1,9 @@
 import localFont from 'next/font/local';
 
-export const bungee = localFont({
+export const jetBrainsMono = localFont({
     src: [
         {
-            path: './bungee/BungeeShade-Regular.ttf'
-        }
-    ]
-});
-
-export const inter = localFont({
-    src: [
-        {
-            path: './inter/Inter-VariableFont_slnt,wght.ttf'
+            path: './jetBrainsMono/JetBrainsMono-VariableFont_wght.ttf'
         }
     ]
 });

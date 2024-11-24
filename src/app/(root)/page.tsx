@@ -36,8 +36,7 @@ export const metadata: Metadata = {
     }
 };
 
-// TODO: We are downloading two fonts atm
-// TODO: Fix last frame in projector
+
 const Root = () => (
     <>
         <div className={styling.hidden}>

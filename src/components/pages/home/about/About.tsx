@@ -11,7 +11,7 @@ const INTRO_MESSAGE = 'My name is Guðmundur and I\'m a web developer based in B
 
 import styling from './About.module.scss';
 
-const About = ({ animate }: Props) => {
+const About = ({ isVisible }: Props) => {
     // State
     const [copied, setCopied] = useState(false);
 
@@ -21,7 +21,8 @@ const About = ({ animate }: Props) => {
 
 
     /**
-     * Adds the email to the clipboard and ...
+     * Adds the email to the clipboard and sets & resets the "copied"
+     * state property with a delay.
      */
     const copyEmailHandler = async () => {
         await navigator.clipboard.writeText(EMAIL_ADDRESS);
@@ -52,7 +53,7 @@ const About = ({ animate }: Props) => {
 
 
     return (
-        <div className={styling.container} data-animate={animate}>
+        <div className={styling.container} data-is-visible={isVisible}>
             <div>
                 <div className={styling.heading}>
                     <Heading level={2} color="yellow" removeMargin>
@@ -66,6 +67,10 @@ const About = ({ animate }: Props) => {
             </div>
 
             <div className={styling.wrapper}>
+                <p className={styling.contact}>
+                    Contact
+                </p>
+
                 <a
                     className={styling.field}
                     href="https://www.linkedin.com/in/guðmundur-helgi-rósuson-63bb6a191/"
@@ -74,21 +79,6 @@ const About = ({ animate }: Props) => {
                 >
                     <span className={styling.label}>
                         LinkedIn
-                    </span>
-
-                    <div className={styling.icon}>
-                        <External/>
-                    </div>
-                </a>
-
-                <a
-                    className={styling.field}
-                    href="https://github.com/g-rosuson/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span className={styling.label}>
-                        Github
                     </span>
 
                     <div className={styling.icon}>
