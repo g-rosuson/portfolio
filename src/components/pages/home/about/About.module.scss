@@ -1,0 +1,116 @@
+@import 'src/stylesheets/mixins';
+@import "src/stylesheets/placeholders";
+
+.container,
+.heading,
+.paragraph,
+.contact,
+.wrapper {
+	opacity: 0;
+}
+
+[data-is-visible="true"].container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-block: var(--gap-small);
+	opacity: 1;
+
+	.heading {
+		@include fade-in-lower(-10px, 0.4s);
+
+		// The Projector width animation duration
+		animation-delay: 0.4s;
+	}
+
+	.paragraph {
+		@include fade-in-lower(-10px, 1s);
+		margin-block: var(--gap-small);
+		font-size: 1.6rem;
+		font-weight: 600;
+		color: var(--color-white);
+
+		// The Projector width animation duration
+		animation-delay: 0.4s;
+	}
+
+	.contact {
+		@include fade-in-lower(-10px, 1.2s);
+		margin-block: 0.5rem;
+		font-size: 1.2rem;
+		font-weight: 600;
+		color: var(--color-yellow);
+
+		// The Projector width animation duration
+		animation-delay: 0.4s;
+	}
+
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap-extra-small);
+
+		@include fade-in-lower(-10px, 1.8s);
+
+		// The Projector width animation duration
+		animation-delay: 0.4s;
+	}
+}
+
+.field {
+	position: relative;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	gap: var(--gap-extra-small);
+	padding: var(--gap-extra-small);
+	border-radius: var(--border-radius-small);
+	border: none;
+	background-color: var(--color-background-secondary);
+	cursor: pointer;
+
+	&:hover {
+		.label {
+			transition: color ease-in-out 0.4s;
+			color: var(--color-text-primary);
+		}
+
+		.icon {
+			position: unset;
+			transition: opacity ease-in-out 0.4s, color ease-in-out 0.4s;
+			opacity: 1;
+			color: var(--color-text-primary);
+		}
+	}
+}
+
+.label {
+	line-height: 1;
+	font-size: 0.9rem;
+	color: var(--color-text-secondary);
+}
+
+.icon {
+	@extend %flex-center-center;
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	font-size: 0.9rem;
+	color: var(--color-text-secondary);
+}
+
+.checkmark {
+	transition: color ease-in-out 0.2s;
+	font-size: 0.9rem;
+	color: var(--color-green);
+}
+
+.hidden {
+	position: absolute;
+	top: 0;
+	right: 0;
+	opacity: 0;
+}
+

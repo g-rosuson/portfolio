@@ -1,0 +1,64 @@
+@import "src/stylesheets/keyframes";
+
+.container {
+	max-width: 25rem;
+	min-height: 25rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: var(--gap-large);
+	margin: 0 auto;
+
+	> .about {
+		display: none;
+	}
+}
+
+.divide {
+	@extend .container;
+
+	> .projector, .image {
+		width: 100%;
+		transition: width ease-in-out 0.4s;
+	}
+
+	> .about {
+		display: block;
+	}
+}
+
+.projector {
+	width: 100%;
+}
+
+.image {
+	position: relative;
+	width: 100%;
+	height: 16rem;
+	border-radius: var(--border-radius);
+	border: 2px solid var(--color-white);
+	animation: fade-in 0.4s;
+	overflow: hidden;
+}
+
+@media screen and (min-width: 500px) {
+	.container {
+		flex-direction: row;
+	}
+
+	.divide {
+		max-width: 40rem;
+
+		> .projector, .image {
+			width: 25%;
+		}
+
+		> .about {
+			width: 75%;
+		}
+	}
+
+	.image {
+		height: unset;
+	}
+}

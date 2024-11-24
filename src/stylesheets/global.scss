@@ -1,6 +1,5 @@
 // TODO: Implement body font-size according to screen width.
 // TODO: Implement proper naming for color CSS variables
-
 /* stylelint-disable color-no-hex */
 
 /* Determine CSS variables */
@@ -8,6 +7,7 @@
 	// Layout
 	--top-bar-height: 3.5rem;
 	--border-radius: 6px;
+	--border-radius-small: 4px;
 	--gap-large: 3rem;
 	--gap: 1.5rem;
 	--gap-small: 1rem;
@@ -25,7 +25,11 @@
 	--color-light-brown: #e3c6bf;
 	--color-brown: #b47a6d;
 	--color-light-blue: #a1c7ce;
+	--color-white: #fcf1e0;
 	--color-blue: #4093a2;
+	--color-yellow: #dfe70d;
+	--color-green: #11e0c8;
+	--color-purple: #dd6aff;
 }
 
 /* Use a more-intuitive box-sizing model */
@@ -36,7 +40,7 @@
 /* Remove default margin and set a global letter spacing */
 * {
 	margin: 0;
-	letter-spacing: 0.03rem;
+	letter-spacing: 1.4px;
 }
 
 /* Add accessible line-height & improve text rendering */

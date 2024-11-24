@@ -1,5 +1,5 @@
 @import "src/stylesheets/placeholders";
-@import "src/stylesheets/animation";
+@import "src/stylesheets/keyframes";
 
 .card {
 	display: flex;
@@ -7,7 +7,7 @@
 	border-radius: var(--border-radius);
 	border: 0.5px var(--color-border) solid;
 	background-color: var(--color-background-secondary);
-	animation: fadeIn 0.4s;
+	animation: fade-in 0.4s;
 	cursor: pointer;
 
 	> div {
@@ -41,7 +41,7 @@
 	width: 100%;
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow);
-	animation: fadeIn 1s;
+	animation: fade-in 1s;
 }
 
 @media screen and (min-width: 768px) {

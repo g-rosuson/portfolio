@@ -28,11 +28,9 @@ const TopBar = () => {
 
                 <Link
                     href="/projects"
-                    className={currentPath === '/project' ? styling.active : styling.idle}
+                    className={currentPath === '/projects' ? styling.active : styling.idle}
                 >
-                    <span className={styling.wrapper}>
-                        Projects
-                    </span>
+                    Projects
                 </Link>
             </nav>
         </header>
