@@ -25,7 +25,6 @@ const Projector = ({ items, onSequenceEnd }: Props) => {
             if (activeImageIndex === items.length - 1) {
                 onSequenceEnd();
                 clearInterval(intervalId);
-                console.log(activeImageIndex);
                 return;
             }
 
