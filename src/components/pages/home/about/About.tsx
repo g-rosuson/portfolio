@@ -5,11 +5,9 @@ import { CheckmarkSquared, Copy, External } from 'src/components/ui/icons/Icons'
 
 import { Props } from './About.types';
 
-const EMAIL_ADDRESS = 'g.rosuson@gmail.com';
-const HEADING = 'Hi there';
-const INTRO_MESSAGE = 'My name is Guðmundur and I\'m a web developer based in Baden, Switzerland';
-
 import styling from './About.module.scss';
+
+import constants from './constants';
 
 const About = ({ isVisible }: Props) => {
     // State
@@ -25,7 +23,7 @@ const About = ({ isVisible }: Props) => {
      * state property with a delay.
      */
     const copyEmailHandler = async () => {
-        await navigator.clipboard.writeText(EMAIL_ADDRESS);
+        await navigator.clipboard.writeText(constants.EMAIL_ADDRESS);
         setCopied(true);
 
         // Clear any existing timeout before setting a new one
@@ -57,12 +55,12 @@ const About = ({ isVisible }: Props) => {
             <div>
                 <div className={styling.heading}>
                     <Heading level={2} color="yellow" removeMargin>
-                        {HEADING}
+                        {constants.HEADING}
                     </Heading>
                 </div>
 
                 <p className={styling.paragraph}>
-                    {INTRO_MESSAGE}
+                    {constants.INTRO_MESSAGE}
                 </p>
             </div>
 
@@ -92,7 +90,7 @@ const About = ({ isVisible }: Props) => {
                     aria-label="Copy email address g.rosuson@gmail.com to clipboard"
                 >
                     <span className={styling.label}>
-                        {EMAIL_ADDRESS}
+                        {constants.EMAIL_ADDRESS}
                     </span>
 
                     <div className={copied ? styling.hidden : styling.icon}>

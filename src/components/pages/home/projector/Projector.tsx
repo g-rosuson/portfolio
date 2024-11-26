@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { Props } from './Projector.types';
 
-const INTERVAL_DURATION = 400;
-
 import styling from './Projector.module.scss';
+
+import constants from './constants';
 
 const Projector = ({ items, onSequenceEnd }: Props) => {
     // State
@@ -29,7 +29,7 @@ const Projector = ({ items, onSequenceEnd }: Props) => {
             }
 
             setActiveImageIndex(nextActiveImageIndex);
-        }, INTERVAL_DURATION);
+        }, constants.INTERVAL_DURATION);
 
         return () => {
             clearInterval(intervalId);
