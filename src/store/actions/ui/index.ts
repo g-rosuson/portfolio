@@ -1,8 +1,7 @@
-import { Domain } from '../../types';
 import { ColorSchemeActionType, ThemeActionType } from '../types';
 
 // Action domain
-const domain: Domain = 'ui';
+const domain = 'ui';
 
 // Actions
 const changeTheme: ThemeActionType = `${domain}/change_theme`;

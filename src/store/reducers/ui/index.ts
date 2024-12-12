@@ -1,4 +1,4 @@
-import { ColorScheme, Theme, UserInterface } from 'src/store/types';
+import { ColorScheme, Theme, UserInterface } from '../../types';
 
 const changeTheme = {
     type: 'change_theme',

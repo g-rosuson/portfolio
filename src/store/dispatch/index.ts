@@ -1,5 +1,4 @@
 import { ActionType } from '../actions/types';
-import { Reducer } from '../reducers/types';
 
 import reducerModules from '../reducers';
 
@@ -10,7 +9,7 @@ export const resources = (actionType: ActionType) => {
     // Retrieve domain and reducer reference from the action-type
     const resources = actionType.split('/');
 
-    const [domain, reducerName] = resources;
+    const [domain, reducerType] = resources;
 
     // Validate and retrieve the domain module
     const domainModule = reducerModules[domain];
@@ -19,10 +18,10 @@ export const resources = (actionType: ActionType) => {
         throw new Error(`[STORE]: Could not extract reducer array from domain: "${domain}".`);
     }
 
-    const reducer: Reducer = domainModule.find(({ type }) => type === reducerName);
+    const reducer = domainModule.find(({ type }) => type === reducerType);
 
     if (!reducer) {
-        throw new Error(`[STORE]: Could not find reducer: "${reducerName}" in domain: "${domain}".`);
+        throw new Error(`[STORE]: Could not find reducer: "${reducerType}" in domain: "${domain}".`);
     }
 
     return { domain, reducer };

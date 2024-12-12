@@ -1,9 +1,6 @@
 import { ColorSchemeActionType, ThemeActionType } from '../actions/types';
 
-// Action and reducer domains
-type Domain = 'ui'
-
-// UI
+// User interface
 type Theme = 'dark' | 'light';
 type ColorScheme = 'purple' | 'yellow';
 
@@ -13,32 +10,28 @@ type UserInterface = {
 };
 
 // Dispatch actions
-type ThemeDispatchAction = {
-    type: ThemeActionType;
-    payload: Theme;
-}
+type DispatchAction<T, P> = {
+    type: T;
+    payload: P;
+};
 
-type ColorSchemeDispatchAction = {
-    type: ColorSchemeActionType;
-    payload: ColorScheme;
-}
+// // User interface
+type ThemeDispatchAction = DispatchAction<ThemeActionType, Theme>;
+type ColorSchemeDispatchAction = DispatchAction<ColorSchemeActionType, ColorScheme>;
+type UserInterfaceDispatchAction = ThemeDispatchAction | ColorSchemeDispatchAction;
 
-type DispatchAction = ThemeDispatchAction | ColorSchemeDispatchAction;
+type Action = UserInterfaceDispatchAction;
 
 // State
 type State = {
-    ui: UserInterface
-    dispatch: (action: DispatchAction) => void
+    ui: UserInterface;
+    dispatch: (action: Action) => void;
 };
-
-type PartialState = UserInterface
 
 export type {
     DispatchAction,
     UserInterface,
-    PartialState,
     ColorScheme,
-    Domain,
     Theme,
     State
 };
