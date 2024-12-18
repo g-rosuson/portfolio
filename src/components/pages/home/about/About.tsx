@@ -15,7 +15,7 @@ const About = ({ isVisible }: Props) => {
 
 
     // Ref
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const timeoutRef = useRef<NodeJS.Timeout>();
 
 
     /**
