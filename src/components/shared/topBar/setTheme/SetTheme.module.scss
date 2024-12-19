@@ -1,0 +1,22 @@
+@import "src/stylesheets/placeholders";
+@import "src/stylesheets/keyframes";
+
+.button {
+	padding: 0.15rem 0.25rem;
+	background: var(--color-background-secondary);
+	cursor: pointer;
+
+	&:hover {
+		.icon {
+			color: var(--color-text-primary);
+		}
+	}
+}
+
+.icon {
+	@extend %flex-center-center;
+	transition: color 0.4s ease-in-out;
+	animation: fade-in 0.4s;
+	font-size: 1.5rem;
+	color: var(--color-text-secondary);
+}

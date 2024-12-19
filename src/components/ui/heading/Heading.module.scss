@@ -3,7 +3,6 @@
 	margin-bottom: var(--gap-large);
 	font-size: 3rem;
 	font-weight: 900;
-	color: var(--color-text-primary);
 }
 
 [data-remove-margin="true"].heading {
@@ -29,8 +28,4 @@
 	margin-bottom: 0.5rem;
 	font-size: 1.4rem;
 	font-weight: 700;
-}
-
-.yellow {
-	color: var(--color-yellow);
 }

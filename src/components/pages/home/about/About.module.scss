@@ -20,6 +20,7 @@
 
 	.heading {
 		@include fade-in-lower(-10px, 0.4s);
+		color: var(--color-text-cta);
 
 		// The Projector width animation duration
 		animation-delay: 0.4s;
@@ -30,7 +31,7 @@
 		margin-block: var(--gap-small);
 		font-size: 1.6rem;
 		font-weight: 600;
-		color: var(--color-white);
+		color: var(--color-text-secondary);
 
 		// The Projector width animation duration
 		animation-delay: 0.4s;
@@ -41,7 +42,7 @@
 		margin-block: 0.5rem;
 		font-size: 1.2rem;
 		font-weight: 600;
-		color: var(--color-yellow);
+		color: var(--color-text-cta);
 
 		// The Projector width animation duration
 		animation-delay: 0.4s;

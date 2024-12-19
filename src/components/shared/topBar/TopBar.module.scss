@@ -18,6 +18,12 @@
 	height: 2rem;
 }
 
+.wrapper {
+	display: flex;
+	align-items: center;
+	gap: var(--gap-small);
+}
+
 .link {
 	transition: color ease-in-out 0.2s;
 	font-size: 1rem;
@@ -36,6 +42,12 @@
 .idle {
 	@extend .link;
 	color: var(--color-text-secondary);
+}
+
+.skeleton {
+	width: 2.35rem;	// Prevent content shift
+	height: 2rem;
+	background: transparent;
 }
 
 @media screen and (min-width: 992px) {
