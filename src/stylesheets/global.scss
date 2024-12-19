@@ -17,10 +17,10 @@
 	--shadow: 0 8px 16px rgb(2 8 20 / 10%), 0 4px 8px rgb(2 8 20 / 8%);
 
 	// Colors
-	--color-background: #1c1b1d;
-	--color-background-secondary: #2a2a2d;
-	--color-text-primary: #c4c4c4;
-	--color-text-secondary: #a4a4a4;
+	--color-background: #f3f3f3;
+	--color-background-secondary: #e9e7e7;
+	--color-text-primary: #3b3b3b;
+	--color-text-secondary: #565656;
 	--color-border: #7c7c7c;
 	--color-light-brown: #e3c6bf;
 	--color-brown: #b47a6d;
@@ -30,6 +30,15 @@
 	--color-yellow: #dfe70d;
 	--color-green: #11e0c8;
 	--color-purple: #dd6aff;
+}
+
+/* Set dark-mode colors */
+:root[data-theme='dark'] {
+	color-scheme: dark;
+	--color-background: #1c1b1d;
+	--color-background-secondary: #2a2a2d;
+	--color-text-primary: #c4c4c4;
+	--color-text-secondary: #a4a4a4;
 }
 
 /* Use a more-intuitive box-sizing model */

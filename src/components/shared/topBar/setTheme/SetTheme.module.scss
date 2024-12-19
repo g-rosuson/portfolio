@@ -1,0 +1,15 @@
+@import "src/stylesheets/placeholders";
+@import "src/stylesheets/keyframes";
+
+.button {
+	border: none;
+	background: none;
+}
+
+.icon {
+	@extend %flex-center-center;
+	animation: fade-in 0.4s;
+	font-size: 1.6rem;
+	color: var(--color-text-primary);
+	cursor: pointer;
+}
