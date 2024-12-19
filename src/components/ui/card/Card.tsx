@@ -5,11 +5,10 @@ import Link from 'next/link';
 
 import Heading from 'src/components/ui/heading/Heading';
 
+import { Props } from './Card.types';
 import { UniqueNames } from 'src/shared/types/projects';
 
 import styling from './Card.module.scss';
-
-import { Props } from './Card';
 
 const Card = ({ uniqueName, theme, title, about, id }: Props) => {
     /**
