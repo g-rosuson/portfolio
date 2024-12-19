@@ -32,7 +32,7 @@ const IIFEThemeScript = () => {
     window.__onThemeChange = () => {};
 
     // Holds the persisted or chosen theme
-    let preferredTheme: string | null;
+    let preferredTheme: string | null = null;
 
     // Sets the theme in the window object and updates the document's theme attribute.
     // And calls back and sets the theme in the "SetTheme" component
