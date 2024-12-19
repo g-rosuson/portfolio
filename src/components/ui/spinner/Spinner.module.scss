@@ -14,7 +14,7 @@
 	}
 
 	75% {
-		fill: var(--color-white);
+		fill: var(--color-contrast);
 	}
 
 	100% {
@@ -45,5 +45,5 @@
 .message {
 	font-size: 1.4rem;
 	font-weight: 600;
-	color: var(--color-white);
+	color: var(--color-contrast);
 }

@@ -56,7 +56,7 @@ const About = ({ isVisible }: Props) => {
         <div className={styling.container} data-is-visible={isVisible}>
             <div>
                 <div className={styling.heading}>
-                    <Heading level={2} color="yellow" removeMargin>
+                    <Heading level={2} removeMargin>
                         {HEADING}
                     </Heading>
                 </div>

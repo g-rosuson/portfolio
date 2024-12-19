@@ -6,12 +6,11 @@ import styling from './Heading.module.scss';
 type Props = {
     size?: 'xl' | 'l' | 'm' | 's';
     level: 1 | 2 | 3;
-    color?: 'blue' | 'brown' | 'yellow';
     children: ReactNode;
     removeMargin?: boolean;
 }
 
-const Heading = ({ size, level, color, children, removeMargin }: Props) => {
+const Heading = ({ size, level, children, removeMargin }: Props) => {
     // Determine the heading classname based on the provided size
     let className = styling.heading;
 
@@ -25,10 +24,6 @@ const Heading = ({ size, level, color, children, removeMargin }: Props) => {
 
     if (size === 's') {
         className = styling.small;
-    }
-
-    if (color) {
-        className = className + ' ' + styling[color];
     }
 
 

@@ -1,3 +1,7 @@
+.headline {
+	color: var(--color-text-primary);
+}
+
 .cards {
 	>:not(:last-child) {
 		display: block;

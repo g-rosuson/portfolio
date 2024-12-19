@@ -5,12 +5,13 @@ import Link from 'next/link';
 
 import Heading from 'src/components/ui/heading/Heading';
 
-import { Props } from './ProjectCard.types';
 import { UniqueNames } from 'src/shared/types/projects';
 
-import styling from './ProjectCard.module.scss';
+import styling from './Card.module.scss';
 
-const ProjectCard = ({ uniqueName, theme, title, about, id }: Props) => {
+import { Props } from './Card';
+
+const Card = ({ uniqueName, theme, title, about, id }: Props) => {
     /**
      * Plays the video when the user hovers over it and
      * pauses when the user stops hovering.
@@ -52,9 +53,11 @@ const ProjectCard = ({ uniqueName, theme, title, about, id }: Props) => {
                 </div>
 
                 <div className={styling.text}>
-                    <Heading level={2} size="l">
-                        {title}
-                    </Heading>
+                    <div className={styling.heading}>
+                        <Heading level={2} size="l">
+                            {title}
+                        </Heading>
+                    </div>
 
                     <p className={styling.description}>
                         {about}
@@ -65,4 +68,4 @@ const ProjectCard = ({ uniqueName, theme, title, about, id }: Props) => {
     );
 };
 
-export default ProjectCard;
+export default Card;

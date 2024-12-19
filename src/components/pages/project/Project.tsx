@@ -38,9 +38,11 @@ const Project = ({ description, displayUrl, uniqueName, title, stack, links, the
                         </span>
                     </Link>
 
-                    <Heading level={1} size="xl" removeMargin>
-                        {title}
-                    </Heading>
+                    <div className={styling.heading}>
+                        <Heading level={1} size="xl" removeMargin>
+                            {title}
+                        </Heading>
+                    </div>
 
                     <Link href={url} target="_blank" rel="noopener noreferrer">
                         <span className={styling.projectUrl}>

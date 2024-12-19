@@ -2,8 +2,8 @@ import React from 'react';
 import { Metadata } from 'next';
 import api from 'src/api';
 
+import Card from 'src/components/ui/card/Card';
 import Heading from 'src/components/ui/heading/Heading';
-import ProjectCard from 'src/components/ui/projectCard/ProjectCard';
 
 import styling from './Projects.module.scss';
 
@@ -41,13 +41,15 @@ const Page = async () => {
 
     return (
         <section>
-            <Heading level={1} size="xl">
-                Projects
-            </Heading>
+            <div className={styling.headline}>
+                <Heading level={1} size="xl">
+                    Projects
+                </Heading>
+            </div>
 
             <div className={styling.cards}>
                 {projects.map((project) => (
-                    <ProjectCard
+                    <Card
                         key={project.id}
                         uniqueName={project.uniqueName}
                         theme={project.details.theme}
