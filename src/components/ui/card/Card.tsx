@@ -20,7 +20,7 @@ const Card = ({ uniqueName, theme, title, about, id }: Props) => {
      */
     const videoHandler = (event: React.FocusEvent | React.MouseEvent) => {
         const shouldPlay = event.type === 'mouseenter' || event.type === 'focus';
-        shouldPlay ? videoRef.current.play() : videoRef.current.pause();
+        shouldPlay ? videoRef.current?.play() : videoRef.current?.pause();
     };
 
 
