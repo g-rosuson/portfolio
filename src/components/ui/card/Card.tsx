@@ -40,7 +40,7 @@ const Card = ({ uniqueName, theme, title, about, id }: Props) => {
         <Link href={`projects/${id}`}>
             <article className={styling.card}>
                 <div
-                    tabIndex="0"
+                    tabIndex={0}
                     aria-label="Preview video"
                     role="button"
                     className={styling.image}
