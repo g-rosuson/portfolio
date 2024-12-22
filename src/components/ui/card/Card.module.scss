@@ -29,6 +29,7 @@
 
 .image {
 	@extend %flex-center-center;
+	position: relative;
 	padding: 1rem;
 	border-radius: var(--border-radius) var(--border-radius) 0 0;
 
@@ -39,6 +40,12 @@
 	&[data-theme="blue"] {
 		background: linear-gradient(89.65deg, var(--color-light-blue) .26%, var(--color-blue) 99.67%);
 	}
+
+	&:focus, &:hover {
+		.background {
+			opacity: 0;
+		}
+	}
 }
 
 .video {
@@ -46,6 +53,34 @@
 	border-radius: var(--border-radius);
 	box-shadow: var(--shadow);
 	animation: fade-in 1s;
+}
+
+.background {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: var(--gap-extra-small);
+	background-color: var(--color-tint);
+	transition: opacity 0.4s ease-in;
+}
+
+.badge {
+	@extend %flex-center-center;
+	padding: 0.25rem var(--gap-extra-small);
+	border-radius: var(--border-radius);
+	background-color: var(--color-background-secondary);
+	box-shadow: var(--shadow);
+	color: var(--color-text-primary);
+}
+
+.label {
+	font-size: 0.7rem;
+	font-weight: 600;
 }
 
 @media screen and (min-width: 768px) {
