@@ -1,6 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 # Colors
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
