@@ -16,7 +16,8 @@
     "next-mdx-remote-client": "^1.1.9",
     "react": "^18",
     "react-dom": "^18",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
