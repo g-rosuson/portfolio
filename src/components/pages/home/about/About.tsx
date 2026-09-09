@@ -5,6 +5,8 @@ import { CheckmarkSquared, Copy, External } from 'src/components/ui/icons/Icons'
 
 import { Props } from './About.types';
 
+// TODO: Handle constants
+
 const EMAIL_ADDRESS = 'g.rosuson@gmail.com';
 const HEADING = 'Hi there';
 const INTRO_MESSAGE = 'My name is Guðmundur and I\'m a web developer based in Baden, Switzerland';
@@ -67,9 +69,9 @@ const About = ({ isVisible }: Props) => {
             </div>
 
             <div className={styling.wrapper}>
-                <p className={styling.contact}>
+                <Heading level={3} size="s">
                     Contact
-                </p>
+                </Heading>
 
                 <a
                     className={styling.field}

@@ -2,21 +2,21 @@
 @import "src/stylesheets/keyframes";
 
 .button {
-	padding: 0.25rem;
-	background: var(--color-background-secondary);
-	cursor: pointer;
+    padding: 0.25rem;
+    background: var(--color-bg-surface);
+    cursor: pointer;
 
-	&:hover {
-		.icon {
-			color: var(--color-text-primary);
-		}
-	}
+    &:hover {
+        .icon {
+            color: var(--color-text);
+        }
+    }
 }
 
 .icon {
-	@extend %flex-center-center;
-	transition: color 0.4s ease-in-out;
-	animation: fade-in 0.4s;
-	font-size: 1.5rem;
-	color: var(--color-text-secondary);
+    @extend %flex-center-center;
+    transition: color 0.4s ease-in-out;
+    animation: fade-in 0.4s;
+    font-size: 1.5rem;
+    color: var(--color-text-muted);
 }

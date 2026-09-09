@@ -1,65 +1,67 @@
 @import "src/stylesheets/keyframes";
 
 .container {
-	max-width: 25rem;
-	min-height: 25rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	gap: var(--gap-small);
-	margin: 0 auto;
+    max-width: 25rem;
+    min-height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--gap-sm);
+    margin: 0 auto;
 
-	> .about {
-		display: none;
-	}
+    > .about {
+        display: none;
+    }
 }
 
 .divide {
-	@extend .container;
+    @extend .container;
 
-	> .projector, .image {
-		width: 100%;
-		transition: width ease-in-out 0.4s;
-	}
+    > .projector,
+    .image {
+        width: 100%;
+        transition: width ease-in-out 0.4s;
+    }
 
-	> .about {
-		display: block;
-	}
+    > .about {
+        display: block;
+    }
 }
 
 .projector {
-	width: 100%;
+    width: 100%;
 }
 
 .image {
-	position: relative;
-	width: 100%;
-	height: 16rem;
-	border-radius: var(--border-radius);
-	border: 2px solid var(--color-contrast);
-	animation: fade-in 0.4s;
-	overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 16rem;
+    border-radius: var(--border-radius-md);
+    border: 2px solid var(--color-border-contrast);
+    animation: fade-in 0.4s;
+    overflow: hidden;
 }
 
 @media screen and (min-width: 500px) {
-	.container {
-		flex-direction: row;
-		gap: var(--gap-large);
-	}
+    .container {
+        flex-direction: row;
+        gap: var(--gap-lg);
+    }
 
-	.divide {
-		max-width: 40rem;
+    .divide {
+        max-width: 40rem;
 
-		> .projector, .image {
-			width: 25%;
-		}
+        > .projector,
+        .image {
+            width: 25%;
+        }
 
-		> .about {
-			width: 75%;
-		}
-	}
+        > .about {
+            width: 75%;
+        }
+    }
 
-	.image {
-		height: unset;
-	}
+    .image {
+        height: unset;
+    }
 }

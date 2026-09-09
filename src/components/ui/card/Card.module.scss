@@ -2,93 +2,94 @@
 @import "src/stylesheets/keyframes";
 
 .card {
-	display: flex;
-	flex-direction: column;
-	border-radius: var(--border-radius);
-	border: 0.5px var(--color-border) solid;
-	background-color: var(--color-background-secondary);
-	animation: fade-in 0.4s;
-	cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius-md);
+    border: 0.5px var(--color-border) solid;
+    background-color: var(--color-bg-surface);
+    animation: fade-in 0.4s;
+    cursor: pointer;
 
-	> div {
-		flex: 1; // Allow children to grow equally
-	}
+    > div {
+        flex: 1; // Allow children to grow equally
+    }
 }
 
 .text {
-	padding: var(--gap);
+    padding: var(--gap-lg);
 }
 
 .heading {
-	color: var(--color-text-primary);
+    color: var(--color-text);
 }
 
 .description {
-	color: var(--color-text-secondary);
+    color: var(--color-text-muted);
 }
 
 .image {
-	@extend %flex-center-center;
-	position: relative;
-	padding: 1rem;
-	border-radius: var(--border-radius) var(--border-radius) 0 0;
+    @extend %flex-center-center;
+    position: relative;
+    padding: 1rem;
+    border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
 
-	&[data-theme="brown"] {
-		background: linear-gradient(89.65deg, var(--color-light-brown) .26%, var(--color-brown) 99.67%);
-	}
+    &[data-theme="brown"] {
+        background: linear-gradient(89.65deg, var(--color-project-light-brown) 0.26%, var(--color-project-brown) 99.67%);
+    }
 
-	&[data-theme="blue"] {
-		background: linear-gradient(89.65deg, var(--color-light-blue) .26%, var(--color-blue) 99.67%);
-	}
+    &[data-theme="blue"] {
+        background: linear-gradient(89.65deg, var(--color-project-light-blue) 0.26%, var(--color-project-blue) 99.67%);
+    }
 
-	&:focus, &:hover {
-		.background {
-			opacity: 0;
-		}
-	}
+    &:focus,
+    &:hover {
+        .background {
+            opacity: 0;
+        }
+    }
 }
 
 .video {
-	width: 100%;
-	border-radius: var(--border-radius);
-	box-shadow: var(--shadow);
-	animation: fade-in 1s;
+    width: 100%;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow);
+    animation: fade-in 1s;
 }
 
 .background {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: var(--gap-extra-small);
-	background-color: var(--color-tint);
-	transition: opacity 0.4s ease-in;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--gap-xs);
+    background-color: rgb(94 94 94 / 20%);
+    transition: opacity 0.4s ease-in;
 }
 
 .badge {
-	@extend %flex-center-center;
-	padding: 0.25rem var(--gap-extra-small);
-	border-radius: var(--border-radius);
-	background-color: var(--color-background-secondary);
-	box-shadow: var(--shadow);
-	color: var(--color-text-primary);
+    @extend %flex-center-center;
+    padding: 0.25rem var(--gap-xs);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-bg-surface);
+    box-shadow: var(--shadow);
+    color: var(--color-text);
 }
 
 .label {
-	font-size: 0.7rem;
-	font-weight: 600;
+    font-size: 0.7rem;
+    font-weight: 600;
 }
 
 @media screen and (min-width: 768px) {
-	.card {
-		flex-direction: row-reverse;
-	}
+    .card {
+        flex-direction: row-reverse;
+    }
 
-	.image {
-		border-radius: 0 var(--border-radius) var(--border-radius) 0;
-	}
+    .image {
+        border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+    }
 }

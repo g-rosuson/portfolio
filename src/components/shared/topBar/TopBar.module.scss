@@ -1,57 +1,57 @@
 .header {
-	display: flex;
-	align-items: center;
-	padding: var(--gap);
+    display: flex;
+    align-items: center;
+    padding: var(--gap-lg);
 }
 
 .nav {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap-md);
 }
 
 .logo {
-	position: relative;
-	width: 4rem;
-	height: 2rem;
+    font-size: 2rem;
+
+    svg {
+        fill: var(--color-brand-yellow);
+
+        [data-theme="light"] & {
+            fill: var(--color-text);
+        }
+    }
 }
 
 .wrapper {
-	display: flex;
-	align-items: center;
-	gap: var(--gap-small);
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
 }
 
 .link {
-	transition: color ease-in-out 0.2s;
-	font-size: 1rem;
-	font-weight: 500;
+    transition: color ease-in-out 0.2s;
+    font-size: 1rem;
+    font-weight: 500;
 
-	&:hover {
-		color: var(--color-text-primary);
-	}
+    &:hover {
+        color: var(--color-text);
+    }
 }
 
 .active {
-	@extend .link;
-	color: var(--color-text-primary);
+    @extend .link;
+    color: var(--color-text);
 }
 
 .idle {
-	@extend .link;
-	color: var(--color-text-secondary);
+    @extend .link;
+    color: var(--color-text-muted);
 }
 
 .skeleton {
-	width: 2rem;
-	height: 2rem;
-	background: transparent;
-}
-
-@media screen and (min-width: 992px) {
-	.header {
-		padding: 2rem 4rem;
-	}
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
 }

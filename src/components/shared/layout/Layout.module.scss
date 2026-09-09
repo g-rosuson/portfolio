@@ -1,13 +1,15 @@
 .container {
-	max-width: 50rem;
-	margin: 2rem auto;
-	padding-inline: var(--gap);
+    height: 100%;
+    max-width: 50rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--gap-lg);
+    margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {
-	.container {
-		max-width: 50rem;
-		margin: 6rem auto;
-		padding-inline: var(--gap);
-	}
+    .container {
+        padding: var(--gap-xl);
+    }
 }

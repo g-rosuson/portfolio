@@ -1,0 +1,9 @@
+.button {
+    width: fit-content;
+    padding: 0.25rem;
+    background-color: var(--color-primary-background);
+    color: var(--color-primary-foreground);
+    font-size: var(--font-size-extra-small);
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -11,6 +11,8 @@ import { State } from './Home.types';
 
 import styling from './Home.module.scss';
 
+// TODO: Handle constants
+
 // The urls to the public folder
 const IMAGE_URLS = [
     '/images/portraits/650x867_1.jpg',

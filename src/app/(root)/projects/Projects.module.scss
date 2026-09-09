@@ -1,10 +1,10 @@
 .headline {
-	color: var(--color-text-primary);
+    color: var(--color-text);
 }
 
 .cards {
-	>:not(:last-child) {
-		display: block;
-		margin-bottom: var(--gap);
-	}
+    > :not(:last-child) {
+        display: block;
+        margin-bottom: var(--gap-md);
+    }
 }
