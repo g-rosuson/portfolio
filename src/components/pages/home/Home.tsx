@@ -11,29 +11,7 @@ import { State } from './Home.types';
 
 import styling from './Home.module.scss';
 
-// TODO: Handle constants
-
-// The urls to the public folder
-const IMAGE_URLS = [
-    '/images/portraits/650x867_1.jpg',
-    '/images/portraits/650x867_2.jpg',
-    '/images/portraits/650x867_3.jpg',
-    '/images/portraits/650x867_4.jpg',
-    '/images/portraits/650x867_5.jpg',
-    '/images/portraits/650x867_6.jpg'
-];
-
-const IMAGE_URLS_MOBILE = [
-    '/images/portraits/275x367_1.jpg',
-    '/images/portraits/275x367_2.jpg',
-    '/images/portraits/275x367_3.jpg',
-    '/images/portraits/275x367_4.jpg',
-    '/images/portraits/275x367_5.jpg',
-    '/images/portraits/275x367_6.jpg'
-];
-
-// Determine the allowed image loading time
-const PROMISE_TIMEOUT = 5000;
+import { IMAGE_ALT, IMAGE_URLS, IMAGE_URLS_MOBILE, PROMISE_TIMEOUT, SESSION_STORAGE_KEY } from './constants';
 
 const Home = () => {
     // State
@@ -65,51 +43,6 @@ const Home = () => {
 
 
     /**
-     * Returns the initial "Projector" intro, after the images are fetched.
-     * And otherwise the re-visit view.
-     */
-    const getContent = (images: HTMLImageElement[] | null) => {
-        if (images) {
-            return (
-                <div className={showAboutSection ? styling.divide : styling.container}>
-                    <div className={styling.projector}>
-                        <Projector
-                            items={images}
-                            onSequenceEnd={aboutSectionHandler}
-                        />
-                    </div>
-
-                    <div className={styling.about}>
-                        <About isVisible={showAboutSection}/>
-                    </div>
-                </div>
-            );
-        }
-
-        const imageUrl = isDesktopModeActive ? IMAGE_URLS.at(-1) : IMAGE_URLS_MOBILE.at(-1);
-
-        return (
-            <div className={styling.divide}>
-                <div className={styling.image}>
-                    <NextImage
-                        src={imageUrl || ''}
-                        alt="Portrait of Guðmundur, the website creator"
-                        loading="lazy"
-                        quality={100}
-                        objectFit="cover"
-                        fill
-                    />
-                </div>
-
-                <div className={styling.about}>
-                    <About isVisible/>
-                </div>
-            </div>
-        );
-    };
-
-
-    /**
      * Fetches all intro images on initial session visit and sets them in the state, so they
      * can be displayed without disruption.
      *
@@ -122,7 +55,7 @@ const Home = () => {
     const initialiseState = useCallback(async () => {
         try {
             // Determine if the user is re-visiting
-            const isRevisiting = sessionStorage.getItem('has_visited');
+            const isRevisiting = sessionStorage.getItem(SESSION_STORAGE_KEY);
 
             // If the user is re-visiting don't fetch the images again
             // and render the re-visit view
@@ -131,7 +64,7 @@ const Home = () => {
                 return;
             }
 
-            sessionStorage.setItem('has_visited', String(true));
+            sessionStorage.setItem(SESSION_STORAGE_KEY, String(true));
 
             // If the window width is larger than 500px, use the bigger version of the images
             const isDesktopModeActive = window.screen.width > 500;
@@ -206,8 +139,59 @@ const Home = () => {
         initialiseState();
     }, [initialiseState]);
 
+    /**
+     * Returns the initial "Projector" intro, after the images are fetched.
+     * And otherwise the re-visit view.
+     */
+    const getContent = (images: HTMLImageElement[] | null) => {
+        if (images) {
+            return (
+                <section className={styling.layout} data-show-about-section={showAboutSection}>
+                    <div className={styling.projector}>
+                        <Projector
+                            items={images}
+                            onSequenceEnd={aboutSectionHandler}
+                        />
+                    </div>
 
-    return isLoading ? <Spinner/> : getContent(images);
+                    <section className={styling.about}>
+                        <About/>
+                    </section>
+                </section>
+            );
+        }
+
+        const imageUrl = isDesktopModeActive ? IMAGE_URLS.at(-1) : IMAGE_URLS_MOBILE.at(-1);
+
+        return (
+            <section className={styling.layout} data-show-about-section="true">
+                <div className={styling.image}>
+                    <NextImage
+                        src={imageUrl || ''}
+                        alt={IMAGE_ALT}
+                        loading="lazy"
+                        quality={100}
+                        objectFit="cover"
+                        fill
+                    />
+                </div>
+
+                <section className={styling.about}>
+                    <About/>
+                </section>
+            </section>
+        );
+    };
+
+
+    // Determine the content view
+    const content = (
+        <div className={styling.container} data-is-loading={isLoading}>
+            {isLoading ? <Spinner/> : getContent(images)}
+        </div>
+    );
+
+    return content;
 };
 
 export default Home;

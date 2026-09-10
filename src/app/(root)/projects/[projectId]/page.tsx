@@ -1,6 +1,7 @@
 import React, { cache } from 'react';
 import { Metadata } from 'next';
 import api from 'src/api';
+import { OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH, SITE_URL } from 'src/shared/constants/site';
 
 import ProjectPage from 'src/components/pages/project/Project';
 
@@ -22,23 +23,24 @@ const getProjectData = cache(async (projectId: string) => {
 
 export async function generateMetadata({ params }: { params: { projectId: string } }): Promise<Metadata> {
     const project = await getProjectData(params.projectId);
-    const imageUrl = `https://www.rosuson.com/images/${project.details.metadata.ogImageName}`;
+    const url = `${SITE_URL}/projects/${params.projectId}`;
+    const imageUrl = `${SITE_URL}/images/${project.details.metadata.ogImageName}`;
 
 
     return {
-        metadataBase: new URL(`https://www.rosuson,com/projects/${params.projectId}`),
+        metadataBase: new URL(url),
         title: `Project – ${project.title}`,
         description: project.details.metadata.description,
         openGraph: {
             title: project.title,
             description: project.about,
-            url: `https://www.rosuson,com/projects/${params.projectId}`,
+            url,
             type: 'website',
             images: [
                 {
                     url: imageUrl,
-                    width: 1200,
-                    height: 630,
+                    width: OG_IMAGE_WIDTH,
+                    height: OG_IMAGE_HEIGHT,
                     alt: `${project.title} logo`
                 }
             ]
@@ -48,7 +50,7 @@ export async function generateMetadata({ params }: { params: { projectId: string
             description: project.about
         },
         alternates: {
-            canonical: `https://www.rosuson.com/projects/${params.projectId}`
+            canonical: url
         }
     };
 }

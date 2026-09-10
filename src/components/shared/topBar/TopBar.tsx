@@ -3,31 +3,20 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import Logo from 'src/components/ui/logo/Logo';
-
 import { usePathname } from 'next/navigation';
 
+import Logo from 'src/components/ui/logo/Logo';
+
 import styling from './TopBar.module.scss';
+
+import config from './config';
 
 const SetTheme = dynamic(() => import('src/components/shared/topBar/setTheme/SetTheme'), {
     ssr: false,
     loading: () => <div className={styling.skeleton}/>
 });
 
-const ROUTES = [
-    {
-        href: '/articles',
-        label: 'Articles'
-    },
-    {
-        href: '/projects',
-        label: 'Projects'
-    }
-];
-
-
 // TODO: Add a hamburger menu for mobile
-
 const TopBar = () => {
     // Hooks
     const currentPath = usePathname();
@@ -42,7 +31,7 @@ const TopBar = () => {
                 </Link>
 
                 <div className={styling.wrapper}>
-                    {ROUTES.map(route => (
+                    {config.routes.map(route => (
                         <Link
                             key={route.href}
                             href={route.href}

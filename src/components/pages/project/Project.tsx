@@ -2,26 +2,28 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { PROJECT_VIDEO_SRC } from 'src/shared/constants/projects';
 
 import Heading from 'src/components/ui/heading/Heading';
 import { ChevronLeft } from 'src/components/ui/icons/Icons';
 
-import { Props } from './Project.types';
-import { UniqueNames } from 'src/shared/types/projects';
+import { Theme, UniqueNames } from 'src/shared/types/projects';
 
 import styling from './Project.module.scss';
 
+interface Props {
+    description: string;
+    displayUrl: string;
+    uniqueName: UniqueNames;
+    title: string;
+    stack: string[];
+    links: string[];
+    theme: Theme
+    url: string;
+}
+
 const Project = ({ description, displayUrl, uniqueName, title, stack, links, theme, url }: Props) => {
-    // Map project names to the corresponding video url
-    // TODO: Get videos from a bucket
-    const projectNameToVideoSrc: Record<UniqueNames, string> = {
-        'project-fernweh': '/videos/fernweh_schweiz_video.mp4',
-        'project-rosa-olof': '/videos/rosa_olof_video.mp4'
-    };
-
-
-    // Determine video source
-    const videoSrc = projectNameToVideoSrc[uniqueName];
+    const videoSrc = PROJECT_VIDEO_SRC[uniqueName];
 
 
     return (
@@ -86,14 +88,16 @@ const Project = ({ description, displayUrl, uniqueName, title, stack, links, the
                 </div>
             </section>
 
-            <section className={styling.frame} data-theme={`${theme}`}>
-                <video
-                    className={styling.video}
-                    src={videoSrc}
-                    autoPlay
-                    muted
-                    loop
-                />
+            <section>
+                <div className={styling.frame} data-theme={`${theme}`}>
+                    <video
+                        className={styling.video}
+                        src={videoSrc}
+                        autoPlay
+                        muted
+                        loop
+                    />
+                </div>
             </section>
         </>
     );

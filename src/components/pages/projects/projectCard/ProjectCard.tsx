@@ -2,15 +2,19 @@
 
 import React, { useRef } from 'react';
 import Link from 'next/link';
+import { PROJECT_VIDEO_SRC } from 'src/shared/constants/projects';
 
 import Heading from 'src/components/ui/heading/Heading';
 
-import { Props } from './Card.types';
-import { UniqueNames } from 'src/shared/types/projects';
+import { Project, Theme } from 'src/shared/types/projects';
 
-import styling from './Card.module.scss';
+import styling from './ProjectCard.module.scss';
 
-const Card = ({ uniqueName, theme, title, about, id }: Props) => {
+type Props = Omit<Project, 'details'> & {
+    theme: Theme
+}
+
+const ProjectCard = ({ uniqueName, theme, title, about, id }: Props) => {
     // Refs
     const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -24,16 +28,7 @@ const Card = ({ uniqueName, theme, title, about, id }: Props) => {
     };
 
 
-    // Map project names to the corresponding video url
-    // TODO: Get videos from a bucket
-    const projectNameToVideoSrc: Record<UniqueNames, string> = {
-        'project-fernweh': '/videos/fernweh_schweiz_video.mp4',
-        'project-rosa-olof': '/videos/rosa_olof_video.mp4'
-    };
-
-
-    // Determine video source
-    const videoSrc = projectNameToVideoSrc[uniqueName];
+    const videoSrc = PROJECT_VIDEO_SRC[uniqueName];
 
 
     return (
@@ -83,4 +78,4 @@ const Card = ({ uniqueName, theme, title, about, id }: Props) => {
     );
 };
 
-export default Card;
+export default ProjectCard;
