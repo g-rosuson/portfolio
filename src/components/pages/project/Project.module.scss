@@ -13,8 +13,8 @@
     width: fit-content;
     display: inline-block;
     margin-top: var(--gap-xs);
-    color: var(--color-text-muted);
     font-size: var(--font-size-label-md);
+    color: var(--color-text-muted);
     text-decoration: underline;
 }
 
@@ -25,9 +25,9 @@
 }
 
 .item {
-    color: var(--color-text-muted);
     font-size: var(--font-size-body);
     font-weight: 500;
+    color: var(--color-text-muted);
 }
 
 .frame {

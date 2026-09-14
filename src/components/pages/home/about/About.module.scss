@@ -59,10 +59,10 @@
 
     .label,
     .icon {
-        transition: color ease-in-out 0.4s;
-        color: var(--color-text-muted);
         line-height: 1;
+        transition: color ease-in-out 0.4s;
         font-size: var(--font-size-icon-sm);
+        color: var(--color-text-muted);
     }
     
     &:hover {

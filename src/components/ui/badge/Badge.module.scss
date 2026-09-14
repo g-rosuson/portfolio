@@ -1,12 +1,12 @@
 .badge {
     width: fit-content;
     padding: 0.25rem var(--gap-xs);
-    border: var(--border-width-sm) solid var(--color-border-muted);
     border-radius: var(--border-radius-md);
+    border: var(--border-width-sm) solid var(--color-border-muted);
     background-color: var(--color-bg-surface);
     font-size: var(--font-size-label-sm);
-    color: var(--color-text);
     font-weight: 600;
+    color: var(--color-text);
 
     &[data-variant="green"] {
         border-color: var(--color-brand-green-border);

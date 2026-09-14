@@ -3,8 +3,8 @@
 .card {
     position: relative;
     padding: var(--gap-md);
-    border: var(--border-width-sm) solid var(--color-border-muted);
     border-radius: var(--border-radius-md);
+    border: var(--border-width-sm) solid var(--color-border-muted);
     background-color: var(--color-bg-surface);
     animation: fade-in 0.2s;
     cursor: pointer;
