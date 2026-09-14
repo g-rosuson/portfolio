@@ -64,7 +64,7 @@ const ProjectCard = ({ uniqueName, theme, title, about, id }: Props) => {
 
                 <div className={styling.text}>
                     <div className={styling.heading}>
-                        <Heading level={2} size="l">
+                        <Heading level={2} size="sm">
                             {title}
                         </Heading>
                     </div>

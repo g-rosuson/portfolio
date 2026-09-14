@@ -1,23 +1,21 @@
 {
     "prettier.enable": false,
     "eslint.format.enable": true,
+    // Off so save only runs ESLint fix-all
+    "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
+        "source.fixAll.eslint": "always"
     },
     "[javascript]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-        "editor.formatOnSave": true
     },
     "[javascriptreact]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-        "editor.formatOnSave": true
     },
     "[typescript]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-        "editor.formatOnSave": true
     },
     "[typescriptreact]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-        "editor.formatOnSave": true
     }
 }

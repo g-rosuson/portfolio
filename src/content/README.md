@@ -29,7 +29,7 @@ Always write a real `alt` description. That string is what the page uses for acc
 
 ### How they render
 
-MDX `img` elements are mapped to `next/image` with `width={800}` and `height={450}`. CSS sets `width: 100%`, `height: auto`, and `border-radius: var(--border-radius)`.
+MDX `img` elements are mapped to `next/image` with `width={800}` and `height={450}`. CSS sets `width: 100%`, `height: auto`, and `border-radius: var(--border-radius-md)`.
 
 ### Open Graph
 

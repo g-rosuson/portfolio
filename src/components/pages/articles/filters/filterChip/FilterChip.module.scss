@@ -1,0 +1,25 @@
+.chip {
+    padding: var(--gap-xs);
+    border: var(--border-width-sm) solid var(--color-border-muted);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-bg-surface);
+    font-size: var(--font-size-label-sm);
+    cursor: pointer;
+
+    &:hover {
+        border-color: var(--color-border-muted-hover);
+    }
+
+    &:focus {
+        border-color: var(--color-border-muted-hover);
+        outline: var(--border-width-sm) solid var(--color-border-muted-hover);
+    }
+
+    &[data-selected="true"] {
+        border-color: var(--color-border);
+
+        &:hover {
+            border-color: var(--color-border);
+        }
+    }
+}

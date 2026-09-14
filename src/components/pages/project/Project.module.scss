@@ -1,7 +1,7 @@
 @import "src/stylesheets/placeholders";
 @import "src/stylesheets/keyframes";
 
-.wrapper {
+.container {
     animation: fade-in 0.2s;
 
     > :not(:last-child) {
@@ -9,57 +9,24 @@
     }
 }
 
-.back {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    margin-bottom: var(--gap-md);
-}
-
-.chevron {
-    @extend %flex-center-center;
-    font-size: 1.2rem;
-    color: var(--color-text);
-}
-
-.backToProject {
-    font-size: 0.8rem;
-    color: var(--color-text);
-}
-
-.heading {
-    color: var(--color-text);
-}
-
-.projectUrl {
+.url {
     width: fit-content;
     display: inline-block;
     margin-top: var(--gap-xs);
     color: var(--color-text-muted);
+    font-size: var(--font-size-label-md);
     text-decoration: underline;
-}
-
-.stack {
-    .label {
-        margin-top: 0.25rem; // Align label to description
-    }
-}
-
-.label {
-    margin-bottom: var(--gap-xs);
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--color-text);
 }
 
 .list {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: var(--gap-xs);
 }
 
-.listItem {
+.item {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-body);
     font-weight: 500;
 }
 
@@ -86,28 +53,4 @@
     max-width: 40rem;
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow);
-}
-
-@media screen and (min-width: 992px) {
-    .wrapper {
-        display: grid;
-        grid-template-rows: [row1] auto [row2] auto;
-        grid-template-columns: [col1] auto [col2] 1fr;
-        column-gap: var(--gap-lg);
-    }
-
-    .header {
-        grid-row: row1;
-        grid-column: col2;
-    }
-
-    .text {
-        grid-row: row2;
-        grid-column: col2;
-    }
-
-    .stack {
-        grid-row: row2;
-        grid-column: col1;
-    }
 }

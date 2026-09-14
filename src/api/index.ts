@@ -1,9 +1,9 @@
-import articles from './articles';
+import content from './content';
 import firebase from './firebase';
 
 const api = {
     firebase,
-    articles
+    content
 };
 
 export default api;

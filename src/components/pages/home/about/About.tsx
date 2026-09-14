@@ -5,7 +5,7 @@ import { CheckmarkSquared, Copy, External } from 'src/components/ui/icons/Icons'
 
 import styling from './About.module.scss';
 
-import { COPY_EMAIL_ARIA_LABEL, EMAIL_ADDRESS, HEADING, INTRO_MESSAGE, LINKEDIN_URL } from './constants';
+import { CONTACT_LABEL, COPY_EMAIL_ARIA_LABEL, EMAIL_ADDRESS, HEADING, INTRO_MESSAGE, LINKEDIN_LABEL, LINKEDIN_URL } from './constants';
 
 const About = () => {
     // State
@@ -52,7 +52,7 @@ const About = () => {
         <div className={styling.container}>
             <div>
                 <div className={styling.heading}>
-                    <Heading level={2} removeMargin>
+                    <Heading level={2} color="yellow" removeMargin>
                         {HEADING}
                     </Heading>
                 </div>
@@ -63,8 +63,8 @@ const About = () => {
             </div>
 
             <div className={styling.wrapper}>
-                <Heading level={3} size="s">
-                    Contact
+                <Heading level={3} size="sm">
+                    {CONTACT_LABEL}
                 </Heading>
 
                 <a
@@ -74,7 +74,7 @@ const About = () => {
                     rel="noopener noreferrer"
                 >
                     <span className={styling.label}>
-                        LinkedIn
+                        {LINKEDIN_LABEL}
                     </span>
 
                     <div className={styling.icon}>

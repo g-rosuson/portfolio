@@ -5,8 +5,7 @@ import Link from 'next/link';
 
 import Heading from 'src/components/ui/heading/Heading';
 
-import styling from './Project.module.scss';
-
+// TODO: Style/sync error pages
 export default function Error() {
     return (
         <>
@@ -15,9 +14,7 @@ export default function Error() {
             </Heading>
 
             <Link href="/projects">
-                <span className={styling.link}>
-                    Back to projects
-                </span>
+                Back to projects
             </Link>
         </>
     );

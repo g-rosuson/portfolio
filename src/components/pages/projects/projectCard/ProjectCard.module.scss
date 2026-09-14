@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     border-radius: var(--border-radius-md);
-    border: 0.5px var(--color-border) solid;
+    border: var(--border-width-sm) solid var(--color-border-muted);
     background-color: var(--color-bg-surface);
     animation: fade-in 0.4s;
     cursor: pointer;
@@ -16,7 +16,7 @@
 }
 
 .text {
-    padding: var(--gap-lg);
+    padding: var(--gap-md);
 }
 
 .heading {
@@ -30,7 +30,7 @@
 .image {
     @extend %flex-center-center;
     position: relative;
-    padding: 1rem;
+    padding: var(--gap-md);
     border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
 
     &[data-theme="brown"] {

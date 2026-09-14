@@ -2,7 +2,7 @@
 @import "src/stylesheets/keyframes";
 
 .button {
-    padding: 0.25rem;
+    padding: var(--gap-xs);
     background: var(--color-bg-surface);
     cursor: pointer;
 
@@ -17,6 +17,6 @@
     @extend %flex-center-center;
     transition: color 0.4s ease-in-out;
     animation: fade-in 0.4s;
-    font-size: 1.5rem;
+    font-size: var(--font-size-icon-lg);
     color: var(--color-text-muted);
 }

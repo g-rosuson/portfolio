@@ -8,7 +8,7 @@ const Spinner = () => {
     return (
         <div className={styling.container}>
             <div className={styling.spinner}>
-                <Logo />
+                <Logo/>
             </div>
 
             <div className={styling.message}>Loading resources</div>

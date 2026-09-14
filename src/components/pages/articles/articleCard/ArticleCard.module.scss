@@ -1,0 +1,40 @@
+@import "src/stylesheets/keyframes";
+
+.card {
+    position: relative;
+    padding: var(--gap-md);
+    border: var(--border-width-sm) solid var(--color-border-muted);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-bg-surface);
+    animation: fade-in 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        border-color: var(--color-border-muted-hover);
+    }
+}
+
+.draft {
+    position: absolute;
+    top: -10px;
+    right: var(--gap-md);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+}
+
+.date {
+    display: block;
+    margin-top: var(--gap-xs);
+    font-size: var(--font-size-date-sm);
+    color: var(--color-text-muted);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-xs);
+}

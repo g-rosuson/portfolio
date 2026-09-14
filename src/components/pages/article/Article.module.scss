@@ -1,0 +1,30 @@
+@import "src/stylesheets/keyframes";
+
+.article {
+    animation: fade-in 0.2s;
+}
+
+.container {
+    > :not(:last-child) {
+        margin-bottom: var(--gap-lg);
+    }
+}
+
+.wrapper {
+    > :not(:last-child) {
+        margin-bottom: var(--gap-md);
+    }
+}
+
+.date {
+    display: block;
+    margin-top: var(--gap-xs);
+    font-size: var(--font-size-date-md);
+    color: var(--color-text-muted);
+}   
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-xs);
+}

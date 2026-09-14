@@ -1,0 +1,24 @@
+@import "src/stylesheets/placeholders";
+
+.container {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    margin-bottom: var(--gap-md);
+}
+
+.chevron {
+    @extend %flex-center-center;
+    font-size: var(--font-size-label-md);
+    color: var(--color-text);
+}
+
+.back {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    font-size: var(--font-size-label-md);
+    color: var(--color-text);
+}

@@ -6,11 +6,13 @@
     --top-bar-height: 3.5rem;
     --border-radius-md: 6px;
     --border-radius-sm: 4px;
+    --border-width-sm: 1px;
+    --border-width-md: 2px;
     --gap-xl: 3rem;
     --gap-lg: 1.5rem;
     --gap-md: 1rem;
     --gap-sm: 0.8rem;
-    --gap-xs: 0.5rem;
+    --gap-xs: 0.4rem;
 
     // Shadows
     --shadow: 0 8px 16px rgb(2 8 20 / 10%), 0 4px 8px rgb(2 8 20 / 8%);
@@ -23,12 +25,32 @@
     --color-brand-yellow: #dfe70d;
     --color-brand-purple: #dd6aff;
     --color-brand-green: #11e0c8;
-    --color-border: #7c7c7c;
-    --color-border-contrast: #2a2a2a;
+    --color-brand-green-foreground: #006e61;
+    --color-brand-green-border: #006e61;
+    --color-border: #2a2a2a;
+    --color-border-muted: #d4d4d4;
+    --color-border-muted-hover: #adadad;
     --color-project-brown: #c4796b;
     --color-project-light-brown: #e3c6bf;
     --color-project-blue: #2f99ac;
     --color-project-light-blue: #c8e0e6;
+
+    // Font sizes
+    --font-size-label-sm: 0.6rem;
+    --font-size-label-md: 0.8rem;
+    --font-size-date-sm: 0.6rem;
+    --font-size-date-md: 0.8rem;
+    --font-size-input: 0.7rem;
+    --font-size-body: 0.8rem;
+    --font-size-heading-xl: 2.2rem;
+    --font-size-heading-lg: 1.8rem;
+    --font-size-heading-md: 1.6rem;
+    --font-size-heading-sm: 1.2rem;
+    --font-size-heading-xs: 1rem;
+    --font-size-icon-sm: 0.8rem;
+    --font-size-icon-md: 1rem;
+    --font-size-icon-lg: 1.2rem;
+    --font-size-icon-xl: 2rem;
 }
 
 /* Set dark-mode colors */
@@ -36,9 +58,11 @@
     color-scheme: dark;
     --color-bg: #1c1b1d;
     --color-bg-surface: #2a2a2d;
-    --color-text: #c4c4c4;
+    --color-text: #e7e7e7;
     --color-text-muted: #a4a4a4;
-    --color-border-contrast: #fcf1e0;
+    --color-border-muted: #464646;
+    --color-border-muted-hover: #626262;
+    --color-border: #fcf1e0;
 }
 
 /* Use a more-intuitive box-sizing model */
@@ -105,12 +129,10 @@ h6 {
     overflow-wrap: break-word;
 }
 
-/* Increase line-height for paragraphs and span's */
-p,
-span {
+p {
     max-width: 30rem;
     line-height: 1.5;
-    font-size: 0.9rem;
+    font-size: var(--font-size-body);
     color: var(--color-text-muted);
 }
 

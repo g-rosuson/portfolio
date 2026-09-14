@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 
 import ProjectCard from './projectCard/ProjectCard';
@@ -9,11 +7,13 @@ import { Project } from 'src/shared/types/projects';
 
 import styling from './Projects.module.scss';
 
+const PROJECTS_HEADING = 'Projects';
+
 const Projects = ({ projects }: { projects: Project[] }) => {
     return (
         <section>
-            <Heading level={1} size="xl">
-                Projects
+            <Heading level={1} size="lg">
+                {PROJECTS_HEADING}
             </Heading>
 
             <div className={styling.cards}>

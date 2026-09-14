@@ -1,0 +1,16 @@
+.clear {
+    width: fit-content;
+    padding: 0.4rem;
+    border-radius: var(--border-radius-md);
+    background-color: transparent;
+    font-size: var(--font-size-label-sm);
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+}
