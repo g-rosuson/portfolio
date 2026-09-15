@@ -1,9 +1,10 @@
 .button {
     width: fit-content;
-    padding: 0.25rem;
-    background-color: var(--color-primary-background);
-    font-size: var(--font-size-extra-small);
-    font-weight: 600;
-    color: var(--color-primary-foreground);
+    padding-block: var(--gap-xs);
+    padding-inline: var(--gap-sm);
+    background-color: var(--color-brand-green);
+    font-size: var(--font-size-label-sm);
+    font-weight: 500;
+    color: var(--color-brand-green-foreground);
     cursor: pointer;
 }

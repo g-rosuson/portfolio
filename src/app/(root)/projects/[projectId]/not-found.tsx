@@ -2,9 +2,9 @@ import React from 'react';
 
 import NotFoundComponent from 'src/components/shared/notFound/NotFound';
 
-const BACK_BTN_LABEL = 'Articles';
-const NOT_FOUND_TITLE = 'Article not found';
-const NOT_FOUND_MESSAGE = 'This article does not exist, make sure the URL is correct.';
+const BACK_BTN_LABEL = 'Projects';
+const NOT_FOUND_TITLE = 'Project not found';
+const NOT_FOUND_MESSAGE = 'This project does not exist, make sure the URL is correct.';
 
 /**
  * Renders when `notFound()` is called from this segment. Next serves that 404
@@ -13,5 +13,5 @@ const NOT_FOUND_MESSAGE = 'This article does not exist, make sure the URL is cor
  * @see docs/theme.md
  */
 export default function NotFound() {
-    return <NotFoundComponent href="/articles" backBtnLabel={BACK_BTN_LABEL} title={NOT_FOUND_TITLE} message={NOT_FOUND_MESSAGE}/>;
+    return <NotFoundComponent href="/projects" backBtnLabel={BACK_BTN_LABEL} title={NOT_FOUND_TITLE} message={NOT_FOUND_MESSAGE}/>;
 }

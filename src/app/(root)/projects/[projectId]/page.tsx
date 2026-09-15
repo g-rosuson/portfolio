@@ -1,16 +1,18 @@
 import React, { cache } from 'react';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import api from 'src/api';
 import { OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH, SITE_URL } from 'src/shared/constants/site';
 
 import ProjectPage from 'src/components/pages/project/Project';
+
+const NOT_FOUND_TITLE = 'Project not found';
 
 /**
  * Retrieves slugs for the statically generated project pages.
  */
 export async function generateStaticParams() {
     const slugs = await api.firebase.queries.projects.getAll();
-
 
     return slugs.map(({ id }) => ({
         projectId: id
@@ -23,6 +25,14 @@ const getProjectData = cache(async (projectId: string) => {
 
 export async function generateMetadata({ params }: { params: { projectId: string } }): Promise<Metadata> {
     const project = await getProjectData(params.projectId);
+
+    if (!project) {
+        return {
+            title: NOT_FOUND_TITLE,
+            robots: { index: false }
+        };
+    }
+
     const url = `${SITE_URL}/projects/${params.projectId}`;
     const imageUrl = `${SITE_URL}/images/${project.details.metadata.ogImageName}`;
 
@@ -58,6 +68,9 @@ export async function generateMetadata({ params }: { params: { projectId: string
 const Page = async ({ params: { projectId } }: { params: { projectId: string }}) => {
     const project = await getProjectData(projectId);
 
+    if (!project) {
+        notFound();
+    }
 
     return (
         <ProjectPage
