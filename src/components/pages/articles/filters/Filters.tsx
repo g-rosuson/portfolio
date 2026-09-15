@@ -13,26 +13,29 @@ interface Props {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onToggleTag: (tag: string) => void;
     onClearTags: () => void;
+    hasArticles: boolean;
 }
 
-const Filters = ({ value, tags, selectedTags, onChange, onToggleTag, onClearTags }: Props) => {
+const Filters = ({ value, tags, selectedTags, onChange, onToggleTag, onClearTags, hasArticles }: Props) => {
     return (
         <section className={styling.filters}>
-            <SearchInput value={value} onChange={onChange}/>
+            <SearchInput value={value} disabled={!hasArticles} onChange={onChange}/>
 
-            <div className={styling.tags}>
-                <ClearTagsBtn onClick={onClearTags}/>
+            {hasArticles && (
+                <div className={styling.tags}>
+                    <ClearTagsBtn onClick={onClearTags}/>
 
-                <div className={styling.chips}>
-                    {tags.map((tag) => (
-                        <FilterChip
-                            key={tag}
-                            tag={tag}
-                            isSelected={selectedTags.includes(tag)} onToggle={() => onToggleTag(tag)}
-                        />
-                    ))}
+                    <div className={styling.chips}>
+                        {tags.map((tag) => (
+                            <FilterChip
+                                key={tag}
+                                tag={tag}
+                                isSelected={selectedTags.includes(tag)} onToggle={() => onToggleTag(tag)}
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
         </section>
     );
 };

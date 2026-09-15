@@ -8,10 +8,11 @@ const SEARCH_ARIA_LABEL = 'Search by title, description or tags';
 
 interface Props {
     value: string;
+    disabled: boolean;
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SearchInput = ({ value, onChange }: Props) => {
+const SearchInput = ({ value, disabled, onChange }: Props) => {
     return (
         <form role="search">
             <input
@@ -21,6 +22,7 @@ const SearchInput = ({ value, onChange }: Props) => {
                 placeholder={SEARCH_PLACEHOLDER}
                 aria-label={SEARCH_ARIA_LABEL}
                 onChange={onChange}
+                disabled={disabled}
             />
         </form>
     );

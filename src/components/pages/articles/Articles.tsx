@@ -164,8 +164,11 @@ const Articles = ({ articles }: Props) => {
     }, []);
 
 
-    // Determine if there are any articles to display
-    const hasArticles = filteredArticles.length > 0;
+    // Determine if there are any articles to display after filtering
+    const hasFilteredArticles = filteredArticles.length > 0;
+
+    // Determine if there are any articles to display before filtering
+    const hasArticles = articles.length > 0;
 
     // Determine article cards content
     const cards = (
@@ -199,9 +202,10 @@ const Articles = ({ articles }: Props) => {
                     onChange={onSearchTermChange}
                     onToggleTag={onToggleTag}
                     onClearTags={onClearTags}
+                    hasArticles={hasArticles}
                 />
 
-                {hasArticles ? cards : <Placeholder/>}
+                {hasFilteredArticles ? cards : <Placeholder hasArticles={hasArticles}/>}
             </section>
         </section>
     );

@@ -20,4 +20,9 @@
             outline: var(--border-width-sm) solid var(--color-brand-yellow);
         }
     }
+
+    &:disabled {
+        opacity: 0.8;
+        cursor: not-allowed;
+    }
 }

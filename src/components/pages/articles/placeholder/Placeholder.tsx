@@ -2,12 +2,13 @@ import React from 'react';
 
 import styling from './Placeholder.module.scss';
 
-const PLACEHOLDER_LABEL = 'No articles match these filters...';
+const FILTER_PLACEHOLDER_LABEL = 'No articles match these filters...';
+const NO_ARTICLES_PLACEHOLDER_LABEL = 'No articles available...';
 
-const Placeholder = () => {
+const Placeholder = ({ hasArticles }: { hasArticles: boolean }) => {
     return (
         <p className={styling.placeholder}>
-            {PLACEHOLDER_LABEL}
+            {hasArticles ? FILTER_PLACEHOLDER_LABEL : NO_ARTICLES_PLACEHOLDER_LABEL}
         </p>
     );
 };
