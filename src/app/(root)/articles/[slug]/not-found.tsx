@@ -4,6 +4,8 @@ import BackBtn from 'src/components/ui/backBtn/BackBtn';
 import Heading from 'src/components/ui/heading/Heading';
 
 const BACK_BTN_LABEL = 'Articles';
+const NOT_FOUND_TITLE = 'Article not found';
+const NOT_FOUND_MESSAGE = 'This article does not exist, make sure the URL is correct.';
 
 /**
  * Renders when `notFound()` is called from this segment. Next serves that 404
@@ -17,11 +19,11 @@ export default function NotFound() {
             <BackBtn href="/articles" label={BACK_BTN_LABEL}/>
 
             <Heading level={1} size="lg">
-                Article not found
+                {NOT_FOUND_TITLE}
             </Heading>
 
             <p>
-                This article does not exist, make sure the URL is correct.
+                {NOT_FOUND_MESSAGE}
             </p>
         </>
     );

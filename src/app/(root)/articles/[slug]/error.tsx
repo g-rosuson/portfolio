@@ -6,6 +6,8 @@ import BackBtn from 'src/components/ui/backBtn/BackBtn';
 import Heading from 'src/components/ui/heading/Heading';
 
 const BACK_BTN_LABEL = 'Articles';
+const ERROR_MESSAGE = 'Something went wrong, please try again.';
+const ERROR_TITLE = 'An error occurred';
 
 export default function Error() {
     return (
@@ -13,11 +15,11 @@ export default function Error() {
             <BackBtn href="/articles" label={BACK_BTN_LABEL}/>
 
             <Heading level={1} size="lg">
-                An error occurred
+                {ERROR_TITLE}
             </Heading>
 
             <p>
-                Something went wrong, please try again.
+                {ERROR_MESSAGE}
             </p>
         </>
     );
