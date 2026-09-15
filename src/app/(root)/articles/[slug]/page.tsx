@@ -72,7 +72,13 @@ const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
     }
 
     return (
-        <Article title={article.title} date={article.date} tags={article.tags} draft={article.draft}>
+        <Article
+            title={article.title}
+            date={article.date}
+            tags={article.tags}
+            draft={article.draft}
+            readingTimeMinutes={article.readingTimeMinutes}
+        >
             <Suspense>
                 <MDXRemote
                     source={article.source}

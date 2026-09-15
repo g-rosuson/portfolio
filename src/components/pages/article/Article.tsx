@@ -11,12 +11,13 @@ import styling from './Article.module.scss';
 
 const BACK_BTN_LABEL = 'Articles';
 const DRAFT_BADGE_LABEL = 'Draft';
+const READING_TIME_LABEL = 'min read';
 
-type Props = Pick<Article, 'title' | 'date' | 'tags' | 'draft'> & {
+type Props = Pick<Article, 'title' | 'date' | 'tags' | 'draft' | 'readingTimeMinutes'> & {
     children: ReactNode;
 }
 
-const ArticlePage = ({ title, date, tags, draft, children }: Props) => {
+const ArticlePage = ({ title, date, tags, draft, readingTimeMinutes, children }: Props) => {
     return (
         <div className={styling.article}>
             <BackBtn href="/articles" label={BACK_BTN_LABEL}/>
@@ -37,7 +38,7 @@ const ArticlePage = ({ title, date, tags, draft, children }: Props) => {
                 </Heading>
 
                 <div className={styling.info}>
-                    <span className={styling.infoItem}>5 min read</span>
+                    <span className={styling.infoItem}>{readingTimeMinutes} {READING_TIME_LABEL}</span>
                     <time className={styling.infoItem} dateTime={date}>{utils.time.formatIsoDateString(date)}</time>
                 </div>
             </section>

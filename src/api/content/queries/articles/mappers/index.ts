@@ -13,7 +13,8 @@ const mapToArticle = (document: DocumentFile): Article => {
         const article = articleSchema.parse({
             ...document.frontmatter,
             slug: document.slug,
-            source: document.source
+            source: document.source,
+            readingTimeMinutes: helpers.estimateReadingMinutes(document.strippedSource)
         });
 
         return {
