@@ -33,7 +33,6 @@ const Page = async () => {
     const articles = await api.content.queries.articles.getAll();
 
     return <Articles articles={articles}/>;
-
 };
 
 export default Page;

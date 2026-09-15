@@ -18,7 +18,7 @@ const getAll = async () => {
 };
 
 /**
- * Retrieves a listed article by slug, including the raw MDX source.
+ * Retrieves a listed article by slug, including the MDX body (no frontmatter).
  * Returns null if the file is missing, or if it is a draft in production.
  */
 const getBySlug = async (slug: string) => {

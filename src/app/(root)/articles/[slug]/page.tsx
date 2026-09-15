@@ -84,7 +84,6 @@ const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
                     source={article.source}
                     components={mdxComponents}
                     options={{
-                        parseFrontmatter: true,
                         mdxOptions: { remarkPlugins: [remarkGfm] }
                     }}
                 />
