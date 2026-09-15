@@ -1,3 +1,4 @@
+import GithubSlugger from 'github-slugger';
 import config from 'src/config';
 
 import type { Article } from 'src/shared/types/articles';
@@ -40,10 +41,61 @@ const estimateReadingMinutes = (markdown: string): number => {
     return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE));
 };
 
+/**
+ * Turns a heading line into the text a reader actually sees.
+ * `rehype-slug` slugs that visible text, not the raw markdown, so
+ * `## Hello **world**` becomes "Hello world" and then id `hello-world`.
+ * We strip the same markers here so `github-slugger` gets the same string.
+ */
+const stripInlineMarkdown = (value: string): string => {
+    return value
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+        .replace(/`([^`]+)`/g, '$1')
+        .replace(/<[^>]+>/g, '')
+        .replace(/[*_~]/g, '')
+        .trim();
+};
+
+/**
+ * Builds the article section nav from the MDX body, before it is compiled.
+ * The nav needs `{ id, title }` up front; `rehype-slug` only stamps ids later,
+ * when MDX renders. Both sides use `github-slugger`, so a link to `#intro`
+ * lands on the heading with that id.
+ *
+ * Fenced code is removed first so a `##` inside a snippet is not a nav item.
+ * Every heading depth is still slugged, not only `##`. `rehype-slug` does the
+ * same, so two titles that collide stay in lockstep (`intro`, then `intro-1`).
+ * Only `##` headings are returned; deeper headings are slugged, not listed.
+ */
+const extractSections = (markdown: string): Article['sections'] => {
+    const body = markdown.replace(/```[\s\S]*?```/g, '');
+    const slugger = new GithubSlugger();
+    const sections: Article['sections'] = [];
+    const headingPattern = /^(#{2,6})\s+(.+)$/gm;
+
+    let match = headingPattern.exec(body);
+
+    while (match) {
+        const depth = match[1].length;
+        const title = stripInlineMarkdown(match[2]);
+        const id = slugger.slug(title);
+
+        if (depth === 2 && title) {
+            sections.push({ id, title });
+        }
+
+        match = headingPattern.exec(body);
+    }
+
+    return sections;
+};
+
 const helpers = {
     isListed,
     toIsoDateString,
-    estimateReadingMinutes
+    estimateReadingMinutes,
+    extractSections
 };
 
 export default helpers;

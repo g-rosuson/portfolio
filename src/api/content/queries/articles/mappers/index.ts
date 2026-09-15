@@ -14,7 +14,8 @@ const mapToArticle = (document: DocumentFile): Article => {
             ...document.frontmatter,
             slug: document.slug,
             source: document.strippedSource,
-            readingTimeMinutes: helpers.estimateReadingMinutes(document.strippedSource)
+            readingTimeMinutes: helpers.estimateReadingMinutes(document.strippedSource),
+            sections: helpers.extractSections(document.strippedSource)
         });
 
         return {

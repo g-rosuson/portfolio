@@ -44,7 +44,11 @@ const articleFrontmatterSchema = z.object({
 const articleSchema = articleFrontmatterSchema.extend({
     slug: z.string().min(1),
     source: z.string(),
-    readingTimeMinutes: z.number().int().min(1)
+    readingTimeMinutes: z.number().int().min(1),
+    sections: z.array(z.object({
+        id: z.string().min(1),
+        title: z.string().min(1)
+    }))
 });
 
 export { articleFrontmatterSchema, articleSchema };

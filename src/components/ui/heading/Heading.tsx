@@ -8,18 +8,25 @@ type Props = {
     children: ReactNode;
     removeMargin?: boolean;
     color?: 'yellow';
+    id?: string;
 }
 
 /**
  * @note Due to yellow fitting badly and not giving enough contrast with white backgrounds,
  * we only apply the yellow color to the heading in dark mode. See scss file for more details.
  */
-const Heading = ({ size = 'xl', level, children, removeMargin, color }: Props) => {
+const Heading = ({ size = 'xl', level, children, removeMargin, color, id }: Props) => {
     // Determine the heading element based on the provided level
     const Tag = `h${level}` as keyof React.JSX.IntrinsicElements;
 
     return (
-        <Tag className={styling.base} data-color={color} data-size={size} data-remove-margin={!!removeMargin}>
+        <Tag
+            className={styling.base}
+            data-color={color}
+            data-size={size}
+            data-remove-margin={!!removeMargin}
+            {...(id ? { id } : {})}
+        >
             {children}
         </Tag>
     );

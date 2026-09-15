@@ -3,6 +3,10 @@
     font-weight: 800;
     color: var(--color-text);
 
+    &[id] {
+        scroll-margin-top: var(--gap-md);
+    }
+
     &[data-size="xl"] {
         margin-bottom: var(--gap-lg);
         font-size: var(--font-size-heading-xl);

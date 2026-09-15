@@ -7,13 +7,13 @@ import Heading from 'src/components/ui/heading/Heading';
 import styling from './Mdx.module.scss';
 
 const mdxComponents: MDXComponents = {
-    h2: ({ children }) => (
-        <Heading level={2} size="md">
+    h2: ({ id, children }) => (
+        <Heading level={2} size="md" id={id}>
             {children}
         </Heading>
     ),
-    h3: ({ children }) => (
-        <Heading level={3} size="sm">
+    h3: ({ id, children }) => (
+        <Heading level={3} size="sm" id={id}>
             {children}
         </Heading>
     ),
