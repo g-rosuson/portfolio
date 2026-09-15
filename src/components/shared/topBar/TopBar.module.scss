@@ -41,8 +41,8 @@
 
 .active {
     @extend .link;
-    color: var(--color-text);
     font-weight: 600;
+    color: var(--color-text);
 }
 
 .idle {
