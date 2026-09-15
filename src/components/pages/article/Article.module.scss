@@ -14,8 +14,8 @@
 .info {
     margin-block: var(--gap-md);
     padding: var(--gap-xs) var(--gap-sm);
-    border-bottom: var(--border-width-sm) solid var(--color-border-muted);
     border-top: var(--border-width-sm) solid var(--color-border-muted);
+    border-bottom: var(--border-width-sm) solid var(--color-border-muted);
 
     > :not(:last-child) {
         &::after {
