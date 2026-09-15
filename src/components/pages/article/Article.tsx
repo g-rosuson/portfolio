@@ -9,7 +9,8 @@ import type { Article } from 'src/shared/types/articles';
 
 import styling from './Article.module.scss';
 
-const BACK_BTN_LABEL = 'Back to articles';
+const BACK_BTN_LABEL = 'Articles';
+const DRAFT_BADGE_LABEL = 'Draft';
 
 type Props = Pick<Article, 'title' | 'date' | 'tags' | 'draft'> & {
     children: ReactNode;
@@ -20,33 +21,29 @@ const ArticlePage = ({ title, date, tags, draft, children }: Props) => {
         <div className={styling.article}>
             <BackBtn href="/articles" label={BACK_BTN_LABEL}/>
 
-            <div className={styling.container}>
-                <section className={styling.wrapper}>
-                    <div>
-                        <Heading level={1} size="lg" removeMargin>
-                            {title}
-                        </Heading>
+            <section className={styling.tags}>
+                {draft && <Badge variant="green">{DRAFT_BADGE_LABEL}</Badge>}
 
-                        <time className={styling.date} dateTime={date}>
-                            {utils.time.formatIsoDateString(date)}
-                        </time>
-                    </div>
+                {tags.map((tag) => (
+                    <Badge key={tag}>
+                        {tag}
+                    </Badge>
+                ))}
+            </section>
 
-                    <div className={styling.tags}>
-                        {draft && <Badge variant="green">Draft</Badge>}
+            <section>
+                <Heading level={1} size="lg" removeMargin>
+                    {title}
+                </Heading>
 
-                        {tags.map((tag) => (
-                            <Badge key={tag}>
-                                {tag}
-                            </Badge>
-                        ))}
-                    </div>
-                </section>
+                <div className={styling.info}>
+                    <span className={styling.infoItem}>5 min read</span>
+                    <time className={styling.infoItem} dateTime={date}>{utils.time.formatIsoDateString(date)}</time>
+                </div>
+            </section>
 
-                <section>{children}</section>
-            </div>
+            <section>{children}</section>
         </div>
-
     );
 };
 

@@ -6,6 +6,7 @@
     --top-bar-height: 3.5rem;
     --border-radius-md: 6px;
     --border-radius-sm: 4px;
+    --border-width-xs: 0.5px;
     --border-width-sm: 1px;
     --border-width-md: 2px;
     --gap-xl: 3rem;
@@ -39,7 +40,7 @@
     --font-size-label-sm: 0.6rem;
     --font-size-label-md: 0.8rem;
     --font-size-date-sm: 0.6rem;
-    --font-size-date-md: 0.8rem;
+    --font-size-date-md: 0.7rem;
     --font-size-input: 0.7rem;
     --font-size-body: 0.8rem;
     --font-size-heading-xl: 2.2rem;
@@ -133,7 +134,7 @@ p {
     max-width: 30rem;
     line-height: 1.5;
     font-size: var(--font-size-body);
-    color: var(--color-text-muted);
+    color: var(--color-text);
 }
 
 /* Remove underline from anchor tags */

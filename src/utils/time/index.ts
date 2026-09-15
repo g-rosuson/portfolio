@@ -11,7 +11,7 @@ const formatIsoDateString = (isoDate: string): string => {
 
     return new Intl.DateTimeFormat(DISPLAY_LOCALE, {
         day: 'numeric',
-        month: 'long',
+        month: 'short',
         year: 'numeric'
     }).format(date);
 };

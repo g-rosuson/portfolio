@@ -42,7 +42,7 @@ const ArticleCard = ({ slug, title, date, description, tags, draft }: Props) => 
                         ))}
                     </section>
 
-                    <p>
+                    <p className={styling.description}>
                         {description}
                     </p>
                 </div>

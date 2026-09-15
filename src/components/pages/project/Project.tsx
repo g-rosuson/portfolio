@@ -11,7 +11,7 @@ import { Theme, UniqueNames } from 'src/shared/types/projects';
 
 import styling from './Project.module.scss';
 
-const BACK_BTN_LABEL = 'Back to projects';
+const BACK_BTN_LABEL = 'Projects';
 const TECH_STACK_LABEL = 'Tech stack';
 const UNDER_THE_HOOD_LABEL = 'Under the hood';
 
