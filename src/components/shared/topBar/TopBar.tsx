@@ -1,20 +1,15 @@
 'use client';
 
 import React from 'react';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import SetTheme from 'src/components/shared/topBar/setTheme/SetTheme';
 import Logo from 'src/components/ui/logo/Logo';
 
 import styling from './TopBar.module.scss';
 
 import config from './config';
-
-const SetTheme = dynamic(() => import('src/components/shared/topBar/setTheme/SetTheme'), {
-    ssr: false,
-    loading: () => <div className={styling.skeleton}/>
-});
 
 // TODO: Add a hamburger menu for mobile
 const TopBar = () => {

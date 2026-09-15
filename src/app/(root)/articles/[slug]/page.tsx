@@ -9,8 +9,6 @@ import { OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH, SITE_URL } from 'src/shared/constants/
 
 import Article from 'src/components/pages/article/Article';
 
-export const dynamicParams = false;
-
 /**
  * Retrieves slugs for the statically generated article pages.
  */
@@ -20,6 +18,9 @@ export async function generateStaticParams() {
     return articles.map(({ slug }) => ({ slug }));
 }
 
+/**
+ * Retrieves article data by slug.
+ */
 const getArticleData = cache(async (slug: string) => {
     return await api.content.queries.articles.getBySlug(slug);
 });
@@ -27,9 +28,11 @@ const getArticleData = cache(async (slug: string) => {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const article = await getArticleData(params.slug);
 
-    // TODO: When this throws the build fails, do we need a error page?
     if (!article) {
-        throw new Error('Article not found');
+        return {
+            title: 'Article not found',
+            robots: { index: false }
+        };
     }
 
     const url = `${SITE_URL}/articles/${params.slug}`;
@@ -37,10 +40,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
     return {
         metadataBase: new URL(url),
-        title: `Article – ${article.title}`,
+        title: article.title,
         description: article.description,
         openGraph: {
-            title: `Article – ${article.title}`,
+            title: article.title,
             description: article.description,
             url,
             type: 'website',
@@ -54,7 +57,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             ]
         },
         twitter: {
-            title: `Article – ${article.title}`,
+            title: article.title,
             description: article.description
         },
         alternates: {
@@ -66,9 +69,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
     const article = await getArticleData(slug);
 
-    // TODO: When this throws the build fails, do we need a error page?
     if (!article) {
-        throw new Error('Article not found');
+        notFound();
     }
 
     return (

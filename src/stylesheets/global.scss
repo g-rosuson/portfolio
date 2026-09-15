@@ -54,8 +54,7 @@
     --font-size-icon-xl: 2rem;
 }
 
-/* Set dark-mode colors */
-:root[data-theme="dark"] {
+@mixin dark-color-tokens {
     color-scheme: dark;
     --color-bg: #1c1b1d;
     --color-bg-surface: #2a2a2d;
@@ -64,6 +63,18 @@
     --color-border-muted: #464646;
     --color-border-muted-hover: #626262;
     --color-border: #fcf1e0;
+}
+
+/* Set dark-mode colors */
+:root[data-theme="dark"] {
+    @include dark-color-tokens;
+}
+
+/* Next 404 shell has no data-theme; see docs/theme.md */
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme]) {
+        @include dark-color-tokens;
+    }
 }
 
 /* Use a more-intuitive box-sizing model */
@@ -97,6 +108,12 @@ body {
     line-height: 1.2;
     background-color: var(--color-bg);
     -webkit-font-smoothing: antialiased;
+}
+
+/* Outrank Next's 404 `body` colors; see docs/theme.md */
+html body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 /* Improve media defaults */
