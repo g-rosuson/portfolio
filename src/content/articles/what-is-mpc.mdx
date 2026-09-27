@@ -1,0 +1,100 @@
+---
+title: What is Model-Context-Protocol?
+date: 25-09-2026
+description: MCP is a standard that defines how a large language model can discover and use server-provided tools and resources.
+tags:
+    - AI
+    - LLM
+    - MCP
+draft: false
+ogImage: og.png
+---
+
+MCP is a standard that defines how a large language model can discover and use server-provided tools and resources, enabling it to access domain-specific knowledge, perform actions, and produce more accurate, useful outputs.
+
+## The problem MCP solves
+
+Unlike traditional APIs, which are designed around predetermined workflows where the application knows ahead of time what data and actions are needed, LLM workflows are highly dynamic and non-deterministic. They depend on the application query and often require access to external systems, domain specific knowledge and tools to produce an accurate and useful response. Therefore, without a unified protocol like MCP, each system would require a custom integration to make its data and actions accessible to the LLM. Creating a fragmented environment of systems, with different implementations and integration requirements.
+
+## Design Philosophy
+
+MCP is a protocol designed for AI applications and requires thinking beyond traditional client/server interactions. Rather than defining every interaction upfront, MCP allows the LLM to determine what it needs and interact with external systems through the MCP client.
+
+## Architecture
+
+The MCP architecture consists, at a high level, of a host application, a MCP client and one or more MCP servers.
+
+The host applications manages communication with the LLM and the MCP client. The MCP client manages the communication with the MCP servers, which provide access to resources and tools. 
+
+```text
+Host Application
+├── LLM
+└── MCP Client
+        ↓ ↑
+   MCP Server
+   ├── Resources
+   └── Tools
+```
+
+This separation allows the host to control how the LLM interacts with external systems and which resources and tools it can access.
+
+## A practical example
+
+Consider an AI assistant used by a project management application. A user asks:
+
+> "What are the cost implications of Project X?"
+
+The LLM can use MCP to retrieve the relevant project report and use that context to answer the question.
+
+The same MCP server could also expose tools that allow the assistant to perform actions, such as creating a task or updating a project.
+
+The important point is that the LLM does not need to know how the underlying project management system works. It only needs to understand the resources and tools exposed through MCP.
+
+## Resources, tools and prompts
+
+MCP servers can expose different capabilities to an AI application:
+- [**Resources**](https://modelcontextprotocol.info/docs/concepts/resources/) provide information the LLM can access, such as files, documents or database records
+- [**Tools**](https://modelcontextprotocol.info/docs/concepts/tools/) allow the LLM to perform actions, such as querying a database or calling an API
+- **[Prompts](https://modelcontextprotocol.info/docs/concepts/prompts/)** provide reusable instructions or workflows that can be exposed to the LLM
+
+This allows an MCP server to expose both the **context** an LLM needs and the **actions** it can perform.
+
+## Progressive context discovery
+
+The protocol leverages traditional request/response interactions to allow an LLM to progressively discover and retrieve the context it needs. In practice, the LLM determines what information it needs, while the MCP client handles the communication with the server. Consider this example:
+
+- **Client** sends the **LLM** a query: **"Summarise the cost implications of project X"**
+- **LLM** receives the query and requests the available resources via the **MCP client**
+- **MCP client** requests the available resources from the system
+- **System** responds with the available resources, in this case, files called: **"project_x_report.pdf"** and **"project_y_report.pdf"**
+- **LLM** determines that it needs the content of **"project_x_report.pdf"**
+- **MCP client** requests the content of **"project_x_report.pdf"**
+- **System** responds with the content of **"project_x_report.pdf"**
+
+Now the LLM has the relevant context it needs and can answer the client's query in a detailed manner.
+
+## Security
+
+### Mediated Access Pattern
+
+Due to the security risks and the non-deterministic nature of LLMs, they should not be given direct system access. Therefore, MCP follows a **mediated access model**, where the host application acts as a broker between the LLM and external resources. This approach allows the host application to control which resources and tools the LLM can access and use.
+
+<HostClientServerDiagram />
+
+### The lethal trifecta
+
+However, mediation alone does not eliminate the risks of giving an LLM access to sensitive data, the ability to process untrusted content, and the ability to communicate externally. This combination, also known as the [lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/), can be exploited through [prompt injection](https://en.wikipedia.org/wiki/Prompt_injection), where malicious instructions in untrusted content can cause the LLM to perform unintended actions. Therefore, the host application must enforce appropriate permissions around what the LLM can access and what actions it can perform.
+
+## Conclusion
+
+MCP provides a standard way for AI applications to interact with external systems.
+
+It allows LLMs to access relevant context and perform actions through a common interface, while the host application remains responsible for controlling access.
+
+This provides a common architecture for building AI applications without requiring a custom integration for every system.
+
+## Resources
+
+[MCP official docs](https://modelcontextprotocol.info/docs/)
+[Lethal trifecta](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)
+[Prompt injection](https://en.wikipedia.org/wiki/Prompt_injection)
