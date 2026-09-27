@@ -4,7 +4,7 @@
 
 ## Mapping
 
-[`mapToArticle`](../../../src/api/content/queries/articles/mappers/index.ts) spreads frontmatter, adds `slug`, and sets `source` to the stripped body. It derives `readingTimeMinutes` and `sections`, then [`articleSchema`](../../../src/api/content/queries/articles/schemas/index.ts) validates the result.
+[`mapToArticle`](../../../src/api/content/queries/articles/mappers/index.ts) spreads frontmatter, adds `slug`, and sets `source` to the stripped body. It derives `readingTimeMinutes` and `sections`, then [`articleSchema`](../../../src/api/content/queries/articles/schemas/index.ts) validates the result. `slug` must be one of the filenames in `articleSlugSchema`.
 
 `date` is rewritten from `DD-MM-YYYY` to ISO `YYYY-MM-DD` so the calendar date is unambiguous and valid for `<time datetime>`.
 
