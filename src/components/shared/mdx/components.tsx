@@ -8,9 +8,11 @@ import styling from './Mdx.module.scss';
 
 const mdxComponents: MDXComponents = {
     h2: ({ id, children }) => (
-        <Heading level={2} size="md" id={id}>
-            {children}
-        </Heading>
+        <div className={styling.heading}>
+            <Heading level={2} size="md" id={id}>
+                {children}
+            </Heading>
+        </div>
     ),
     h3: ({ id, children }) => (
         <Heading level={3} size="sm" id={id}>
@@ -39,7 +41,9 @@ const mdxComponents: MDXComponents = {
 
         return <Image className={styling.image} src={src} alt={alt ?? ''} width={800} height={450}/>;
     },
-    pre: ({ children }) => <pre className={styling.pre}>{children}</pre>
+    pre: ({ children }) => <pre className={styling.pre}>{children}</pre>,
+    blockquote: ({ children }) => <blockquote className={styling.blockquote}>{children}</blockquote>,
+    ul: ({ children }) => <ul className={styling.ul}>{children}</ul>
 };
 
 export { mdxComponents };

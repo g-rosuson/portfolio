@@ -17,7 +17,7 @@ const ArticleCard = ({ slug, title, date, description, tags, draft }: Props) => 
     return (
         <article className={styling.card}>
             <Link href={`/articles/${slug}`}>
-                {!draft && (
+                {draft && (
                     <div className={styling.draft}>
                         <Badge variant="green">{DRAFT_BADGE_LABEL}</Badge>
                     </div>

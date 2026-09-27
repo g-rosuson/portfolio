@@ -6,6 +6,6 @@
 
 .cards {
     > :not(:last-child) {
-        margin-bottom: var(--gap);
+        margin-bottom: var(--gap-md);
     }
 }

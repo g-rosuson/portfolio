@@ -172,7 +172,7 @@ const Articles = ({ articles }: Props) => {
 
     // Determine article cards content
     const cards = (
-        <div className={styling.cards}>
+        <section className={styling.cards}>
             {filteredArticles.map((article) => (
                 <ArticleCard
                     key={article.slug}
@@ -184,7 +184,7 @@ const Articles = ({ articles }: Props) => {
                     draft={article.draft}
                 />
             ))}
-        </div>
+        </section>
     );
 
 

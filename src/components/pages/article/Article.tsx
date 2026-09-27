@@ -1,4 +1,9 @@
 import React, { ReactNode } from 'react';
+import { MDXRemote } from 'next-mdx-remote-client/rsc';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
+import { articleDiagrams } from 'src/components/pages/article/diagrams';
+import { mdxComponents } from 'src/components/shared/mdx/components';
 import utils from 'src/utils';
 
 import SectionNav from './sectionNav/SectionNav';
@@ -14,11 +19,9 @@ const BACK_BTN_LABEL = 'Articles';
 const DRAFT_BADGE_LABEL = 'Draft';
 const READING_TIME_LABEL = 'min read';
 
-type Props = Pick<Article, 'title' | 'date' | 'tags' | 'draft' | 'readingTimeMinutes' | 'sections'> & {
-    children: ReactNode;
-}
+type Props = Pick<Article, 'title' | 'date' | 'tags' | 'draft' | 'source' | 'slug' | 'readingTimeMinutes' | 'sections'>
 
-const ArticlePage = ({ title, date, tags, draft, readingTimeMinutes, sections, children }: Props) => {
+const ArticlePage = ({ title, date, tags, draft, source, slug, readingTimeMinutes, sections }: Props) => {
     return (
         <div className={styling.article}>
             <BackBtn href="/articles" label={BACK_BTN_LABEL}/>
@@ -33,18 +36,28 @@ const ArticlePage = ({ title, date, tags, draft, readingTimeMinutes, sections, c
                 ))}
             </section>
 
-            <section>
-                <Heading level={1} size="lg" removeMargin>
-                    {title}
-                </Heading>
+            <Heading level={1} size="lg">
+                {title}
+            </Heading>
 
-                <div className={styling.info}>
-                    <span className={styling.infoItem}>{readingTimeMinutes} {READING_TIME_LABEL}</span>
-                    <time className={styling.infoItem} dateTime={date}>{utils.time.formatIsoDateString(date)}</time>
-                </div>
-            </section>
+            <div className={styling.info}>
+                <span className={styling.infoItem}>{readingTimeMinutes} {READING_TIME_LABEL}</span>
+                <time className={styling.infoItem} dateTime={date}>{utils.time.formatIsoDateString(date)}</time>
+            </div>
 
-            <section>{children}</section>
+            <MDXRemote
+                source={source}
+                components={{
+                    ...mdxComponents,
+                    ...articleDiagrams[slug]
+                }}
+                options={{
+                    mdxOptions: {
+                        remarkPlugins: [remarkGfm],
+                        rehypePlugins: [rehypeSlug]
+                    }
+                }}
+            />
 
             <SectionNav sections={sections}/>
         </div>

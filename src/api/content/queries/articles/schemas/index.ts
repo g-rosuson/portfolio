@@ -30,6 +30,9 @@ const isDateValid = (value: string): boolean => {
     return isValidYear && isValidMonth && isValidDay;
 };
 
+/**
+ * Article frontmatter schema.
+ */
 const articleFrontmatterSchema = z.object({
     title: z.string().min(1),
     date: z.string().refine(isDateValid, {
@@ -41,8 +44,16 @@ const articleFrontmatterSchema = z.object({
     ogImage: z.string().min(1)
 });
 
+/**
+ * Article filenames without `.mdx`. A file whose name is not listed fails validation.
+ */
+const articleSlugSchema = z.enum(['what-is-mpc']);
+
+/**
+ * Article schema.
+ */
 const articleSchema = articleFrontmatterSchema.extend({
-    slug: z.string().min(1),
+    slug: articleSlugSchema,
     source: z.string(),
     readingTimeMinutes: z.number().int().min(1),
     sections: z.array(z.object({
@@ -51,4 +62,4 @@ const articleSchema = articleFrontmatterSchema.extend({
     }))
 });
 
-export { articleFrontmatterSchema, articleSchema };
+export { articleFrontmatterSchema, articleSchema, articleSlugSchema };
