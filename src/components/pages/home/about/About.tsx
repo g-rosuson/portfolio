@@ -3,15 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import Heading from 'src/components/ui/heading/Heading';
 import { CheckmarkSquared, Copy, External } from 'src/components/ui/icons/Icons';
 
-import { Props } from './About.types';
-
-const EMAIL_ADDRESS = 'g.rosuson@gmail.com';
-const HEADING = 'Hi there';
-const INTRO_MESSAGE = 'My name is Guðmundur and I\'m a web developer based in Baden, Switzerland';
-
 import styling from './About.module.scss';
 
-const About = ({ isVisible }: Props) => {
+import { CONTACT_LABEL, COPY_EMAIL_ARIA_LABEL, EMAIL_ADDRESS, HEADING, INTRO_MESSAGE, LINKEDIN_LABEL, LINKEDIN_URL } from './constants';
+
+const About = () => {
     // State
     const [copied, setCopied] = useState(false);
 
@@ -53,10 +49,10 @@ const About = ({ isVisible }: Props) => {
 
 
     return (
-        <div className={styling.container} data-is-visible={isVisible}>
+        <div className={styling.container}>
             <div>
                 <div className={styling.heading}>
-                    <Heading level={2} removeMargin>
+                    <Heading level={2} color="yellow" removeMargin>
                         {HEADING}
                     </Heading>
                 </div>
@@ -67,18 +63,18 @@ const About = ({ isVisible }: Props) => {
             </div>
 
             <div className={styling.wrapper}>
-                <p className={styling.contact}>
-                    Contact
-                </p>
+                <Heading level={3} size="sm">
+                    {CONTACT_LABEL}
+                </Heading>
 
                 <a
                     className={styling.field}
-                    href="https://www.linkedin.com/in/guðmundur-helgi-rósuson-63bb6a191/"
+                    href={LINKEDIN_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                     <span className={styling.label}>
-                        LinkedIn
+                        {LINKEDIN_LABEL}
                     </span>
 
                     <div className={styling.icon}>
@@ -89,7 +85,7 @@ const About = ({ isVisible }: Props) => {
                 <button
                     className={styling.field}
                     onClick={copyEmailHandler}
-                    aria-label="Copy email address g.rosuson@gmail.com to clipboard"
+                    aria-label={COPY_EMAIL_ARIA_LABEL}
                 >
                     <span className={styling.label}>
                         {EMAIL_ADDRESS}

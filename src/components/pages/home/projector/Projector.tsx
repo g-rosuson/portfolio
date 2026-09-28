@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import { Props } from './Projector.types';
 
-const INTERVAL_DURATION = 400;
-
 import styling from './Projector.module.scss';
+
+import { IMAGE_ALT, INTERVAL_DURATION } from './constants';
 
 const Projector = ({ items, onSequenceEnd }: Props) => {
     // State
@@ -45,7 +45,7 @@ const Projector = ({ items, onSequenceEnd }: Props) => {
         // eslint-disable-next-line @next/next/no-img-element
         <img
             className={styling.image}
-            alt="Portrait of Guðmundur, the website creator"
+            alt={IMAGE_ALT}
             src={activeImage.src}
         />
     );

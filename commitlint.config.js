@@ -8,30 +8,8 @@ module.exports = {
         }
     },
     rules: {
-        'type-enum': [
-            2,
-            'always',
-            [
-                'feat',
-                'fix',
-                'refactor',
-                'chore',
-                'test',
-                'docs',
-                'style'
-            ]
-        ],
-        'scope-enum': [
-            2,
-            'always',
-            [
-                'general',
-                'housekeeping',
-                'home-page',
-                'project',
-                'blog'
-            ]
-        ],
+        'type-enum': [2, 'always', ['feat', 'fix', 'refactor', 'chore', 'test', 'docs', 'style']],
+        'scope-enum': [2, 'always', ['general', 'housekeeping', 'home', 'projects', 'articles']],
         'scope-empty': [2, 'never']
     }
 };

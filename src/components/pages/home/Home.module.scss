@@ -1,65 +1,68 @@
 @import "src/stylesheets/keyframes";
 
 .container {
-	max-width: 25rem;
-	min-height: 25rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	gap: var(--gap-small);
-	margin: 0 auto;
+    height: calc(100% - var(--top-bar-height));
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 
-	> .about {
-		display: none;
-	}
+    &[data-is-loading="true"] {
+        align-items: center;
+    }
 }
 
-.divide {
-	@extend .container;
-
-	> .projector, .image {
-		width: 100%;
-		transition: width ease-in-out 0.4s;
-	}
-
-	> .about {
-		display: block;
-	}
+.layout {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    margin: 0 auto;  
 }
 
-.projector {
-	width: 100%;
+[data-show-about-section="false"].layout {
+    > .about {
+       display: none;
+    }
 }
 
+.projector,
 .image {
-	position: relative;
-	width: 100%;
-	height: 16rem;
-	border-radius: var(--border-radius);
-	border: 2px solid var(--color-contrast);
-	animation: fade-in 0.4s;
-	overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 15rem;
+    border-radius: var(--border-radius-md);
+    border: var(--border-width-md) solid var(--color-border);
+    animation: fade-in 0.4s;
+    overflow: hidden;
 }
 
 @media screen and (min-width: 500px) {
-	.container {
-		flex-direction: row;
-		gap: var(--gap-large);
-	}
+    .container {
+        align-items: center;
+    }
 
-	.divide {
-		max-width: 40rem;
+    .layout {
+        max-width: 40rem;
+        height: 25rem;
+        flex-direction: row;
+        gap: var(--gap-lg);
+    }
 
-		> .projector, .image {
-			width: 25%;
-		}
+    .projector,
+    .image {
+        height: 25rem;
+    }
 
-		> .about {
-			width: 75%;
-		}
-	}
+    [data-show-about-section="true"].layout {
+        > .projector,
+        .image {
+            width: 25%;
+            transition: width ease-in-out 0.4s;
+        }
 
-	.image {
-		height: unset;
-	}
+        > .about {
+            width: 75%;
+            height: 25rem;
+        }
+    }
 }

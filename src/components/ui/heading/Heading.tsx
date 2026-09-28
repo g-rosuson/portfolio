@@ -1,38 +1,32 @@
 import React, { ReactNode } from 'react';
 
-// eslint-disable-next-line css-modules/no-unused-class
 import styling from './Heading.module.scss';
 
 type Props = {
-    size?: 'xl' | 'l' | 'm' | 's';
+    size?: 'xl' | 'lg' | 'md' | 'sm' | 'xs';
     level: 1 | 2 | 3;
     children: ReactNode;
     removeMargin?: boolean;
+    color?: 'yellow';
+    id?: string;
 }
 
-const Heading = ({ size, level, children, removeMargin }: Props) => {
-    // Determine the heading classname based on the provided size
-    let className = styling.heading;
-
-    if (size === 'l') {
-        className = styling.large;
-    }
-
-    if (size === 'm') {
-        className = styling.medium;
-    }
-
-    if (size === 's') {
-        className = styling.small;
-    }
-
-
+/**
+ * @note Due to yellow fitting badly and not giving enough contrast with white backgrounds,
+ * we only apply the yellow color to the heading in dark mode. See scss file for more details.
+ */
+const Heading = ({ size = 'xl', level, children, removeMargin, color, id }: Props) => {
     // Determine the heading element based on the provided level
     const Tag = `h${level}` as keyof React.JSX.IntrinsicElements;
 
-
     return (
-        <Tag className={className} data-remove-margin={!!removeMargin}>
+        <Tag
+            className={styling.base}
+            data-color={color}
+            data-size={size}
+            data-remove-margin={!!removeMargin}
+            {...(id ? { id } : {})}
+        >
             {children}
         </Tag>
     );

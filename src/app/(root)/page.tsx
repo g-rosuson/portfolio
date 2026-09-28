@@ -1,38 +1,32 @@
 import React from 'react';
 import { Metadata } from 'next';
+import { DEFAULT_OG_IMAGE, SITE_URL } from 'src/shared/constants/site';
 
 import Home from 'src/components/pages/home/Home';
 import Heading from 'src/components/ui/heading/Heading';
 
 import styling from './Home.module.scss';
 
+const DESCRIPTION = `Guðmundur Rósuson is a skilled front-end developer from Reykjavík, Iceland,
+         specializing in creating responsive, user-friendly, and dynamic web applications.`;
+
 export const metadata: Metadata = {
-    metadataBase: new URL('https://www.rosuson.com'),
+    metadataBase: new URL(SITE_URL),
     title: 'Home – G.Rósuson',
-    description: `Guðmundur Rósuson is a skilled front-end developer from Reykjavík, Iceland,
-         specializing in creating responsive, user-friendly, and dynamic web applications.`,
+    description: DESCRIPTION,
     openGraph: {
         title: 'Rósuson – Portfolio',
-        description: `Guðmundur Rósuson is a skilled front-end developer from Reykjavík, Iceland,
-         specializing in creating responsive, user-friendly, and dynamic web applications.`,
-        url: 'https://www.rosuson.com',
+        description: DESCRIPTION,
+        url: SITE_URL,
         type: 'website',
-        images: [
-            {
-                url: 'https://www.rosuson.com/images/og_img_rosuson.png',
-                width: 1200,
-                height: 630,
-                alt: 'Rósuson website logo'
-            }
-        ]
+        images: [DEFAULT_OG_IMAGE]
     },
     twitter: {
         title: 'Rósuson - Portfolio',
-        description: `Guðmundur Rósuson is a skilled front-end developer from Reykjavík, Iceland,
-         specializing in creating responsive, user-friendly, and dynamic web applications.`
+        description: DESCRIPTION
     },
     alternates: {
-        canonical: 'https://www.rosuson.com'
+        canonical: SITE_URL
     }
 };
 
@@ -40,7 +34,7 @@ export const metadata: Metadata = {
 const Root = () => (
     <>
         <div className={styling.hidden}>
-            <Heading level={1} size="s">
+            <Heading level={1}>
                 Guðmundur Rósuson – Web developer portfolio
             </Heading>
         </div>

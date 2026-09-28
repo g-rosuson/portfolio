@@ -35,11 +35,11 @@ const getAll = async () => {
  * Retrieves a project from Firestore by ID.
  * Throws an error if the project is not found.
  */
-const getById = async (projectId: string) => {
+const getById = async (projectId: string): Promise<Project | null> => {
     const document = await client.getDocument(projectId, COLLECTION_NAME);
 
     if (!document) {
-        throw Error();
+        return null;
     }
 
     return document;

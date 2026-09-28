@@ -1,66 +1,39 @@
 import React from 'react';
 import { Metadata } from 'next';
 import api from 'src/api';
+import { DEFAULT_OG_IMAGE, SITE_URL } from 'src/shared/constants/site';
 
-import Card from 'src/components/ui/card/Card';
-import Heading from 'src/components/ui/heading/Heading';
+import Projects from 'src/components/pages/projects/Projects';
 
-import styling from './Projects.module.scss';
+const PAGE_URL = `${SITE_URL}/projects`;
+const TITLE = 'Projects – G.Rósuson';
+const DESCRIPTION = 'An overview of projects Guðmundur Rósuson\'s has created';
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://www.rosuson.com/projects'),
-    title: 'Projects – G.Rósuson',
-    description: 'An overview of projects Guðmundur Rósuson\'s has created',
+    metadataBase: new URL(PAGE_URL),
+    title: TITLE,
+    description: DESCRIPTION,
     openGraph: {
-        title: 'Projects – G.Rósuson',
-        description: 'An overview of projects Guðmundur Rósuson\'s has created',
-        url: 'https://www.rosuson.com/projects',
+        title: TITLE,
+        description: DESCRIPTION,
+        url: PAGE_URL,
         type: 'website',
-        images: [
-            {
-                url: 'https://www.rosuson.com/images/og_img_rosuson.png',
-                width: 1200,
-                height: 630,
-                alt: 'Rósuson website logo'
-            }
-        ]
+        images: [DEFAULT_OG_IMAGE]
     },
     twitter: {
-        title: 'Projects – G.Rósuson',
-        description: 'An overview of projects Guðmundur Rósuson\'s has created'
+        title: TITLE,
+        description: DESCRIPTION
     },
     alternates: {
-        canonical: 'https://www.rosuson.com/projects'
+        canonical: PAGE_URL
     }
 };
 
+// TODO: Add error components
 const Page = async () => {
-    // Determine project
     const projects = await api.firebase.queries.projects.getAll();
 
-
-    return (
-        <section>
-            <div className={styling.headline}>
-                <Heading level={1} size="xl">
-                    Projects
-                </Heading>
-            </div>
-
-            <div className={styling.cards}>
-                {projects.map((project) => (
-                    <Card
-                        key={project.id}
-                        uniqueName={project.uniqueName}
-                        theme={project.details.theme}
-                        title={project.title}
-                        about={project.about}
-                        id={project.id}
-                    />
-                ))}
-            </div>
-        </section>
-    );
+    return <Projects projects={projects}/>;
 };
 
 export default Page;

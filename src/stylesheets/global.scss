@@ -1,97 +1,169 @@
-// TODO: Implement body font-size according to screen width.
-// TODO: Implement proper naming for color CSS variables
 /* stylelint-disable color-no-hex */
 
 /* Determine CSS variables */
 :root {
-	// Layout
-	--top-bar-height: 3.5rem;
-	--border-radius: 6px;
-	--border-radius-small: 4px;
-	--gap-large: 3rem;
-	--gap: 1.5rem;
-	--gap-small: 1rem;
-	--gap-extra-small: 0.5rem;
+    // Layout
+    --top-bar-height: 3.5rem;
+    --border-radius-md: 6px;
+    --border-radius-sm: 4px;
+    --border-radius-xs: 1.5px;
+    --border-width-xs: 0.5px;
+    --border-width-sm: 1px;
+    --border-width-md: 2px;
+    --border-width-lg: 4px;
+    --border-width-xl: 6px;
+    --gap-xl: 2.5rem;
+    --gap-lg: 1.5rem;
+    --gap-md: 1rem;
+    --gap-sm: 0.8rem;
+    --gap-xs: 0.4rem;
 
-	// Shadows
-	--shadow: 0 8px 16px rgb(2 8 20 / 10%), 0 4px 8px rgb(2 8 20 / 8%);
+    // Shadows
+    --shadow: 0 8px 16px rgb(2 8 20 / 10%), 0 4px 8px rgb(2 8 20 / 8%);
 
-	// Colors
-	--color-background: #f3f3f3;
-	--color-background-secondary: #e9e7e7;
-	--color-text-primary: #3b3b3b;
-	--color-text-secondary: #565656;
-	--color-tint: rgb(94 94 94 / 20%);
-	--color-text-cta: #3b3b3b;
-	--color-border: #7c7c7c;
-	--color-contrast: #2a2a2a;
-	--color-light-brown: #e3c6bf;
-	--color-brown: #b47a6d;
-	--color-light-blue: #a1c7ce;
-	--color-white: #fcf1e0;
-	--color-blue: #4093a2;
-	--color-yellow: #dfe70d;
-	--color-green: #11e0c8;
-	--color-purple: #dd6aff;
+    // Colors
+    --color-bg: #f3f3f3;
+    --color-bg-surface: #cacaca;
+    --color-bg-surface-muted: #e9e7e7;
+    --color-text: #3b3b3b;
+    --color-text-muted: #5f5f5f;
+    --color-brand-yellow: #dfe70d;
+    --color-brand-purple: #dd6aff;
+    --color-brand-green: #11e0c8;
+    --color-brand-green-foreground: #006e61;
+    --color-brand-green-border: #006e61;
+    --color-border: #2a2a2a;
+    --color-border-muted: #d4d4d4;
+    --color-border-muted-hover: #adadad;
+    --color-project-brown: #c4796b;
+    --color-project-light-brown: #e3c6bf;
+    --color-project-blue: #2f99ac;
+    --color-project-light-blue: #c8e0e6;
+
+    // Font sizes
+    --font-size-label-sm: 0.6rem;
+    --font-size-label-md: 0.8rem;
+    --font-size-date-sm: 0.6rem;
+    --font-size-date-md: 0.7rem;
+    --font-size-input: 0.7rem;
+    --font-size-body: 0.8rem;
+    --font-size-heading-xl: 2.2rem;
+    --font-size-heading-lg: 1.8rem;
+    --font-size-heading-md: 1.6rem;
+    --font-size-heading-sm: 1.2rem;
+    --font-size-heading-xs: 1rem;
+    --font-size-icon-sm: 0.8rem;
+    --font-size-icon-md: 1rem;
+    --font-size-icon-lg: 1.2rem;
+    --font-size-icon-xl: 2rem;
+}
+
+@mixin dark-color-tokens {
+    color-scheme: dark;
+    --color-bg: #1c1b1d;
+    --color-bg-surface: #4a4a4f;
+    --color-bg-surface-muted: #2a2a2d;
+    --color-text: #e7e7e7;
+    --color-text-muted: #a4a4a4;
+    --color-border-muted: #464646;
+    --color-border-muted-hover: #626262;
+    --color-border: #fcf1e0;
 }
 
 /* Set dark-mode colors */
-:root[data-theme='dark'] {
-	color-scheme: dark;
-	--color-background: #1c1b1d;
-	--color-background-secondary: #2a2a2d;
-	--color-contrast: #fcf1e0;
-	--color-text-primary: #c4c4c4;
-	--color-text-secondary: #a4a4a4;
-	--color-tint: rgb(59 59 59 / 40%);
-	--color-text-cta: #dfe70d;
+:root[data-theme="dark"] {
+    @include dark-color-tokens;
+}
+
+/* Next 404 shell has no data-theme; see docs/theme.md */
+@media (prefers-color-scheme: dark) {
+    html:not([data-theme]) {
+        @include dark-color-tokens;
+    }
 }
 
 /* Use a more-intuitive box-sizing model */
-*, *::before, *::after {
-	box-sizing: border-box;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 /* Remove default margin and set a global letter spacing */
 * {
-	margin: 0;
-	letter-spacing: 1.4px;
+    margin: 0;
+    letter-spacing: 1.4px;
+}
+
+/* Make html and body tags flex containers and set the height to 100% so the main tag can grow to fill the available space */
+html,
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make main tag grow to fill the available space */
+main {
+    flex: 1;
 }
 
 /* Add accessible line-height & improve text rendering */
 body {
-	line-height: 1.2;
-	background-color: var(--color-background);
-	-webkit-font-smoothing: antialiased;
+    line-height: 1.2;
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Outrank Next's 404 `body` colors; see docs/theme.md */
+html body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 /* Improve media defaults */
-img, picture, video, canvas, svg {
-	max-width: 100%;
-	display: block;
+img,
+picture,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    display: block;
 }
 
 /* Remove built-in form typography styles */
-input, button, textarea, select {
-	border-radius: var(--border-radius);
-	border: none;
-	font: inherit;
+input,
+button,
+textarea,
+select {
+    border-radius: var(--border-radius-md);
+    border: none;
+    font: inherit;
 }
 
 /* Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
-	overflow-wrap: break-word;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
 }
 
-/* Increase line-height for paragraphs and span's */
-p, span {
-	max-width: 30rem;
-	line-height: 1.5;
-	font-size: 0.9rem;
-	color: var(--color-text-primary);
+p, li {
+    max-width: 70ch;
+    line-height: 1.5;
+    font-size: var(--font-size-body);
+    color: var(--color-text);
+}
+
+ul {
+    padding-inline-start: 1.5rem;
 }
 
 /* Remove underline from anchor tags */
 a {
-	text-decoration: none;
+    text-decoration: none;
 }
