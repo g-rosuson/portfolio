@@ -3,7 +3,7 @@ import { MDXRemote } from 'next-mdx-remote-client/rsc';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import { articleDiagrams } from 'src/components/pages/article/diagrams';
-import { mdxComponents } from 'src/components/shared/mdx/components';
+import { mdxComponents } from 'src/components/pages/article/mdx/components';
 import utils from 'src/utils';
 
 import SectionNav from './sectionNav/SectionNav';
