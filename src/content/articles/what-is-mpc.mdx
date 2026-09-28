@@ -87,11 +87,7 @@ However, mediation alone does not eliminate the risks of giving an LLM access to
 
 ## Conclusion
 
-MCP provides a standard way for AI applications to interact with external systems.
-
-It allows LLMs to access relevant context and perform actions through a common interface, while the host application remains responsible for controlling access.
-
-This provides a common architecture for building AI applications without requiring a custom integration for every system.
+MCP provides a unified way for an LLM to discover and use server-provided resources and tools, without a custom integration for every system. The model decides what it needs, the MCP client handles the communication, and the host application controls which resources and actions it can use. Mediation does not remove the risks of sensitive data, untrusted content and external communication, so those permissions remain the host's responsibility.
 
 ## Resources
 
