@@ -63,15 +63,16 @@ This allows an MCP server to expose both the **context** an LLM needs and the **
 
 The protocol leverages traditional request/response interactions to allow an LLM to progressively discover and retrieve the context it needs. In practice, the LLM determines what information it needs, while the MCP client handles the communication with the server. Consider this example:
 
-- **Client** sends the **LLM** a query: **"Summarise the cost implications of project X"**
+- **Host application** sends the **LLM** a query: **"Summarise the cost implications of project X"**
 - **LLM** receives the query and requests the available resources via the **MCP client**
-- **MCP client** requests the available resources from the system
-- **System** responds with the available resources, in this case, files called: **"project_x_report.pdf"** and **"project_y_report.pdf"**
+- **MCP client** requests the available resources from the **MCP server**
+- **MCP server** responds with the available resources, in this case, files called: **"project_x_report.pdf"** and **"project_y_report.pdf"**
 - **LLM** determines that it needs the content of **"project_x_report.pdf"**
 - **MCP client** requests the content of **"project_x_report.pdf"**
-- **System** responds with the content of **"project_x_report.pdf"**
+- **MCP server** responds with the content of **"project_x_report.pdf"**
+- **MCP client** responds to the **LLM** with the content of **"project_x_report.pdf"**
 
-Now the LLM has the relevant context it needs and can answer the client's query in a detailed manner.
+Now the LLM has the relevant context it needs and can answer the host application query in a detailed manner.
 
 ## Security
 
