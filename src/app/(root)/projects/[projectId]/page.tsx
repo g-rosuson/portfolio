@@ -23,8 +23,9 @@ const getProjectData = cache(async (projectId: string) => {
     return await api.firebase.queries.projects.getById(projectId);
 });
 
-export async function generateMetadata({ params }: { params: { projectId: string } }): Promise<Metadata> {
-    const project = await getProjectData(params.projectId);
+export async function generateMetadata({ params }: { params: Promise<{ projectId: string }> }): Promise<Metadata> {
+    const { projectId } = await params;
+    const project = await getProjectData(projectId);
 
     if (!project) {
         return {
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: { projectId: string
         };
     }
 
-    const url = `${SITE_URL}/projects/${params.projectId}`;
+    const url = `${SITE_URL}/projects/${projectId}`;
     const imageUrl = `${SITE_URL}/images/${project.details.metadata.ogImageName}`;
 
 
@@ -65,7 +66,8 @@ export async function generateMetadata({ params }: { params: { projectId: string
     };
 }
 
-const Page = async ({ params: { projectId } }: { params: { projectId: string }}) => {
+const Page = async ({ params }: { params: Promise<{ projectId: string }> }) => {
+    const { projectId } = await params;
     const project = await getProjectData(projectId);
 
     if (!project) {

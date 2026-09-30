@@ -16,7 +16,7 @@
   "dependencies": {
     "firebase": "^11.0.1",
     "github-slugger": "^2.0.0",
-    "next": "14.1.0",
+    "next": "15.5.26",
     "next-mdx-remote-client": "^1.1.9",
     "react": "^18",
     "react-dom": "^18",
@@ -30,7 +30,7 @@
     "@types/node": "^24",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint-config-next": "14.1.0",
+    "eslint-config-next": "15.5.26",
     "eslint-plugin-css-modules": "^2.12.0",
     "eslint-plugin-simple-import-sort": "12.0.0",
     "husky": "^9.0.11",
@@ -39,5 +39,21 @@
     "stylelint-declaration-strict-value": "1.9.2",
     "stylelint-order": "^6.0.4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "braces": "3.0.3",
+    "nanoid": "3.3.19",
+    "js-yaml": "4.3.2",
+    "glob@10": "10.5.0",
+    "lodash": "4.18.1",
+    "minimatch@3": "3.1.5",
+    "minimatch@9": "9.0.7",
+    "immutable": "4.3.9",
+    "brace-expansion@1": "1.1.21",
+    "flatted": "3.4.2",
+    "picomatch": "2.3.2",
+    "protobufjs": "7.6.6",
+    "postcss": "8.5.28",
+    "@protobufjs/utf8": "1.1.2"
   }
 }
