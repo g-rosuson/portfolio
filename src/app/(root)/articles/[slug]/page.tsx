@@ -22,15 +22,16 @@ const getArticleData = cache(async (slug: string) => {
     return await api.content.queries.articles.getBySlug(slug);
 });
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const article = await getArticleData(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    const article = await getArticleData(slug);
 
     if (!article) {
         notFound();
     }
 
-    const url = `${SITE_URL}/articles/${params.slug}`;
-    const imageUrl = `${SITE_URL}/images/articles/${params.slug}/${article.ogImage}`;
+    const url = `${SITE_URL}/articles/${slug}`;
+    const imageUrl = `${SITE_URL}/images/articles/${slug}/${article.ogImage}`;
 
     return {
         metadataBase: new URL(url),
@@ -60,7 +61,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-const Page = async ({ params: { slug } }: { params: { slug: string } }) => {
+const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
+    const { slug } = await params;
     const article = await getArticleData(slug);
 
     if (!article) {

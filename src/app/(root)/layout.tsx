@@ -8,8 +8,8 @@ import TopBar from 'src/components/shared/topBar/TopBar';
 
 import 'src/stylesheets/global.scss';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-    const stored = cookies().get('theme')?.value;
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+    const stored = (await cookies()).get('theme')?.value;
     const theme = stored === 'light' || stored === 'dark' ? stored : undefined;
 
     return (
